@@ -1,0 +1,25 @@
+B
+X,Y,NFilas,Energía
+11
+11
+G
+X,Y,Tipo,Amp,Frec,NPulsos
+S
+X,Y
+
+Energía: 1-Si, 0-No
+G-generador, Tipo: 0-Neg,1-Pos,2-Alterno,Amp: Amplitud,Frec: Frecuencia,NPulsos: Número de pulsos.  
+S-Sensor (Lector de Energía)
+
+B
+10,200,7,1
+010010
+111111
+010010
+010000
+010010
+111110
+010010
+B
+30,200
+111111111111111111111111

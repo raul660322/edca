@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://thispointer.com/different-ways-to-initialize-an-unordered_map/ -->
+<html lang="en-US" class=" js flexbox flexboxlegacy canvas canvastext postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=yes">
+<meta name="HandheldFriendly" content="true">
+
+<link rel="pingback" href="https://thispointer.com/xmlrpc.php">
+
+<title>Different Ways to initialize an unordered_map – thispointer.com</title>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="thispointer.com » Feed" href="https://thispointer.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="thispointer.com » Comments Feed" href="https://thispointer.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="thispointer.com » Different Ways to initialize an unordered_map Comments Feed" href="https://thispointer.com/different-ways-to-initialize-an-unordered_map/feed/">
+		<script async="" src="./Different Ways to initialize an unordered_map – thispointer.com_files/analytics.js.descarga"></script><script id="facebook-jssdk" src="./Different Ways to initialize an unordered_map – thispointer.com_files/sdk.js.descarga"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/thispointer.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Different Ways to initialize an unordered_map – thispointer.com_files/wp-emoji-release.min.js.descarga" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="crayon-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-github-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/github.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="es-widget-css-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/es-widget.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpProQuiz_front_style-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/wpProQuiz_front.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="default_gwf-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="parent-style-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="style-responsive-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/responsive.css" type="text/css" media="all">
+<link rel="stylesheet" id="superfish-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/superfish.css" type="text/css" media="all">
+<link rel="stylesheet" id="tabber-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/tabber.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-cdn-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/font-awesome.css" type="text/css" media="all">
+<link rel="stylesheet" id="base-style-css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/style(1).css" type="text/css" media="screen">
+<script>if (document.location.protocol != "https:") {document.location = document.URL.replace(/^http:/i, "https:");}</script><script type="text/javascript">
+/* <![CDATA[ */
+var SS_DATA = {"ajaxurl":"https:\/\/thispointer.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/jquery.js.descarga"></script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/jquery-migrate.min.js.descarga"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/thispointer.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/crayon.min.js.descarga"></script>
+<link rel="https://api.w.org/" href="https://thispointer.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://thispointer.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://thispointer.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="How to iterate over an unordered_map in C++11" href="https://thispointer.com/how-to-iterate-over-an-unordered_map-in-c11/">
+<link rel="next" title="For loop with 2 variables in C++ and Java" href="https://thispointer.com/for-loop-with-2-variables-in-c-and-java/">
+<meta name="generator" content="WordPress 4.9.8">
+<link rel="canonical" href="https://thispointer.com/different-ways-to-initialize-an-unordered_map/">
+<link rel="shortlink" href="https://thispointer.com/?p=1831">
+<link rel="alternate" type="application/json+oembed" href="https://thispointer.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthispointer.com%2Fdifferent-ways-to-initialize-an-unordered_map%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://thispointer.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthispointer.com%2Fdifferent-ways-to-initialize-an-unordered_map%2F&amp;format=xml">
+<link rel="stylesheet" type="text/css" href="./Different Ways to initialize an unordered_map – thispointer.com_files/cookieconsent.min.css">
+<script src="./Different Ways to initialize an unordered_map – thispointer.com_files/cookieconsent.min.js.descarga"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "theme": "classic",
+  "position": "top",
+  "static": true,
+  "content": {
+    "href": "https://thispointer.com/privacy-policy/"
+  }
+})});
+</script><style type="text/css" media="all">
+</style>
+<style type="text/css" media="all">
+</style>
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<style type="text/css" id="syntaxhighlighteranchor"></style>
+<style type="text/css" media="all">
+body {font-family: 'Open Sans', sans-serif;font-weight: 400;}
+#siteinfo div,h1,h2,h3,h4,h5,h6,.header-title,#main-navigation, #featured #featured-title, #cf .tinput, #wp-calendar caption,.flex-caption h1,#portfolio-filter li,.nivo-caption a.read-more,.form-submit #submit,.fbottom,ol.commentlist li div.comment-post-meta, .home-post span.post-category a,ul.tabbernav li a {font-family: 'Open Sans', sans-serif;font-weight:600;}
+#main-navigation, .sf-menu li a {font-family: 'Open Sans', sans-serif;font-weight: 600;}
+#Gallerybox,#myGallery,#myGallerySet,#flickrGallery {height:150px;}
+#top-navigation {background-color: #1b88bf;}#top-navigation .sf-menu li a:hover,#top-navigation .sf-menu li:hover,#top-navigation .sf-menu ul {background-color: #016ea5;}#top-navigation .sf-menu ul li a:hover {background-color: #00558c;background-image: none;}#mobile-nav .mobile-open a {background: #1b88bf none;}#mobile-nav ul li a {background: #016ea5 none;}#mobile-nav ul li a:hover {background:#00558c none;}#custom #right-sidebar ul.tabbernav { background: #1b88bf !important; }
+h2.header-title { background: #1b88bf; }
+#right-sidebar ul.tabbernav li.tabberactive a,#right-sidebar ul.tabbernav li.tabberactive a:hover { color:#fff !important; background-color: #00558c !important; }
+#right-sidebar ul.tabbernav li a:hover, #custom h2.inblog {color: #FFF !important;background-color: #016ea5 !important;}
+#breadcrumbs a {color:#1b88bf;}
+#breadcrumbs a:hover {color:#00558c;}
+#content .item-title a,h2.post-title a, h1.post-title a, article.post .post-meta a:hover, #custom .product-with-desc ul.products li h1.post-title a:hover, #custom .twitterbox span a, #custom h3.widget-title a, #custom .ftop div.textwidget a, #custom .ftop a:hover, #custom .ftop .widget_my_theme_twitter_widget a, #content .activity-header a, #content .activity-inner a, #content .item-list-tabs a {
+color: #1b88bf !important;}
+#custom #post-entry h1.post-title a:hover,#custom #post-entry h2.post-title a:hover {color: #222;}
+#woo-container p.price,.wp-pagenavi a, #woo-container span.price, #custom ul.product_list_widget li span.amount,span.pricebox, #custom .product-with-desc ul.products li .post-product-right span.price, .js_widget_product_price,#jigo-single-product p.price   {background-color: #48b5ec; color:#fff;}
+.wp-pagenavi .current, .wp-pagenavi a:hover{background: none repeat scroll 0 0 #016ea5;}
+#post-navigator .wp-pagenavi a,#post-navigator .wp-pagenavi a:hover {background: none repeat scroll 0 0 #003b72;}
+#post-navigator .wp-pagenavi .current {background: none repeat scroll 0 0 #00083f;}
+#content a.activity-time-since {color: #888 !important;}
+#content .item-list-tabs span  {background-color: #34a1d8 !important;}
+#custom .widget a:hover, #custom h3.widget-title a:hover, #custom .ftop div.textwidget a:hover, #custom .ftop a:hover, #custom .ftop .widget_my_theme_twitter_widget a:hover {color: #00558c !important;}
+#custom h3.widget-title {border-bottom: 5px solid #1b88bf;}
+#right-sidebar .search-form .search-submit,#searchform input[type="submit"], #searchform input[type="button"],#custom .bp-searchform #search-submit {background-color: #1b88bf;border:1px solid #1b88bf;}
+#post-entry .post-content a, #author-bio a, #post-related a, #commentpost .fn a, ol.pinglist a, #post-navigator-single a,#commentpost #rssfeed a, #commentpost .comment_text a, #commentpost p a, .product_meta a, a.show_review_form, #custom .twitterbox li a  {color: #1b88bf;}
+.pagination-links a.page-numbers, #custom #woo-container nav.woocommerce-pagination a.page-numbers {background-color: #1b88bf;color:#fff !important;}
+.pagination-links .page-numbers, #custom #woo-container nav.woocommerce-pagination span.page-numbers.current {background-color: #00558c;color:#fff !important;}
+#custom footer.footer-bottom, #custom footer.footer-bottom .fbottom {background-color:#1b88bf;color:#fff !important;}
+#custom #siteinfo a {color: # !important;text-decoration: none;}
+#custom #siteinfo p#site-description {color: # !important;text-decoration: none;}
+#post-entry div.post-thumb.size-thumbnail {float:left;width:150px;}
+#post-entry article .post-right {margin:0 0 0 170px;}
+#right-sidebar aside li a, #right-sidebar aside div a {
+    color: #1b88bf;
+}
+a:link, a:visited {
+    color: #1b88bf;
+}</style>
+
+<style type="text/css">#mc_embed_signup input.mce_inline_error { border-color:#6B0505; } #mc_embed_signup div.mce_inline_error { margin: 0 0 1em 0; padding: 5px 10px; background-color:#6B0505; font-weight: bold; z-index: 1; color:#fff; }</style><style></style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f5f6f7;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:-webkit-sticky;top:0}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100%;overflow:hidden;position:fixed;visibility:hidden;width:100%}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_v2_mobile_chat_started{0%{opacity:0;top:20px}100%{opacity:1;top:0}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_v2_mobile_chat_started{0%{opacity:1;top:0}100%{opacity:0;top:20px}}@keyframes fb_customer_chat_bubble_bounce_in_animation{0%{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70%{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100%{transform:scale(1, 1)}}</style></head>
+
+<body data-rsssl="1" class="post-template-default single single-post postid-1831 single-format-standard chrome" id="custom" style="zoom: 1;"><div class="cc-grower" style="max-height: 72px;"><div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-banner cc-type-info cc-theme-classic cc-static cc-top cc-color-override-688238583 " style=""><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">This website uses cookies to ensure you get the best experience on our website. <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="https://thispointer.com/privacy-policy/" target="_blank">Learn more</a></span><div class="cc-compliance"><a aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-dismiss">Got it!</a></div><!--googleon: all--></div></div>
+
+<div class="product-with-desc secbody">
+
+<div id="wrapper">
+
+<div id="wrapper-main">
+
+<div id="bodywrap" class="innerwrap">
+
+<div id="bodycontent">
+
+<div id="container">
+
+<nav class="top-nav iegradient effect-1" id="top-navigation">
+<div class="innerwrap">
+<ul id="menu-home" class="sf-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;"><li id="menu-item-951" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home no_desc   "><a href="https://thispointer.com//">Home</a></li>
+<li id="menu-item-2068" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/c-interview-questions/">C++</a></li>
+<li id="menu-item-1059" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/stl-tutorials-and-interview-questions/">STL</a></li>
+<li id="menu-item-2067" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/c11-tutorial/">C++11</a></li>
+<li id="menu-item-2069" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/c11-multithreading-tutorial-series/">Multithreading</a></li>
+<li id="menu-item-2636" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/learn-python/">Python</a></li>
+<li id="menu-item-2828" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/data-science-in-python/">Data Science</a></li>
+<li id="menu-item-955" class="menu-item menu-item-type-taxonomy menu-item-object-category no_desc   "><a href="https://thispointer.com/category/design-pattern/">Design Patterns</a></li>
+<li id="menu-item-952" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/author/">About Us</a></li>
+<li id="menu-item-2729" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/privacy-policy/">Privacy Policy</a></li>
+</ul></div>
+</nav>
+<!-- HEADER START -->
+<header class="iegradient yes_head" id="header">
+<div class="header-inner">
+<div class="innerwrap">
+<div id="siteinfo">
+<div><a href="https://thispointer.com/" title="thispointer.com" rel="home">thispointer.com</a></div><p id="site-description"></p>
+</div>
+<!-- SITEINFO END -->
+</div>
+</div>
+</header>
+<!-- HEADER END -->
+<div class="container-wrap">
+
+<!-- NAVIGATION START -->
+<nav class="main-nav iegradient" id="main-navigation">
+<ul id="menu-middle-menu" class="sf-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;"><li id="menu-item-1698" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/c11-tutorial/">C++11 Tutorials</a></li>
+<li id="menu-item-2635" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/learn-python/">Python</a></li>
+<li id="menu-item-1528" class="menu-item menu-item-type-custom menu-item-object-custom no_desc   "><a href="https://thispointer.com//c-interview-questions/">C++ Tutorials</a></li>
+<li id="menu-item-1060" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/stl-tutorials-and-interview-questions/">STL</a></li>
+<li id="menu-item-948" class="menu-item menu-item-type-custom menu-item-object-custom no_desc   "><a href="https://thispointer.com//c11-multithreading-tutorial-series/">Multithreading</a></li>
+<li id="menu-item-2827" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/data-science-in-python/">Data Science</a></li>
+<li id="menu-item-2360" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children no_desc"><a href="https://thispointer.com/category/c/boost-library/" class="sf-with-ul">Boost Library</a>
+<ul class="sub-menu" style="float: none; width: 18em; display: none;">
+<li id="menu-item-2361" class="menu-item menu-item-type-taxonomy menu-item-object-category no_desc   " style="white-space: normal; float: left; width: 100%;"><a href="https://thispointer.com/category/c/boost-library/boost-date-time-library/" style="float: none; width: auto;">Boost Date Time Library</a></li>
+<li id="menu-item-2363" class="menu-item menu-item-type-taxonomy menu-item-object-category no_desc   " style="white-space: normal; float: left; width: 100%;"><a href="https://thispointer.com/category/c/boost-library/boost-string-algorithms-library/" style="float: none; width: auto;">Boost String Algorithms Library</a></li>
+</ul>
+</li>
+<li id="menu-item-684" class="menu-item menu-item-type-taxonomy menu-item-object-category no_desc   "><a href="https://thispointer.com/category/design-pattern/">Design Patterns</a></li>
+<li id="menu-item-1316" class="menu-item menu-item-type-taxonomy menu-item-object-category no_desc   "><a href="https://thispointer.com/category/java/">java</a></li>
+<li id="menu-item-1399" class="menu-item menu-item-type-custom menu-item-object-custom no_desc   "><a href="https://thispointer.com//gdb-debugger-tutorial-series/">GDB</a></li>
+<li id="menu-item-680" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children no_desc"><a href="https://thispointer.com/category/datastructure/" class="sf-with-ul">Datastructure</a>
+<ul class="sub-menu" style="float: none; width: 18em; display: none;">
+<li id="menu-item-681" class="menu-item menu-item-type-taxonomy menu-item-object-category no_desc   " style="white-space: normal; float: left; width: 100%;"><a href="https://thispointer.com/category/datastructure/binary-search-tree/" style="float: none; width: auto;">Binary Search Tree</a></li>
+<li id="menu-item-682" class="menu-item menu-item-type-taxonomy menu-item-object-category no_desc   " style="white-space: normal; float: left; width: 100%;"><a href="https://thispointer.com/category/datastructure/binary-tree/" style="float: none; width: auto;">Binary Tree</a></li>
+<li id="menu-item-683" class="menu-item menu-item-type-taxonomy menu-item-object-category no_desc   " style="white-space: normal; float: left; width: 100%;"><a href="https://thispointer.com/category/datastructure/linked-list/" style="float: none; width: auto;">Linked List</a></li>
+</ul>
+</li>
+<li id="menu-item-2246" class="menu-item menu-item-type-post_type menu-item-object-page no_desc   "><a href="https://thispointer.com/subscribe-to-our-newsletter/">Subscribe</a></li>
+</ul></nav>
+<!-- NAVIGATION END -->
+<div id="breadcrumbs"><div class="innerwrap"><span><a href="https://thispointer.com/"><span>Home</span></a></span> »  <span><a href="https://thispointer.com/category/c/c-11/"><span>C++ 11</span></a></span> »  <span><a href="https://thispointer.com/category/c/c-11/unordered_map/"><span>unordered_map</span></a></span> »  You are reading »</div></div>
+
+
+<!-- CONTENT START -->
+<div class="content">
+<div class="content-inner">
+
+
+<!-- POST ENTRY START -->
+<div id="post-entry">
+
+<div class="post-entry-inner">
+
+
+
+
+<!-- POST START -->
+<article class="post-single post-1831 post type-post status-publish format-standard hentry category-c-11 category-unordered_map tag-c11 tag-unordered_map has_no_thumb" id="post-1831">
+
+<div class="post-top">
+<h1 class="post-title entry-title">Different Ways to initialize an unordered_map</h1>
+<div class="post-meta the-icons pmeta-alt">
+
+
+<span class="post-author vcard"><i class="fa fa-user"></i><a class="url fn" href="https://thispointer.com/author/admin/" title="Posts by Varun" rel="author">Varun</a></span>
+
+<span class="entry-date post-date"><i class="fa fa-clock-o"></i><abbr class="published" title="2016-07-30T21:56:37+00:00">July 30, 2016</abbr></span>
+<span class="meta-no-display"><a href="https://thispointer.com/different-ways-to-initialize-an-unordered_map/" rel="bookmark">Different Ways to initialize an unordered_map</a></span><span class="date updated meta-no-display">2016-07-30T21:56:37+00:00</span>
+<span class="post-category"><i class="fa fa-file"></i><a href="https://thispointer.com/category/c/c-11/" rel="category tag">C++ 11</a>, <a href="https://thispointer.com/category/c/c-11/unordered_map/" rel="category tag">unordered_map</a></span>
+
+
+<span class="post-comment last"><i class="fa fa-comment"></i><a href="https://thispointer.com/different-ways-to-initialize-an-unordered_map/#respond">No Comment</a></span>
+
+
+</div></div>
+
+
+<div class="post-content">
+
+
+<div class="entry-content">
+<p>In this article we will discuss the different ways to initialize an unordered_map.</p>
+<p><span id="more-1831"></span><br>
+unordered_map provides different overloaded constructors. We will use some of them to initialize an unordered_set in 3 different ways i.e.</p>
+<ul>
+<li>Initializing through an initializer_list</li>
+<li>Initializing through a iterable&nbsp;range.</li>
+<li>Initializing through an another map.</li>
+</ul>
+<p>Lets see them in detail,</p>
+<h2>Initializing an unordered_map using initializer_list</h2>
+<p>unordered_map provides an over loaded&nbsp;constructor that can accept an initializer_list as an argument and can initialize &nbsp;an unordered_map.</p>
+<p>Let’s create an unordered_map of key type string and value type int. While creation it will initialized with 3 elements through an initializer_list i.e.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b880799b1cfb776886985" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">C++</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">// Initialize an unordered_map through initializer_list
+  std::unordered_map&lt;std::string, int&gt; wordMap({
+												  { "First", 1 },
+												  { "Second", 2 },
+												  { "Third", 3 }
+  	  	  	  	  	  	  	  	  	  	  	  	});</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b880799b1cfb776886985-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1cfb776886985-2">2</div><div class="crayon-num" data-line="crayon-5b880799b1cfb776886985-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1cfb776886985-4">4</div><div class="crayon-num" data-line="crayon-5b880799b1cfb776886985-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1cfb776886985-6">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b880799b1cfb776886985-1"><span class="crayon-c">// Initialize an unordered_map through initializer_list</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1cfb776886985-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">wordMap</span><span class="crayon-sy">(</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b880799b1cfb776886985-3"><span class="crayon-h">												&nbsp;&nbsp;</span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-s">"First"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1cfb776886985-4"><span class="crayon-h">												&nbsp;&nbsp;</span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-s">"Second"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b880799b1cfb776886985-5"><span class="crayon-h">												&nbsp;&nbsp;</span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-s">"Third"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-h"> </span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1cfb776886985-6"><span class="crayon-h">&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;	</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0017 seconds] -->
+<p></p>
+<h2>Initializing an unordered_map through a range</h2>
+<p>We can also initialize an unordered_map through a range of std::pair&nbsp;elements i.e</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b880799b1d07299963578" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">C++</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important; margin-top: -17px; display: none;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">  // Initialize an unordered_map through another range of elements of type std::pair
+  std::unordered_map&lt;std::string, int&gt; wordMap_2(wordMap.begin(),
+      wordMap.end());</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b880799b1d07299963578-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d07299963578-2">2</div><div class="crayon-num" data-line="crayon-5b880799b1d07299963578-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b880799b1d07299963578-1"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">// Initialize an unordered_map through another range of elements of type std::pair</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d07299963578-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">wordMap_2</span><span class="crayon-sy">(</span><span class="crayon-v">wordMap</span><span class="crayon-sy">.</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b880799b1d07299963578-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">wordMap</span><span class="crayon-sy">.</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<h2>Initializing an unordered_map through&nbsp;other unordered_map</h2>
+<p>We can also initialize an unordered_map through an existing unordered_map i.e.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b880799b1d0b835096007" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">C++</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">  // Initialize an unordered_map through other unordered_map
+  std::unordered_map&lt;std::string, int&gt; wordMap_3(wordMap);</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b880799b1d0b835096007-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d0b835096007-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b880799b1d0b835096007-1"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">// Initialize an unordered_map through other unordered_map</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d0b835096007-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">wordMap_3</span><span class="crayon-sy">(</span><span class="crayon-v">wordMap</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p>Complete working example, is as follows,</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b880799b1d18675050842" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">C++</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">#include &lt;iostream&gt;
+#include &lt;unordered_map&gt;
+#include &lt;string&gt;
+
+int main()
+{
+	// Initialize an unordered_map through initializer_list
+	std::unordered_map&lt;std::string, int&gt; wordMap(
+	{
+	{ "First", 1 },
+	{ "Second", 2 },
+	{ "Third", 3 } });
+
+	// Iterate over an unordered_map and display elements
+	for (std::pair&lt;std::string, int&gt; element : wordMap)
+		std::cout &lt;&lt; element.first &lt;&lt; " :: " &lt;&lt; element.second &lt;&lt; std::endl;
+
+	std::cout &lt;&lt; "*******************" &lt;&lt; std::endl;
+
+	// Initialize an unordered_map through another range of elements of type std::pair
+	std::unordered_map&lt;std::string, int&gt; wordMap_2(wordMap.begin(),
+			wordMap.end());
+
+	// Iterate over an unordered_map and display elements
+	for (std::pair&lt;std::string, int&gt; element : wordMap_2)
+		std::cout &lt;&lt; element.first &lt;&lt; " :: " &lt;&lt; element.second &lt;&lt; std::endl;
+
+	std::cout &lt;&lt; "*******************" &lt;&lt; std::endl;
+
+	// Initialize an unordered_map through other unordered_map
+	std::unordered_map&lt;std::string, int&gt; wordMap_3(wordMap);
+
+	// Iterate over an unordered_map and display elements
+	for (std::pair&lt;std::string, int&gt; element : wordMap_3)
+		std::cout &lt;&lt; element.first &lt;&lt; " :: " &lt;&lt; element.second &lt;&lt; std::endl;
+
+	return 0;
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-2">2</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-4">4</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-6">6</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-8">8</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-10">10</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-12">12</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-14">14</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-16">16</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-18">18</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-20">20</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-22">22</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-24">24</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-26">26</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-28">28</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-30">30</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-32">32</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-34">34</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-36">36</div><div class="crayon-num" data-line="crayon-5b880799b1d18675050842-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d18675050842-38">38</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b880799b1d18675050842-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-2"><span class="crayon-p">#include &lt;unordered_map&gt;</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-3"><span class="crayon-p">#include &lt;string&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-4">&nbsp;</div><div class="crayon-line" id="crayon-5b880799b1d18675050842-5"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-6"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-7"><span class="crayon-h">	</span><span class="crayon-c">// Initialize an unordered_map through initializer_list</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-8"><span class="crayon-h">	</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">wordMap</span><span class="crayon-sy">(</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-9"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-10"><span class="crayon-h">	</span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-s">"First"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-11"><span class="crayon-h">	</span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-s">"Second"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-12"><span class="crayon-h">	</span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-s">"Third"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-14"><span class="crayon-h">	</span><span class="crayon-c">// Iterate over an unordered_map and display elements</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-15"><span class="crayon-h">	</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">wordMap</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-16"><span class="crayon-h">		</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-sy">.</span><span class="crayon-v">first</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">" :: "</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-sy">.</span><span class="crayon-v">second</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">endl</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-17">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-18"><span class="crayon-h">	</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">"*******************"</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">endl</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-19">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-20"><span class="crayon-h">	</span><span class="crayon-c">// Initialize an unordered_map through another range of elements of type std::pair</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-21"><span class="crayon-h">	</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">wordMap_2</span><span class="crayon-sy">(</span><span class="crayon-v">wordMap</span><span class="crayon-sy">.</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-22"><span class="crayon-h">			</span><span class="crayon-v">wordMap</span><span class="crayon-sy">.</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-23">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-24"><span class="crayon-h">	</span><span class="crayon-c">// Iterate over an unordered_map and display elements</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-25"><span class="crayon-h">	</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">wordMap_2</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-26"><span class="crayon-h">		</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-sy">.</span><span class="crayon-v">first</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">" :: "</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-sy">.</span><span class="crayon-v">second</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">endl</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-27">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-28"><span class="crayon-h">	</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">"*******************"</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">endl</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-29">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-30"><span class="crayon-h">	</span><span class="crayon-c">// Initialize an unordered_map through other unordered_map</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-31"><span class="crayon-h">	</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">wordMap_3</span><span class="crayon-sy">(</span><span class="crayon-v">wordMap</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-32">&nbsp;</div><div class="crayon-line" id="crayon-5b880799b1d18675050842-33"><span class="crayon-h">	</span><span class="crayon-c">// Iterate over an unordered_map and display elements</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-34"><span class="crayon-h">	</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-t">string</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">wordMap_3</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b880799b1d18675050842-35"><span class="crayon-h">		</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-sy">.</span><span class="crayon-v">first</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">" :: "</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">element</span><span class="crayon-sy">.</span><span class="crayon-v">second</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">endl</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-36">&nbsp;</div><div class="crayon-line" id="crayon-5b880799b1d18675050842-37"><span class="crayon-h">	</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d18675050842-38"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0015 seconds] -->
+<p><strong>Ouput:</strong></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b880799b1d1d868877185" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Vim</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">Third :: 3
+First :: 1
+Second :: 2
+*******************
+Second :: 2
+Third :: 3
+First :: 1
+*******************
+Third :: 3
+First :: 1
+Second :: 2</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b880799b1d1d868877185-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d1d868877185-2">2</div><div class="crayon-num" data-line="crayon-5b880799b1d1d868877185-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d1d868877185-4">4</div><div class="crayon-num" data-line="crayon-5b880799b1d1d868877185-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d1d868877185-6">6</div><div class="crayon-num" data-line="crayon-5b880799b1d1d868877185-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d1d868877185-8">8</div><div class="crayon-num" data-line="crayon-5b880799b1d1d868877185-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b880799b1d1d868877185-10">10</div><div class="crayon-num" data-line="crayon-5b880799b1d1d868877185-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b880799b1d1d868877185-1"><span class="crayon-i">Third</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">3</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d1d868877185-2"><span class="crayon-i">First</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">1</span></div><div class="crayon-line" id="crayon-5b880799b1d1d868877185-3"><span class="crayon-i">Second</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">2</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d1d868877185-4"><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span></div><div class="crayon-line" id="crayon-5b880799b1d1d868877185-5"><span class="crayon-i">Second</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">2</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d1d868877185-6"><span class="crayon-i">Third</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">3</span></div><div class="crayon-line" id="crayon-5b880799b1d1d868877185-7"><span class="crayon-i">First</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">1</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d1d868877185-8"><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span><span class="crayon-o">*</span></div><div class="crayon-line" id="crayon-5b880799b1d1d868877185-9"><span class="crayon-i">Third</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">3</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b880799b1d1d868877185-10"><span class="crayon-i">First</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">1</span></div><div class="crayon-line" id="crayon-5b880799b1d1d868877185-11"><span class="crayon-i">Second</span><span class="crayon-h"> </span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-cn">2</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+<p>&nbsp;</p>
+<h2><a href="https://thispointer.com//subscribe-to-our-newsletter/" target="_blank">Click Here to Subscribe for more Articles / Tutorials like this.</a></h2>
+<div class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/thispointer/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=773&amp;href=https%3A%2F%2Fwww.facebook.com%2Fthispointer%2F&amp;layout=button_count&amp;locale=en_GB&amp;sdk=joey&amp;share=true&amp;show_faces=false&amp;size=large"><span style="vertical-align: bottom; width: 147px; height: 28px;"><iframe name="f2e75e42da33ce4" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:like Facebook Social Plugin" src="./Different Ways to initialize an unordered_map – thispointer.com_files/like.html" style="border: none; visibility: visible; width: 147px; height: 28px;" class=""></iframe></span></div>
+
+<div class="crp_related "><h3>Related Posts:</h3><ul><li><a href="https://thispointer.com/how-to-iterate-over-an-unordered_map-in-c11/" target="_blank"><span class="crp_title">How to iterate over an unordered_map in C++11</span></a></li><li><a href="https://thispointer.com/how-to-erase-remove-an-element-from-an-unordered_map/" target="_blank"><span class="crp_title">How to Erase / Remove an element from an unordered_map</span></a></li><li><a href="https://thispointer.com/how-to-find-an-element-in-unordered_map/" target="_blank"><span class="crp_title">How to find an element in unordered_map</span></a></li><li><a href="https://thispointer.com/unordered_map-usage-tutorial-and-example/" target="_blank"><span class="crp_title">Unordered_map Usage Tutorial and Example</span></a></li><li><a href="https://thispointer.com/c11-unordered_map-erase-elements-while-iterating-in-a-loop/" target="_blank"><span class="crp_title">c++11 unordered_map : erase elements while iterating…</span></a></li><li><a href="https://thispointer.com/different-ways-to-insert-elements-in-an-unordered_map/" target="_blank"><span class="crp_title">Different ways to insert elements in an unordered_map</span></a></li><li><a href="https://thispointer.com/map-vs-unordered_map-when-to-choose-one-over-another/" target="_blank"><span class="crp_title">map vs unordered_map | When to choose one over another ?</span></a></li><li><a href="https://thispointer.com/how-to-initialize-an-unordered_set-in-c11/" target="_blank"><span class="crp_title">How to initialize an unordered_set in C++11</span></a></li><li><a href="https://thispointer.com/different-ways-to-initialize-a-list-in-c/" target="_blank"><span class="crp_title">Different ways to Initialize a list in C++</span></a></li><li><a href="https://thispointer.com/how-to-initialize-a-map-with-stdinitialzer_list/" target="_blank"><span class="crp_title">C++ : How to Initialize a map in one line using…</span></a></li><li><a href="https://thispointer.com/how-to-copy-all-values-from-a-map-to-a-vector-in-c/" target="_blank"><span class="crp_title">How to copy all Values from a Map to a Vector in C++</span></a></li><li><a href="https://thispointer.com/5-different-ways-to-initialize-a-vector-in-c/" target="_blank"><span class="crp_title">5 Different ways to Initialize a vector in c++</span></a></li><li><a href="https://thispointer.com/c-map-erase-element-by-key-or-iterator-or-range/" target="_blank"><span class="crp_title">C++ map : Erase element by key or Iterator or Range</span></a></li><li><a href="https://thispointer.com/stdinitializer_list-tutorial-examples-c11/" target="_blank"><span class="crp_title">std::initializer_list Tutorial &amp; Examples | C++11</span></a></li><li><a href="https://thispointer.com/how-check-if-a-given-key-exists-in-a-map-c/" target="_blank"><span class="crp_title">How check if a given key exists in a Map | C++</span></a></li><li><a href="https://thispointer.com/different-ways-to-initialize-a-vector-in-c/" target="_blank"><span class="crp_title">Different Ways to Initialize a vector in C++</span></a></li><li><a href="https://thispointer.com/c-map-operator-usage-details/" target="_blank"><span class="crp_title">C++ Map : Operator [] – Usage Details</span></a></li><li><a href="https://thispointer.com/different-ways-to-insert-elements-in-an-unordered_set-in-c11/" target="_blank"><span class="crp_title">How to Insert elements in an unordered_set in C++11</span></a></li><li><a href="https://thispointer.com/how-to-iterate-over-a-map-in-c/" target="_blank"><span class="crp_title">How to Iterate over a map in C++</span></a></li><li><a href="https://thispointer.com/c-map-erase-by-value-or-callback-while-iterating-erase_if-for-map/" target="_blank"><span class="crp_title">C++ Map: Erase by Value or Callback while iterating…</span></a></li><li><a href="https://thispointer.com/how-to-search-an-element-in-unordered_set/" target="_blank"><span class="crp_title">How to Search an element in unordered_set</span></a></li><li><a href="https://thispointer.com/multimap-example-and-tutorial-in-c/" target="_blank"><span class="crp_title">multimap Example and Tutorial in C++</span></a></li><li><a href="https://thispointer.com/using-stdinitializer_list-in-constructors-to-initialize-member-variables/" target="_blank"><span class="crp_title">Using std::initializer_list in constructors to…</span></a></li><li><a href="https://thispointer.com/how-to-search-by-value-in-a-map-c/" target="_blank"><span class="crp_title">How to search by value in a Map | C++</span></a></li><li><a href="https://thispointer.com/c-different-ways-to-insert-elements-in-set/" target="_blank"><span class="crp_title">C++ : Different ways to insert elements in Set</span></a></li></ul><div class="crp_clear"></div></div></div>
+
+
+</div>
+
+
+<div class="post-meta the-icons pm-bottom">
+<span class="post-tags"><i class="fa fa-tags"></i><a href="https://thispointer.com/tag/c11/" rel="tag">c++11</a>, <a href="https://thispointer.com/tag/unordered_map/" rel="tag">unordered_map</a></span>
+</div>
+
+</article>
+<!-- POST END -->
+
+
+
+
+
+
+<div id="commentpost">
+
+<h4 id="comments"><span>No Comments Yet</span></h4>
+
+
+
+
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://thispointer.com/different-ways-to-initialize-an-unordered_map/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://thispointer.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required="required"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1831" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="7c51e45ebd"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1535645394508"></form>
+			</div><!-- #respond -->
+	<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+</div>
+
+
+
+<div class="post-nav-archive" id="post-navigator-single">
+<div class="alignleft">«&nbsp;<a href="https://thispointer.com/how-to-iterate-over-an-unordered_map-in-c11/" rel="prev">How to iterate over an unordered_map in C++11</a></div>
+<div class="alignright"><a href="https://thispointer.com/for-loop-with-2-variables-in-c-and-java/" rel="next">For loop with 2 variables in C++ and Java</a>&nbsp;»</div>
+</div>
+
+
+</div>
+</div>
+<!-- POST ENTRY END -->
+
+
+</div><!-- CONTENT INNER END -->
+</div><!-- CONTENT END -->
+
+
+
+<div id="right-sidebar" class="sidebar right-sidebar">
+<div class="sidebar-inner">
+<div class="widget-area the-icons">
+<aside id="nav_menu-57" class="widget widget_nav_menu"><h3 class="widget-title">C++11 – Unordered_Map</h3><div class="menu-c11-unordered-map-container"><ul id="menu-c11-unordered-map" class="menu"><li id="menu-item-1866" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1866"><a href="https://thispointer.com/unordered_map-usage-tutorial-and-example/">Basic Usage Detail and Example</a></li>
+<li id="menu-item-1865" class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-1865"><a href="https://thispointer.com/different-ways-to-initialize-an-unordered_map/">Initializing an unordered_map</a></li>
+<li id="menu-item-1863" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1863"><a href="https://thispointer.com/how-to-find-an-element-in-unordered_map/">Searching in unordered_map</a></li>
+<li id="menu-item-1864" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1864"><a href="https://thispointer.com/different-ways-to-insert-elements-in-an-unordered_map/">Insert elements in unordered_map</a></li>
+<li id="menu-item-1874" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1874"><a href="https://thispointer.com/how-to-erase-remove-an-element-from-an-unordered_map/">Erasing an element</a></li>
+<li id="menu-item-1875" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1875"><a href="https://thispointer.com/c11-unordered_map-erase-elements-while-iterating-in-a-loop/">Erase elements while iterating</a></li>
+<li id="menu-item-2169" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2169"><a href="https://thispointer.com/map-vs-unordered_map-when-to-choose-one-over-another/">std::map vs std::unordered_map</a></li>
+</ul></div></aside><div id="tabber-widget"><div class="tabberlive"><ul class="tabbernav"><li class="tabberactive"><a href="javascript:void(null);" title="std::tuple">std::tuple</a></li><li class=""><a href="javascript:void(null);" title="Lambda Functions">Lambda Functions</a></li><li class=""><a href="javascript:void(null);" title="C++11 Utilities">C++11 Utilities</a></li><li class=""><a href="javascript:void(null);" title="initializer_list">initializer_list</a></li><li class=""><a href="javascript:void(null);" title="std::array">std::array</a></li><li class=""><a href="javascript:void(null);" title="Rvalue References">Rvalue References</a></li><li class=""><a href="javascript:void(null);" title="Smart Pointers">Smart Pointers</a></li><li class=""><a href="javascript:void(null);" title="Multithreading">Multithreading</a></li><li class=""><a href="javascript:void(null);" title="Unordered_Set">Unordered_Set</a></li><li class=""><a href="javascript:void(null);" title="Unordered_Map">Unordered_Map</a></li></ul>
+<div class="tabbertab " title=""><aside id="nav_menu-89" class="widget widget_nav_menu"><h3>std::tuple</h3><div class="menu-c11-stdtuple-container"><ul id="menu-c11-stdtuple" class="menu"><li id="menu-item-2358" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2358"><a href="https://thispointer.com/c11-stdtuple-tutorial-examples/">c++11 : std::tuple Tutorial</a></li>
+<li id="menu-item-2369" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2369"><a href="https://thispointer.com/c11-make_tuple-tutorial-example/">c++11 : std::make_tuple Tutorial</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-85" class="widget widget_nav_menu"><h3>Lambda Functions</h3><div class="menu-c11-lambdas-container"><ul id="menu-c11-lambdas" class="menu"><li id="menu-item-2291" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2291"><a href="https://thispointer.com/designing-callbacks-in-c-part-3-c11-lambda-functions/">C++11 Lambda Function : Example &amp; Tutorial</a></li>
+<li id="menu-item-2292" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2292"><a href="https://thispointer.com/c11-lambda-how-to-capture-local-variables-inside-lambda/">C++11 Lambda : Capturing local variables</a></li>
+<li id="menu-item-2297" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2297"><a href="https://thispointer.com/c11-lambda-how-to-capture-member-variables-inside-lambda-function/">C++11 Lambda : Capturing Member Variables</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-36" class="widget widget_nav_menu"><h3>C++11 Utilities</h3><div class="menu-c11-utilities-container"><ul id="menu-c11-utilities" class="menu"><li id="menu-item-2985" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2985"><a href="https://thispointer.com/c11-c14-delete-keyword-and-deleted-functions-with-use-cases-examples/">Deleting Functions using ‘delete’ keyword</a></li>
+<li id="menu-item-1275" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1275"><a href="https://thispointer.com//stdbind-tutorial-and-usage-details/">std::bind</a></li>
+<li id="menu-item-1307" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1307"><a href="https://thispointer.com//c11-auto-tutorial-and-examples/">auto specifier</a></li>
+<li id="menu-item-2153" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2153"><a href="https://thispointer.com/c11-variadic-template-function-tutorial-examples/">Variadic Templates</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-82" class="widget widget_nav_menu"><h3>initializer_list</h3><div class="menu-c11-initializer_list-container"><ul id="menu-c11-initializer_list" class="menu"><li id="menu-item-2062" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2062"><a href="https://thispointer.com/stdinitializer_list-tutorial-examples-c11/">std::initializer_list Tutorial</a></li>
+<li id="menu-item-2070" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2070"><a href="https://thispointer.com/using-stdinitializer_list-in-constructors-to-initialize-member-variables/">initializer_list and Constructors</a></li>
+<li id="menu-item-2073" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2073"><a href="https://thispointer.com/how-to-initialize-a-map-with-stdinitialzer_list/">Initialize a map with initialzer_list</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-91" class="widget widget_nav_menu"><h3>std::array</h3><div class="menu-c11-stdarray-container"><ul id="menu-c11-stdarray" class="menu"><li id="menu-item-2461" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2461"><a href="https://thispointer.com/c11-stdarray-tutorial-and-examples/">std::array&lt;&gt; Tutorial and examples</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-51" class="widget widget_nav_menu"><h3>Rvalue References</h3><div class="menu-c11-rvalue-references-container"><ul id="menu-c11-rvalue-references" class="menu"><li id="menu-item-1692" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1692"><a href="https://thispointer.com/difference-between-lvalue-and-rvalue-in-c/">lvalue vs rvalue</a></li>
+<li id="menu-item-1691" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1691"><a href="https://thispointer.com/is-rvalue-immutable-in-c/">Is rvalue immutable in C++?</a></li>
+<li id="menu-item-1690" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1690"><a href="https://thispointer.com/what-is-a-rvalue-reference/">What is rvalue reference in C++11</a></li>
+<li id="menu-item-1689" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1689"><a href="https://thispointer.com/c11-move-contsructor-rvalue-references/">Move Contsructor</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-35" class="widget widget_nav_menu"><h3>Smart Pointers</h3><div class="menu-c11-smart-pointers-container"><ul id="menu-c11-smart-pointers" class="menu"><li id="menu-item-560" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-560"><a href="https://thispointer.com//learning-shared_ptr-part-1-usage-details/">shared_ptr&lt;&gt; Tutorial and Examples</a></li>
+<li id="menu-item-561" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-561"><a href="https://thispointer.com//shared_ptr-and-custom-deletor/">shared_ptr and Custom Deletor</a></li>
+<li id="menu-item-562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-562"><a href="https://thispointer.com//how-shared_ptr-object-is-different-from-a-raw-pointer/">shared_ptr vs raw pointer</a></li>
+<li id="menu-item-563" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-563"><a href="https://thispointer.com//create-shared_ptr-objects-carefully/">Create shared_ptr objects carefully</a></li>
+<li id="menu-item-564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-564"><a href="https://thispointer.com//shared_ptr-binary-trees-and-the-problem-of-cyclic-references/">weak_ptr Tutorial | shared_ptr and Cyclic References</a></li>
+<li id="menu-item-2339" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2339"><a href="https://thispointer.com/c11-unique_ptr-tutorial-and-examples/">unique_ptr&lt;&gt; Tutorial and Examples</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-24" class="widget widget_nav_menu"><h3>Multithreading</h3><div class="menu-c11-multithreading-container"><ul id="menu-c11-multithreading" class="menu"><li id="menu-item-556" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-556"><a href="https://thispointer.com//c-11-multithreading-part-1-three-different-ways-to-create-threads/">Part 1: Three Ways to Create Threads</a></li>
+<li id="menu-item-557" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-557"><a href="https://thispointer.com//c11-multithreading-part-2-joining-and-detaching-threads/">Part 2: Joining and Detaching Threads</a></li>
+<li id="menu-item-558" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-558"><a href="https://thispointer.com//c11-multithreading-part-3-carefully-pass-arguments-to-threads/">Part 3: Passing Arguments to Threads</a></li>
+<li id="menu-item-709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-709"><a href="https://thispointer.com//c11-multithreading-part-4-data-sharing-and-race-conditions/">Part 4 : Sharing Data &amp; Race Conditions</a></li>
+<li id="menu-item-720" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-720"><a href="https://thispointer.com//c11-multithreading-part-5-using-mutex-to-fix-race-conditions/">Part 5 : Fixing Race Conditions using mutex</a></li>
+<li id="menu-item-877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-877"><a href="https://thispointer.com//c11-multithreading-part-6-need-of-event-handling/">Part 6 : Need of Event Handling</a></li>
+<li id="menu-item-884" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-884"><a href="https://thispointer.com//c11-multithreading-part-7-condition-variables-explained/">Part 7: Condition Variables</a></li>
+<li id="menu-item-920" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-920"><a href="https://thispointer.com//c11-multithreading-part-8-stdfuture-stdpromise-and-returning-values-from-thread/">Part 8: std::future and std::promise</a></li>
+<li id="menu-item-2247" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2247"><a href="https://thispointer.com/c11-multithreading-part-9-stdasync-tutorial-example/">Part 9: std::async Tutorial &amp; Example</a></li>
+<li id="menu-item-2332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2332"><a href="https://thispointer.com/c11-multithreading-part-10-packaged_task-example-and-tutorial/">Part 10:  std::packaged_task&lt;&gt; Tutorial</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-52" class="widget widget_nav_menu"><h3>Unordered_Set</h3><div class="menu-c11-unordered_set-container"><ul id="menu-c11-unordered_set" class="menu"><li id="menu-item-1814" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1814"><a href="https://thispointer.com/c-11-unordered_set-basic-usage-example/">1.) unordered_set Basic Example</a></li>
+<li id="menu-item-1812" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1812"><a href="https://thispointer.com/how-to-initialize-an-unordered_set-in-c11/">2.) Initializing an unordered_set</a></li>
+<li id="menu-item-1813" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1813"><a href="https://thispointer.com/different-ways-to-insert-elements-in-an-unordered_set-in-c11/">3.) Inserting elements in an unordered_set</a></li>
+<li id="menu-item-1811" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1811"><a href="https://thispointer.com/how-to-search-an-element-in-unordered_set/">4.) Searching an element in unordered_set</a></li>
+<li id="menu-item-1810" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1810"><a href="https://thispointer.com/using-unordered_set-with-custom-hasher-and-comparision-function/">5.) unordered_set – Custom Hasher &amp; Comparator</a></li>
+<li id="menu-item-1809" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1809"><a href="https://thispointer.com/how-to-use-unordered_set-with-user-defined-classes-tutorial-example/">6.) Unordered_set &amp; User defined classes</a></li>
+</ul></div></aside></div><div class="tabbertab tabbertabhide" title=""><aside id="nav_menu-56" class="widget widget_nav_menu"><h3>Unordered_Map</h3><div class="menu-c11-unordered-map-container"><ul id="menu-c11-unordered-map-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1866"><a href="https://thispointer.com/unordered_map-usage-tutorial-and-example/">Basic Usage Detail and Example</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-1865"><a href="https://thispointer.com/different-ways-to-initialize-an-unordered_map/">Initializing an unordered_map</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1863"><a href="https://thispointer.com/how-to-find-an-element-in-unordered_map/">Searching in unordered_map</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1864"><a href="https://thispointer.com/different-ways-to-insert-elements-in-an-unordered_map/">Insert elements in unordered_map</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1874"><a href="https://thispointer.com/how-to-erase-remove-an-element-from-an-unordered_map/">Erasing an element</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1875"><a href="https://thispointer.com/c11-unordered_map-erase-elements-while-iterating-in-a-loop/">Erase elements while iterating</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2169"><a href="https://thispointer.com/map-vs-unordered_map-when-to-choose-one-over-another/">std::map vs std::unordered_map</a></li>
+</ul></div></aside></div></div></div>
+<aside id="text-23" class="widget widget_text"><h3 class="widget-title">Advertisements</h3>			<div class="textwidget"><script async="" src="./Different Ways to initialize an unordered_map – thispointer.com_files/f.txt"></script>
+<!-- left top 2015 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4989741628450044" data-ad-slot="5447458618" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</aside><aside id="text-19" class="widget widget_text"><h3 class="widget-title">Advertisements</h3>			<div class="textwidget"><script async="" src="./Different Ways to initialize an unordered_map – thispointer.com_files/f.txt"></script>
+<!-- Third Large Sidebar Add -->
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-4989741628450044" data-ad-slot="4826235410"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</aside><aside id="text-25" class="widget widget_text">			<div class="textwidget"><!-- Begin MailChimp Signup Form -->
+<link href="./Different Ways to initialize an unordered_map – thispointer.com_files/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="https://thispointer.us11.list-manage.com/subscribe/post?u=bbb79fbb204e47701dc00b14a&amp;id=d9918ae3e6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="novalidate">
+    <div id="mc_embed_signup_scroll">
+	<h2>Subscribe For latest Tutorials</h2>
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" aria-required="true">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bbb79fbb204e47701dc00b14a_d9918ae3e6" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/mc-validate.js.descarga"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup--></div>
+		</aside><aside id="text-22" class="widget widget_text"><h3 class="widget-title">Advertisements</h3>			<div class="textwidget"><script async="" src="./Different Ways to initialize an unordered_map – thispointer.com_files/f.txt"></script>
+<!-- Sidebar Third -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4989741628450044" data-ad-slot="9196172210" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</aside><aside id="text-24" class="widget widget_text"><h3 class="widget-title">Advertisements</h3>			<div class="textwidget"><script async="" src="./Different Ways to initialize an unordered_map – thispointer.com_files/f.txt"></script>
+<!-- Fourth Sidebar Ad -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4989741628450044" data-ad-slot="3295581413" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</aside><aside id="search-2" class="widget widget_search"><h3 class="widget-title">Search</h3><form method="get" class="search-form" action="https://thispointer.com/"><label><span class="screen-reader-text">Search for:</span><input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:"></label> <input type="submit" class="search-submit" value="Search"></form></aside><aside id="text-26" class="widget widget_text">			<div class="textwidget"><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Different Ways to initialize an unordered_map – thispointer.com_files/0P3pVtbsZok.html" style="border: none;"></iframe></div></div></div>
+<p><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script></p>
+</div>
+		</aside></div>
+</div><!-- SIDEBAR-INNER END -->
+</div><!-- RIGHT SIDEBAR END -->
+
+
+</div><!-- CONTAINER WRAP END -->
+
+</div><!-- CONTAINER END -->
+
+</div><!-- BODYCONTENT END -->
+
+</div><!-- INNERWRAP BODYWRAP END -->
+
+</div><!-- WRAPPER MAIN END -->
+
+</div><!-- WRAPPER END -->
+
+
+<footer class="footer-top"><div class="innerwrap"><div class="ftop"><div class="footer-container-wrap">
+
+<div class="fbox footer-one"><div class="widget-area the-icons">
+<aside id="nav_menu-93" class="widget widget_nav_menu"><h3 class="widget-title">Python : List</h3><div class="menu-python-list-container"><ul id="menu-python-list" class="menu"><li id="menu-item-2652" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2652"><a href="https://thispointer.com/python-how-to-check-if-an-item-exists-in-list-search-by-value-or-condition/">Check if an item exists in List</a></li>
+<li id="menu-item-2615" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2615"><a href="https://thispointer.com/python-check-if-a-list-contains-all-the-elements-of-another-list/">Check if a list contains all the elements of other list</a></li>
+<li id="menu-item-2616" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2616"><a href="https://thispointer.com/python-how-to-create-a-list-and-initialize-with-same-values/">Create a List and initialize with values</a></li>
+<li id="menu-item-2617" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2617"><a href="https://thispointer.com/python-how-to-iterate-over-a-list/">How to Iterate over a List</a></li>
+<li id="menu-item-2618" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2618"><a href="https://thispointer.com/python-how-to-insert-an-element-at-specific-index-in-list/">Insert an element at specific index in List</a></li>
+<li id="menu-item-2619" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2619"><a href="https://thispointer.com/python-how-to-sort-a-list-of-tuples-by-2nd-item-using-lambda-function-or-comparator/">Sort a list of tuples by 2nd Item</a></li>
+<li id="menu-item-2620" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2620"><a href="https://thispointer.com/python-how-to-sort-a-list-of-strings-list-sort-tutorial-examples/">Sort a list of strings</a></li>
+<li id="menu-item-2621" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2621"><a href="https://thispointer.com/python-how-to-add-an-element-in-list-append-vs-extend/">Add an element in list | append() vs extend()</a></li>
+<li id="menu-item-2622" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2622"><a href="https://thispointer.com/python-check-if-all-elements-in-a-list-are-same-or-matches-a-condition/">Check if all elements in a List are same</a></li>
+<li id="menu-item-2672" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2672"><a href="https://thispointer.com/python-how-to-merge-two-or-more-lists/">Merge / Join two or more lists</a></li>
+<li id="menu-item-2673" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2673"><a href="https://thispointer.com/python-how-to-remove-duplicates-from-a-list/">Remove Duplicates from a List</a></li>
+<li id="menu-item-2681" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2681"><a href="https://thispointer.com/python-how-to-convert-a-list-to-string/">Convert a list to string</a></li>
+<li id="menu-item-2695" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2695"><a href="https://thispointer.com/python-how-to-remove-element-from-a-list-by-value-or-index-remove-vs-pop-vs-del/">Remove element from a list by value or Index</a></li>
+<li id="menu-item-2694" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2694"><a href="https://thispointer.com/python-how-to-remove-multiple-elements-from-list/">Remove multiple elements from list</a></li>
+</ul></div></aside><aside id="nav_menu-94" class="widget widget_nav_menu"><h3 class="widget-title">Python : Dictionary</h3><div class="menu-python-dictionary-container"><ul id="menu-python-dictionary" class="menu"><li id="menu-item-2629" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2629"><a href="https://thispointer.com/python-6-different-ways-to-create-dictionaries/">Creating Dictionaries in Python</a></li>
+<li id="menu-item-2628" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2628"><a href="https://thispointer.com/different-ways-to-iterate-loop-over-a-dictionary-in-python/">Iterating over Dictionaries in Python</a></li>
+<li id="menu-item-2626" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2626"><a href="https://thispointer.com/python-how-to-check-if-a-key-exists-in-dictionary/">Check if a key exists in Dictionary</a></li>
+<li id="menu-item-2623" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2623"><a href="https://thispointer.com/python-how-to-create-a-list-of-all-the-keys-in-the-dictionary/">Get list of all the keys in Dictionary</a></li>
+<li id="menu-item-2625" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2625"><a href="https://thispointer.com/python-how-to-create-a-list-of-all-the-values-in-a-dictionary/">Get list of all the Values in a Dictionary</a></li>
+<li id="menu-item-2624" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2624"><a href="https://thispointer.com/python-how-to-remove-multiple-keys-from-dictionary-while-iterating/">Remove multiple keys in Dictionary while Iterating</a></li>
+<li id="menu-item-2627" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2627"><a href="https://thispointer.com/different-ways-to-remove-a-key-from-dictionary-in-python/">Remove a key from Dictionary</a></li>
+<li id="menu-item-2720" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2720"><a href="https://thispointer.com/python-how-to-add-append-key-value-pairs-in-dictionary-using-dict-update/">Add key/value pairs in Dictionary</a></li>
+<li id="menu-item-2725" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2725"><a href="https://thispointer.com/python-how-to-find-keys-by-value-in-dictionary/">Find keys by value in Dictionary</a></li>
+<li id="menu-item-2756" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2756"><a href="https://thispointer.com/python-how-to-sort-a-dictionary-by-key-or-value/">Sort a Dictionary by key or Value</a></li>
+<li id="menu-item-2771" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2771"><a href="https://thispointer.com/python-how-to-copy-a-dictionary-shallow-copy-vs-deep-copy/">Copy a dictionary | Shallow vs Deep Copy</a></li>
+<li id="menu-item-2777" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2777"><a href="https://thispointer.com/python-how-to-convert-a-list-to-dictionary/">Convert a list to dictionary</a></li>
+</ul></div></aside><aside id="nav_menu-95" class="widget widget_nav_menu"><h3 class="widget-title">Python Strings</h3><div class="menu-python-strings-container"><ul id="menu-python-strings" class="menu"><li id="menu-item-2748" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2748"><a href="https://thispointer.com/python-how-to-access-characters-in-string-by-index/">Access characters in string by index in Python</a></li>
+<li id="menu-item-2757" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2757"><a href="https://thispointer.com/python-how-to-iterate-over-the-characters-in-string/">Iterate over the characters in string</a></li>
+<li id="menu-item-2773" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2773"><a href="https://thispointer.com/python-how-to-replace-single-or-multiple-characters-in-a-string/">How to Replace characters in a string ?</a></li>
+</ul></div></aside><aside id="nav_menu-96" class="widget widget_nav_menu"><h3 class="widget-title">Java – Hashmap</h3><div class="menu-java-hashmap-container"><ul id="menu-java-hashmap" class="menu"><li id="menu-item-2316" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2316"><a href="https://thispointer.com/what-is-hashing-and-hash-table/">What is Hashing and Hash Table?</a></li>
+<li id="menu-item-2314" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2314"><a href="https://thispointer.com/java-creating-hashmap-by-associating-multiple-values-with-same-key/">Associating Multiple values with same Key</a></li>
+<li id="menu-item-2315" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2315"><a href="https://thispointer.com/java-remove-elements-from-hashmap-while-iterating/">Remove elements while Iterating</a></li>
+<li id="menu-item-2503" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2503"><a href="https://thispointer.com/java-how-to-update-the-value-of-an-existing-key-in-hashmap-put-vs-replace/">Update the value of an existing key</a></li>
+<li id="menu-item-2522" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2522"><a href="https://thispointer.com/java-how-to-get-keys-by-a-value-in-hashmap-search-by-value-in-map/">Get all keys by a value in HashMap</a></li>
+</ul></div></aside><aside id="nav_menu-86" class="widget widget_nav_menu"><h3 class="widget-title">Java – HashSet</h3><div class="menu-hashset-tutorials-in-java-container"><ul id="menu-hashset-tutorials-in-java" class="menu"><li id="menu-item-1646" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1646"><a href="https://thispointer.com/what-is-hashing-and-hash-table/">What is Hashing and Hash Table?</a></li>
+<li id="menu-item-1653" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1653"><a href="https://thispointer.com/how-to-create-and-add-elements-in-a-hashset/">Create and add elements in a HashSet</a></li>
+<li id="menu-item-1652" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1652"><a href="https://thispointer.com/how-to-iterate-over-a-hashset-in-java/">Iterate over a HashSet</a></li>
+<li id="menu-item-1651" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1651"><a href="https://thispointer.com/how-to-search-for-an-element-in-hashset-in-java/">Search for an element in HashSet</a></li>
+<li id="menu-item-1649" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1649"><a href="https://thispointer.com/how-to-merge-two-hashsets-in-java/">Merge two HashSets</a></li>
+<li id="menu-item-1647" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1647"><a href="https://thispointer.com/initializing-a-hashset-from-an-array-or-a-collection/">Initializing HashSet from an Array</a></li>
+<li id="menu-item-1648" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1648"><a href="https://thispointer.com/how-to-convert-a-hashset-into-an-array-in-java/">Convert a HashSet into an Array</a></li>
+<li id="menu-item-1650" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1650"><a href="https://thispointer.com/how-to-merge-an-array-in-a-hashset-in-java/">Merge an Array in a HashSet</a></li>
+</ul></div></aside><aside id="nav_menu-87" class="widget widget_nav_menu"><h3 class="widget-title">Java Interview Questions</h3><div class="menu-method-overriding-in-java-container"><ul id="menu-method-overriding-in-java" class="menu"><li id="menu-item-1895" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1895"><a href="https://thispointer.com/method-overriding-in-java-tutorial-and-example/">Method Overriding Tutorial</a></li>
+<li id="menu-item-1894" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1894"><a href="https://thispointer.com/overriding-a-method-with-different-return-type-in-java/">Overriding with Different Return Type</a></li>
+<li id="menu-item-1896" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1896"><a href="https://thispointer.com/how-to-call-base-classs-overridden-method-from-derived-class-in-java/">Calling Base class’s overridden method</a></li>
+<li id="menu-item-1909" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1909"><a href="https://thispointer.com/how-to-prevent-method-overriding-in-java/">Preventing Method Overriding</a></li>
+<li id="menu-item-1910" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1910"><a href="https://thispointer.com/why-should-we-prevent-method-overriding-in-java/">Need of preventing Method Overriding</a></li>
+</ul></div></aside></div></div>
+
+<div class="fbox wider-cat footer-two"><div class="widget-area the-icons">
+<aside id="nav_menu-64" class="widget widget_nav_menu"><h3 class="widget-title">C++11 – Utilities</h3><div class="menu-c11-utilities-container"><ul id="menu-c11-utilities-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2985"><a href="https://thispointer.com/c11-c14-delete-keyword-and-deleted-functions-with-use-cases-examples/">Deleting Functions using ‘delete’ keyword</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1275"><a href="https://thispointer.com//stdbind-tutorial-and-usage-details/">std::bind</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1307"><a href="https://thispointer.com//c11-auto-tutorial-and-examples/">auto specifier</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2153"><a href="https://thispointer.com/c11-variadic-template-function-tutorial-examples/">Variadic Templates</a></li>
+</ul></div></aside><aside id="nav_menu-66" class="widget widget_nav_menu"><h3 class="widget-title">C++11 – Unordered Set</h3><div class="menu-c11-unordered_set-container"><ul id="menu-c11-unordered_set-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1814"><a href="https://thispointer.com/c-11-unordered_set-basic-usage-example/">1.) unordered_set Basic Example</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1812"><a href="https://thispointer.com/how-to-initialize-an-unordered_set-in-c11/">2.) Initializing an unordered_set</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1813"><a href="https://thispointer.com/different-ways-to-insert-elements-in-an-unordered_set-in-c11/">3.) Inserting elements in an unordered_set</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1811"><a href="https://thispointer.com/how-to-search-an-element-in-unordered_set/">4.) Searching an element in unordered_set</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1810"><a href="https://thispointer.com/using-unordered_set-with-custom-hasher-and-comparision-function/">5.) unordered_set – Custom Hasher &amp; Comparator</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1809"><a href="https://thispointer.com/how-to-use-unordered_set-with-user-defined-classes-tutorial-example/">6.) Unordered_set &amp; User defined classes</a></li>
+</ul></div></aside><aside id="nav_menu-67" class="widget widget_nav_menu"><h3 class="widget-title">C++11 – UnorderedMap</h3><div class="menu-c11-unordered-map-container"><ul id="menu-c11-unordered-map-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1866"><a href="https://thispointer.com/unordered_map-usage-tutorial-and-example/">Basic Usage Detail and Example</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-1865"><a href="https://thispointer.com/different-ways-to-initialize-an-unordered_map/">Initializing an unordered_map</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1863"><a href="https://thispointer.com/how-to-find-an-element-in-unordered_map/">Searching in unordered_map</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1864"><a href="https://thispointer.com/different-ways-to-insert-elements-in-an-unordered_map/">Insert elements in unordered_map</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1874"><a href="https://thispointer.com/how-to-erase-remove-an-element-from-an-unordered_map/">Erasing an element</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1875"><a href="https://thispointer.com/c11-unordered_map-erase-elements-while-iterating-in-a-loop/">Erase elements while iterating</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2169"><a href="https://thispointer.com/map-vs-unordered_map-when-to-choose-one-over-another/">std::map vs std::unordered_map</a></li>
+</ul></div></aside><aside id="nav_menu-62" class="widget widget_nav_menu"><h3 class="widget-title">C++11 Smart Pointers</h3><div class="menu-c11-smart-pointers-container"><ul id="menu-c11-smart-pointers-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-560"><a href="https://thispointer.com//learning-shared_ptr-part-1-usage-details/">shared_ptr&lt;&gt; Tutorial and Examples</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-561"><a href="https://thispointer.com//shared_ptr-and-custom-deletor/">shared_ptr and Custom Deletor</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-562"><a href="https://thispointer.com//how-shared_ptr-object-is-different-from-a-raw-pointer/">shared_ptr vs raw pointer</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-563"><a href="https://thispointer.com//create-shared_ptr-objects-carefully/">Create shared_ptr objects carefully</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-564"><a href="https://thispointer.com//shared_ptr-binary-trees-and-the-problem-of-cyclic-references/">weak_ptr Tutorial | shared_ptr and Cyclic References</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2339"><a href="https://thispointer.com/c11-unique_ptr-tutorial-and-examples/">unique_ptr&lt;&gt; Tutorial and Examples</a></li>
+</ul></div></aside><aside id="nav_menu-61" class="widget widget_nav_menu"><h3 class="widget-title">C++11 Multithreading</h3><div class="menu-c11-multithreading-container"><ul id="menu-c11-multithreading-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-556"><a href="https://thispointer.com//c-11-multithreading-part-1-three-different-ways-to-create-threads/">Part 1: Three Ways to Create Threads</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-557"><a href="https://thispointer.com//c11-multithreading-part-2-joining-and-detaching-threads/">Part 2: Joining and Detaching Threads</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-558"><a href="https://thispointer.com//c11-multithreading-part-3-carefully-pass-arguments-to-threads/">Part 3: Passing Arguments to Threads</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-709"><a href="https://thispointer.com//c11-multithreading-part-4-data-sharing-and-race-conditions/">Part 4 : Sharing Data &amp; Race Conditions</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-720"><a href="https://thispointer.com//c11-multithreading-part-5-using-mutex-to-fix-race-conditions/">Part 5 : Fixing Race Conditions using mutex</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-877"><a href="https://thispointer.com//c11-multithreading-part-6-need-of-event-handling/">Part 6 : Need of Event Handling</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-884"><a href="https://thispointer.com//c11-multithreading-part-7-condition-variables-explained/">Part 7: Condition Variables</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-920"><a href="https://thispointer.com//c11-multithreading-part-8-stdfuture-stdpromise-and-returning-values-from-thread/">Part 8: std::future and std::promise</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2247"><a href="https://thispointer.com/c11-multithreading-part-9-stdasync-tutorial-example/">Part 9: std::async Tutorial &amp; Example</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2332"><a href="https://thispointer.com/c11-multithreading-part-10-packaged_task-example-and-tutorial/">Part 10:  std::packaged_task&lt;&gt; Tutorial</a></li>
+</ul></div></aside><aside id="nav_menu-68" class="widget widget_nav_menu"><h3 class="widget-title">C++11 Rvalue References</h3><div class="menu-c11-rvalue-references-container"><ul id="menu-c11-rvalue-references-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1692"><a href="https://thispointer.com/difference-between-lvalue-and-rvalue-in-c/">lvalue vs rvalue</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1691"><a href="https://thispointer.com/is-rvalue-immutable-in-c/">Is rvalue immutable in C++?</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1690"><a href="https://thispointer.com/what-is-a-rvalue-reference/">What is rvalue reference in C++11</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1689"><a href="https://thispointer.com/c11-move-contsructor-rvalue-references/">Move Contsructor</a></li>
+</ul></div></aside></div></div>
+
+<div class="fbox footer-three"><div class="widget-area the-icons">
+<aside id="text-27" class="widget widget_text"><h3 class="widget-title">Advertisement</h3>			<div class="textwidget"><p><script async="" src="./Different Ways to initialize an unordered_map – thispointer.com_files/f.txt"></script><br>
+<!-- Header Add --><br>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4989741628450044" data-ad-slot="5177162847" data-ad-format="auto"></ins><br>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+		</aside><aside id="nav_menu-79" class="widget widget_nav_menu"><h3 class="widget-title">Design Patterns</h3><div class="menu-design-pattern-menu-container"><ul id="menu-design-pattern-menu" class="menu"><li id="menu-item-523" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-523"><a href="https://thispointer.com/category/design-pattern/behavioral-design-patterns/">Behavioral Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-529" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-529"><a href="https://thispointer.com/category/design-pattern/observer-design-pattern/">Observer Design Pattern</a></li>
+	<li id="menu-item-524" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-524"><a href="https://thispointer.com/category/design-pattern/behavioral-design-patterns/state-design-pattern/">State Design Pattern</a></li>
+	<li id="menu-item-530" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-530"><a href="https://thispointer.com/category/design-pattern/strategy-design-pattern/">Strategy Design Pattern</a></li>
+</ul>
+</li>
+<li id="menu-item-531" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-531"><a href="https://thispointer.com/category/design-pattern/structural-design-patterns/">Structural Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-525" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-525"><a href="https://thispointer.com/category/design-pattern/composite-design-pattern/">Composite Design Pattern</a></li>
+	<li id="menu-item-528" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-528"><a href="https://thispointer.com/category/design-pattern/flyweight-design-pattern/">Flyweight Design Pattern</a></li>
+</ul>
+</li>
+<li id="menu-item-526" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-526"><a href="https://thispointer.com/category/design-pattern/creational-design-patterns/">Creational Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-527" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-527"><a href="https://thispointer.com/category/design-pattern/factory-method-design-pattern/">Factory Method Design Pattern</a></li>
+</ul>
+</li>
+</ul></div></aside><aside id="nav_menu-69" class="widget widget_nav_menu"><h3 class="widget-title">Pointers</h3><div class="menu-pointers-container"><ul id="menu-pointers" class="menu"><li id="menu-item-1515" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1515"><a href="https://thispointer.com//difference-between-a-pointer-and-reference/">Pointer vs Refrence</a></li>
+<li id="menu-item-1516" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1516"><a href="https://thispointer.com//allocating-and-deallocating-2d-arrays-dynamically-in-c-and-c/">Allocating 2D Array Dynamically</a></li>
+</ul></div></aside><aside id="nav_menu-70" class="widget widget_nav_menu"><h3 class="widget-title">Callbacks in C++</h3><div class="menu-callbacks-in-c-container"><ul id="menu-callbacks-in-c" class="menu"><li id="menu-item-1287" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1287"><a href="https://thispointer.com//designing-callbacks-in-c-part-1-function-pointers/">Function Pointers</a></li>
+<li id="menu-item-1288" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1288"><a href="https://thispointer.com//designing-callbacks-in-c-part-2-function-objects-functors/">Function Objects &amp; Functors</a></li>
+</ul></div></aside><aside id="nav_menu-71" class="widget widget_nav_menu"><h3 class="widget-title">C++ Strings</h3><div class="menu-c-strings-container"><ul id="menu-c-strings" class="menu"><li id="menu-item-2040" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2040"><a href="https://thispointer.com/find-and-replace-all-occurrences-of-a-sub-string-in-c/">Find and Replace all occurrences of a string</a></li>
+<li id="menu-item-2041" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2041"><a href="https://thispointer.com/find-all-occurrences-of-a-sub-string-in-a-string-c-both-case-sensitive-insensitive/">Find all occurrences of a sub string</a></li>
+<li id="menu-item-2042" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2042"><a href="https://thispointer.com/implementing-a-case-insensitive-stringfind-in-c/">Case Insensitive string::find</a></li>
+<li id="menu-item-2043" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2043"><a href="https://thispointer.com/convert-first-letter-of-each-word-of-a-string-to-upper-case-in-c/">Convert First Letter of each word to Upper Case</a></li>
+<li id="menu-item-2044" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2044"><a href="https://thispointer.com/converting-a-string-to-upper-lower-case-in-c-using-stl-boost-library/">Converting a String to Upper  &amp; Lower Case</a></li>
+<li id="menu-item-2045" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2045"><a href="https://thispointer.com/how-to-trim-strings-in-c-using-boost-string-algorithm-library/">Trim strings in C++</a></li>
+<li id="menu-item-2046" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2046"><a href="https://thispointer.com/how-to-split-a-string-in-c/">C++ : How to split a string using String and character as Delimiter?</a></li>
+<li id="menu-item-2390" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2390"><a href="https://thispointer.com/c-check-if-a-string-starts-with-an-another-given-string/">startsWith() Implementation</a></li>
+<li id="menu-item-2424" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2424"><a href="https://thispointer.com/c-how-to-check-if-a-string-ends-with-an-another-given-string/">endsWith() Implementation</a></li>
+<li id="menu-item-2454" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2454"><a href="https://thispointer.com/how-to-remove-substrings-from-a-string-in-c/">Remove Sub Strings from String</a></li>
+</ul></div></aside><aside id="nav_menu-72" class="widget widget_nav_menu"><h3 class="widget-title">C++ Memory Manangement</h3><div class="menu-memory-management-container"><ul id="menu-memory-management" class="menu"><li id="menu-item-1507" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1507"><a href="https://thispointer.com//what-is-memory-leaks-in-c/">Memory Leaks</a></li>
+<li id="menu-item-1508" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1508"><a href="https://thispointer.com//how-does-new-and-delete-operator-works-internally/">new and delete operator</a></li>
+<li id="menu-item-1509" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1509"><a href="https://thispointer.com//difference-between-delete-delete-and-rise-of-memory-leaks/">delete vs []delete</a></li>
+<li id="menu-item-1510" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1510"><a href="https://thispointer.com//handling-out-of-memory-errors-in-code/">Out Of Memory Errors</a></li>
+<li id="menu-item-1511" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1511"><a href="https://thispointer.com//overloading-new-and-delete-operators-at-global-and-class-level/">Overload new &amp; delete</a></li>
+<li id="menu-item-1512" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1512"><a href="https://thispointer.com//restrict-dynamic-deletion-of-objects-created-on-stack/">Restrict Dynamic Deletion</a></li>
+<li id="menu-item-1513" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1513"><a href="https://thispointer.com//whats-placement-new-operator-and-why-do-we-need-it/">Placement new operator</a></li>
+<li id="menu-item-1514" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1514"><a href="https://thispointer.com//deleting-this-pointer-and-internal-details-of-this-pointer/">Delete ‘this’ pointer</a></li>
+</ul></div></aside><aside id="nav_menu-73" class="widget widget_nav_menu"><h3 class="widget-title">Polymorphism</h3><div class="menu-polymorphism-c-interview-questions-container"><ul id="menu-polymorphism-c-interview-questions" class="menu"><li id="menu-item-1505" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505"><a href="https://thispointer.com//when-should-i-use-virtual-functions-in-c/">Virtual Functions</a></li>
+<li id="menu-item-1506" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1506"><a href="https://thispointer.com//how-virtual-functions-works-internally-using-vtable-and-vpointer/">vTable and vPointer</a></li>
+</ul></div></aside></div></div>
+
+<div class="fbox footer-four"><div class="widget-area the-icons">
+<aside id="nav_menu-74" class="widget widget_nav_menu"><h3 class="widget-title">STL – Vector</h3><div class="menu-stdvector-interview-questions-container"><ul id="menu-stdvector-interview-questions" class="menu"><li id="menu-item-1110" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1110"><a href="https://thispointer.com//whats-stdvector-and-why-should-i-use-stdvector/">1.) What’s std::vector and why to use it?</a></li>
+<li id="menu-item-1713" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1713"><a href="https://thispointer.com//5-different-ways-to-initialize-a-vector-in-c/">2.) Different ways to initialize a vector</a></li>
+<li id="menu-item-1111" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1111"><a href="https://thispointer.com//how-stdvector-works-internally/">3.) How does std::vector works internally</a></li>
+<li id="menu-item-1112" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1112"><a href="https://thispointer.com//importance-of-constructors-while-using-user-defined-objects-with-stdvector/">4.) User Defined Objects &amp; std::vector</a></li>
+<li id="menu-item-1113" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1113"><a href="https://thispointer.com//how-to-use-vector-efficiently/">5.) How to use vector efficiently in C++?</a></li>
+<li id="menu-item-1114" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1114"><a href="https://thispointer.com//stdvector-and-iterator-invalidation/">6.) std::vector and Iterator Invalidation</a></li>
+<li id="menu-item-1115" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1115"><a href="https://thispointer.com//removing-all-occurences-of-an-element-from-vector-in-on-complexity/">7.) Remove repeated elements from a vector</a></li>
+<li id="menu-item-1723" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1723"><a href="https://thispointer.com/how-to-fill-a-vector-with-random-numbers-in-c/">8.) Fill a vector with random numbers</a></li>
+<li id="menu-item-1116" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1116"><a href="https://thispointer.com//be-careful-of-hidden-cost-while-using-stdvector-with-user-defined-objects/">9.) Hidden cost of std::vector</a></li>
+<li id="menu-item-1714" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1714"><a href="https://thispointer.com/how-to-add-an-element-in-vector-using-vectorpush_back/">10.) Adding elements in Vector</a></li>
+</ul></div></aside><aside id="nav_menu-80" class="widget widget_nav_menu"><h3 class="widget-title">STL – Deque</h3><div class="menu-deque-interview-questions-container"><ul id="menu-deque-interview-questions" class="menu"><li id="menu-item-1120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1120"><a href="https://thispointer.com//what-is-stddeque-and-how-deque-works-internally/">1.) What is std::deque and how deque works internally.</a></li>
+<li id="menu-item-1121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1121"><a href="https://thispointer.com//deque_vs_vector/">2.) deque vs vector : What to choose ?</a></li>
+</ul></div></aside><aside id="nav_menu-75" class="widget widget_nav_menu"><h3 class="widget-title">STL – List</h3><div class="menu-list-interview-questions-container"><ul id="menu-list-interview-questions" class="menu"><li id="menu-item-1122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1122"><a href="https://thispointer.com//stdlist-tutorial-and-usage-details/">1.) std::list Internals &amp; Usage Details</a></li>
+<li id="menu-item-1733" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1733"><a href="https://thispointer.com/difference-between-vector-and-list-in-c/">2.) List vs Vector</a></li>
+<li id="menu-item-1740" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1740"><a href="https://thispointer.com/different-ways-to-initialize-a-list-in-c/">3.) Different ways to Initialize a list</a></li>
+<li id="menu-item-1750" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1750"><a href="https://thispointer.com/how-to-erase-elements-from-a-list-in-c-using-iterators/">4.) Erase elements using iterators</a></li>
+<li id="menu-item-1765" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1765"><a href="https://thispointer.com/how-to-remove-elements-from-a-list-while-iterating/">5.) Remove elements while Iterating</a></li>
+<li id="menu-item-1766" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1766"><a href="https://thispointer.com/how-to-remove-elements-from-a-list-based-on-value/">6.) Remove elements based on External Criterion</a></li>
+<li id="menu-item-2227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2227"><a href="https://thispointer.com/c-how-to-get-element-by-index-in-list/">7.) Get element by index in List</a></li>
+<li id="menu-item-2251" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2251"><a href="https://thispointer.com/c-list-find-contains-how-to-search-an-element-in-stdlist/">8.) Searching an element in std::list</a></li>
+<li id="menu-item-2275" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2275"><a href="https://thispointer.com/c-different-ways-to-iterate-over-a-list-of-objects/">9.) Different Ways to iterate over a List</a></li>
+<li id="menu-item-2280" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2280"><a href="https://thispointer.com/c-how-to-sort-a-list-of-objects-with-custom-comparator-or-lambda-function/">10.) Sorting a List &amp; custom Comparator</a></li>
+</ul></div></aside><aside id="nav_menu-76" class="widget widget_nav_menu"><h3 class="widget-title">STL – Set</h3><div class="menu-set-interview-questions-container"><ul id="menu-set-interview-questions" class="menu"><li id="menu-item-1123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1123"><a href="https://thispointer.com//stdset-tutorial-part-1-set-usage-details-with-default-sorting-criteria/">1.) C++ Set basic example and Tutorial</a></li>
+<li id="menu-item-1124" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1124"><a href="https://thispointer.com//using-stdset-with-user-defined-classes/">2.) Using std::set with user defined classes</a></li>
+<li id="menu-item-1125" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1125"><a href="https://thispointer.com//using-stdset-with-external-sorting-criteria-comparator/">3.) std::set and external Sorting criteria | Comparator</a></li>
+<li id="menu-item-2142" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2142"><a href="https://thispointer.com/how-to-access-element-by-index-in-a-set-c/">4.) Access Element by index in Set</a></li>
+<li id="menu-item-2150" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2150"><a href="https://thispointer.com/c-different-ways-to-insert-elements-in-set/">5.) How to insert elements in Set</a></li>
+<li id="menu-item-2179" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2179"><a href="https://thispointer.com/different-ways-to-iterate-over-a-set-in-c/">6.) How to iterate over a Set</a></li>
+<li id="menu-item-2416" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2416"><a href="https://thispointer.com/different-ways-to-erase-delete-an-element-from-a-set-in-c/">7.) Removing an element from Set</a></li>
+<li id="menu-item-2415" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2415"><a href="https://thispointer.com/erase-elements-from-a-set-while-iterating-in-c-generic-erase_if/">8.) Erase elements while Iterating &amp; Generic erase_if()</a></li>
+</ul></div></aside><aside id="nav_menu-77" class="widget widget_nav_menu"><h3 class="widget-title">STL – Map</h3><div class="menu-map-interview-questions-container"><ul id="menu-map-interview-questions" class="menu"><li id="menu-item-1126" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1126"><a href="https://thispointer.com//stdmap-tutorial-part-1-usage-detail-with-examples/">1.) std::map Usage Detail with examples</a></li>
+<li id="menu-item-1127" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1127"><a href="https://thispointer.com//stdmap-tutorial-part-2-stdmap-and-external-sorting-criteria-comparator/">2.) std::map and Comparator</a></li>
+<li id="menu-item-1129" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1129"><a href="https://thispointer.com//stdmap-tutorial-part-3-using-user-defined-class-objects-as-key-in-stdmap/">3.)  std::map &amp; User defined class objects as keys</a></li>
+<li id="menu-item-1130" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1130"><a href="https://thispointer.com//set-vs-map-how-to-choose-right-associative-container/">4.) Set vs Map</a></li>
+<li id="menu-item-1942" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1942"><a href="https://thispointer.com/how-to-iterate-over-a-map-in-c/">5.) How to Iterate over a map in C++</a></li>
+<li id="menu-item-1948" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1948"><a href="https://thispointer.com/c-map-insert-example/">6.) Map Insert Example</a></li>
+<li id="menu-item-1953" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1953"><a href="https://thispointer.com/how-to-iterate-a-map-in-reverse-order-c/">7.) Iterate a map in reverse order</a></li>
+<li id="menu-item-2092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2092"><a href="https://thispointer.com/how-check-if-a-given-key-exists-in-a-map-c/">8.) Check if a key exists in a Map</a></li>
+<li id="menu-item-2096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2096"><a href="https://thispointer.com/how-to-search-by-value-in-a-map-c/">9.) Search by value in a Map</a></li>
+<li id="menu-item-2104" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2104"><a href="https://thispointer.com/c-map-erase-element-by-key-or-iterator-or-range/">10.) Erase by Key | Iterators</a></li>
+<li id="menu-item-2112" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2112"><a href="https://thispointer.com/c-map-operator-usage-details/">11.) C++ Map : Operator []</a></li>
+<li id="menu-item-2115" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2115"><a href="https://thispointer.com/c-map-erase-by-value-or-callback-while-iterating-erase_if-for-map/">12.) Erase by Value or callback</a></li>
+<li id="menu-item-2449" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2449"><a href="https://thispointer.com/how-to-copy-all-values-from-a-map-to-a-vector-in-c/">13.) copy all Values from a Map to vector</a></li>
+</ul></div></aside><aside id="nav_menu-78" class="widget widget_nav_menu"><h3 class="widget-title">STL Multimap</h3><div class="menu-multi-map-interview-questions-container"><ul id="menu-multi-map-interview-questions" class="menu"><li id="menu-item-1964" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1964"><a href="https://thispointer.com/multimap-example-and-tutorial-in-c/">MultiMap Example and Tutorial</a></li>
+<li id="menu-item-1973" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1973"><a href="https://thispointer.com/finding-all-values-for-a-key-in-multimap-using-equals_range-example/">multimap::equals_range – Tutorial</a></li>
+</ul></div></aside><aside id="nav_menu-63" class="widget widget_nav_menu"><h3 class="widget-title">STL Algorithms</h3><div class="menu-stl-algorithm-interview-questions-container"><ul id="menu-stl-algorithm-interview-questions" class="menu"><li id="menu-item-1541" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1541"><a href="https://thispointer.com//stl-algorithm-stdsort-tutorial-and-example/">std::sort Tutorial &amp; Example</a></li>
+<li id="menu-item-1542" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1542"><a href="https://thispointer.com//stl-algorithm-stdunique-tutorial/">std::unique Tutorial &amp; Example</a></li>
+<li id="menu-item-1132" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1132"><a href="https://thispointer.com//using-stdfind-stdfind_if-with-user-defined-classes/">1.) Using std::find &amp; std::find_if with User Defined Classes</a></li>
+<li id="menu-item-1133" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1133"><a href="https://thispointer.com//iterating-over-a-range-of-user-defined-objects-and-calling-member-function-using-stdfor_each/">2.) Iterating over a range of User Defined objects and calling member function using std::for_each</a></li>
+</ul></div></aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Terms and Conditions</h3><div class="menu-termsncondition-container"><ul id="menu-termsncondition" class="menu"><li id="menu-item-597" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-597"><a href="https://thispointer.com/terms-and-conditions-policy/">Terms and Conditions Policy</a></li>
+</ul></div></aside></div></div>
+
+</div></div></div></footer>
+
+
+<footer class="footer-bottom">
+<div class="innerwrap">
+<div class="fbottom">
+<div class="footer-left">
+Copyright ©2018. thispointer.com</div>
+<div class="footer-right">
+<!-- Mesocolumn Theme by Dezzain, download and info at https://wordpress.org/themes/mesocolumn --></div>
+</div>
+</div>
+</footer>
+<!-- FOOTER BOTTOM END -->
+
+
+</div>
+<!-- SECBODY END -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53457490-1', 'auto');
+  ga('send', 'pageview');
+
+</script><script type="text/javascript">
+/* <![CDATA[ */
+var es_widget_page_notices = {"es_email_notice":"Please enter email address","es_success_message":"Successfully Subscribed.","es_success_notice":"Your subscription was successful! Kindly check your mailbox and confirm your subscription. If you don't see the email within a few minutes, check the spam\/junk folder.","es_email_exists":"Email Address already exists!","es_error":"Oops.. Unexpected error occurred.","es_invalid_email":"Invalid email address","es_try_later":"Please try after some time","es_ajax_url":"https:\/\/thispointer.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/es-widget-page.js.descarga"></script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/hoverIntent.min.js.descarga"></script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/modernizr.js.descarga"></script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/tabber.js.descarga"></script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/superfish.js.descarga"></script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/supersubs.js.descarga"></script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/custom.js.descarga"></script><style type="text/css">.tabber{display:none;}</style>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/comment-reply.min.js.descarga"></script>
+<script type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/wp-embed.min.js.descarga"></script>
+<script async="async" type="text/javascript" src="./Different Ways to initialize an unordered_map – thispointer.com_files/form.js.descarga"></script>
+
+
+
+<div id="download_plus_animation"></div></body></html>

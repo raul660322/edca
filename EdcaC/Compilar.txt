@@ -1,0 +1,10 @@
+Compilar
+c++ -std=c++11 file.cpp -o file.exe
+con OpenGL
+g++ -std=c++11 -c -o ca.o ca.cpp -D FREEGLUT_STATIC
+g++ -o ca.exe ca.o -lfreeglut_static -lopengl32 -lwinmm -lgdi32 -lglu32
+
+cabat
+
+g++ -std=c++11 -c -o cabat.o cabat.cpp -D FREEGLUT_STATIC
+g++ -o cabat.exe cabat.o -lfreeglut_static -lopengl32 -lwinmm -lgdi32 -lglu32

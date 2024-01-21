@@ -1,0 +1,17 @@
+missing module named resource - imported by posix, D:\EdcaPy\edca.py
+missing module named posix - imported by os, D:\EdcaPy\edca.py
+missing module named _posixsubprocess - imported by subprocess, D:\EdcaPy\edca.py
+missing module named 'org.python' - imported by pickle, D:\EdcaPy\edca.py, xml.sax
+missing module named readline - imported by cmd, code, pdb, D:\EdcaPy\edca.py
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, D:\EdcaPy\edca.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, D:\EdcaPy\edca.py
+missing module named _winreg - imported by platform, D:\EdcaPy\edca.py
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, D:\EdcaPy\edca.py
+missing module named 'java.lang' - imported by platform, D:\EdcaPy\edca.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, D:\EdcaPy\edca.py
+missing module named termios - imported by tty, D:\EdcaPy\edca.py, getpass
+missing module named grp - imported by shutil, tarfile, D:\EdcaPy\edca.py
+missing module named pwd - imported by posixpath, shutil, tarfile, http.server, webbrowser, D:\EdcaPy\edca.py, netrc, getpass
+missing module named org - imported by copy, D:\EdcaPy\edca.py
+missing module named _dummy_threading - imported by dummy_threading, D:\EdcaPy\edca.py

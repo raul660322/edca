@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)http://www.techiedelight.com/convert-map-vector-key-value-pairs-cpp/ -->
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+/* <![CDATA[ */
+document.documentElement.className = document.documentElement.className.replace(new RegExp('(^|\\s)no-js(\\s|$)'), '$1js$2');
+/* ]]> */
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convert a map to vector of key-value pairs in C++ - Techie Delight</title>
+
+<meta name="description" content="In this post, we will discuss how to convert a map to vector of key-value pairs in C++. In other words, construct a std::vector from std::unordered_map. The idea is to get the iterators to the beginning and ending of the given map and pass them to the range constructor of vector class.">
+<link rel="canonical" href="http://www.techiedelight.com/convert-map-vector-key-value-pairs-cpp/">
+<link rel="publisher" href="https://plus.google.com/+TechieDelight">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Convert a map to vector of key-value pairs in C++ - Techie Delight">
+<meta property="og:description" content="In this post, we will discuss how to convert a map to vector of key-value pairs in C++. In other words, construct a std::vector from std::unordered_map. The idea is to get the iterators to the beginning and ending of the given map and pass them to the range constructor of vector class.">
+<meta property="og:url" content="http://www.techiedelight.com/convert-map-vector-key-value-pairs-cpp/">
+<meta property="og:site_name" content="Techie Delight">
+<meta property="article:publisher" content="https://www.facebook.com/techiedelight/">
+<meta property="article:section" content="C++">
+<meta property="article:published_time" content="2017-01-27T21:23:12+00:00">
+<meta property="article:modified_time" content="2018-01-28T01:11:42+00:00">
+<meta property="og:updated_time" content="2018-01-28T01:11:42+00:00">
+<meta property="og:image" content="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/profile_pic.png?fit=411%2C360">
+<meta property="og:image:secure_url" content="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/profile_pic.png?fit=411%2C360">
+<meta property="og:image:width" content="411">
+<meta property="og:image:height" content="360">
+<meta property="og:image:alt" content="Techie Delight">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="In this post, we will discuss how to convert a map to vector of key-value pairs in C++. In other words, construct a std::vector from std::unordered_map. The idea is to get the iterators to the beginning and ending of the given map and pass them to the range constructor of vector class.">
+<meta name="twitter:title" content="Convert a map to vector of key-value pairs in C++ - Techie Delight">
+<meta name="twitter:site" content="@techie_delight">
+<meta name="twitter:image" content="https://www.techiedelight.com/wp-content/uploads/profile_pic.png">
+<meta name="twitter:creator" content="@techie_delight">
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Organization","url":"http:\/\/www.techiedelight.com\/","sameAs":["https:\/\/www.facebook.com\/techiedelight\/","https:\/\/plus.google.com\/+TechieDelight","https:\/\/in.pinterest.com\/techiedelight\/","https:\/\/twitter.com\/techie_delight"],"@id":"http:\/\/www.techiedelight.com\/#organization","name":"Techie Delight","logo":"http:\/\/www.techiedelight.com\/wp-content\/uploads\/Techie-Delight.jpg"}</script>
+
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Techie Delight » Feed" href="http://www.techiedelight.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Techie Delight » Comments Feed" href="http://www.techiedelight.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Techie Delight » Convert a map to vector of key-value pairs in C++ Comments Feed" href="http://www.techiedelight.com/convert-map-vector-key-value-pairs-cpp/feed/">
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.techiedelight.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/wp-emoji-release.min.js.descarga" type="text/javascript" defer=""></script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="crayon-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-familiar-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/familiar.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-consolas-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/consolas.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpdiscuz-font-awesome-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/fontawesome-all.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpdiscuz-frontend-css-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/wpdiscuz.css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="nevertheless-style-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="tamatebako-custom-fonts-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack-widget-social-icons-styles-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/social-icons.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/jquery.js.descarga"></script>
+<script type="text/javascript" src="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/jquery-migrate.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.techiedelight.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/crayon.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/customcookie.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/jquery.autogrowtextarea.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpdiscuzAjaxObj = {"url":"http:\/\/www.techiedelight.com\/wp-admin\/admin-ajax.php","wpdiscuz_options":{"wc_hide_replies_text":"Hide Replies","wc_show_replies_text":"View Replies","wc_msg_required_fields":"Please fill out required fields","wc_invalid_field":"Some of field value is invalid","wc_error_empty_text":"please fill out this field to comment","wc_error_url_text":"url is invalid","wc_error_email_text":"email address is invalid","wc_invalid_captcha":"Invalid Captcha Code","wc_login_to_vote":"You Must Be Logged In To Vote","wc_deny_voting_from_same_ip":"You are not allowed to vote for this comment","wc_self_vote":"You cannot vote for your comment","wc_vote_only_one_time":"You've already voted for this comment","wc_voting_error":"Voting Error","wc_held_for_moderate":"Comment awaiting moderation","wc_comment_edit_not_possible":"Sorry, this comment no longer possible to edit","wc_comment_not_updated":"Sorry, the comment was not updated","wc_comment_not_edited":"You've not made any changes","wc_new_comment_button_text":"new comment","wc_new_comments_button_text":"new comments","wc_new_reply_button_text":"new reply on your comment","wc_new_replies_button_text":"new replies on your comments","wc_msg_input_min_length":"Input is too short","wc_msg_input_max_length":"Input is too long","is_user_logged_in":false,"commentListLoadType":"0","commentListUpdateType":"0","commentListUpdateTimer":"600","liveUpdateGuests":"1","wc_comment_bg_color":"#FEFEFE","wc_reply_bg_color":"#F8F8F8","wordpress_comment_order":"asc","commentsVoteOrder":true,"wordpressThreadCommentsDepth":"5","wordpressIsPaginate":"","commentTextMaxLength":null,"storeCommenterData":100000,"isCaptchaInSession":true,"isGoodbyeCaptchaActive":false,"facebookAppID":"1017779075032614","cookiehash":"db4bce7ab83ffff6c0ae219d40e0920e","isLoadOnlyParentComments":0,"ahk":"","version":"5.0.7","wc_post_id":15271,"loadLastCommentId":0,"lastVisitKey":"wpdiscuz_last_visit","lastVisitExpires":1538257575,"lastVisitCookie":{"1":{"15271":1535665575}},"wc_captcha_show_for_guest":"0","wc_captcha_show_for_members":"0","is_email_field_required":1}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Convert a map to vector of key-value pairs in C++ - Techie Delight_files/wpdiscuz.js.descarga" defer="" onload=""></script>
+<link rel="https://api.w.org/" href="http://www.techiedelight.com/wp-json/">
+<meta name="generator" content="WordPress 4.9.8">
+<link rel="shortlink" href="https://wp.me/p88NM0-3Yj">
+<link rel="alternate" type="application/json+oembed" href="http://www.techiedelight.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.techiedelight.com%2Fconvert-map-vector-key-value-pairs-cpp%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.techiedelight.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.techiedelight.com%2Fconvert-map-vector-key-value-pairs-cpp%2F&amp;format=xml">
+<style type="text/css">
+
+
+                #wpcomm .wc_new_comment{background:#00B38F;}
+                #wpcomm .wc_new_reply{background:#00B38F;}
+                #wpcomm .wc-form-wrapper{ background:none; } /* ->formBGColor */
+                #wpcomm .wpdiscuz-front-actions{background:#F9F9F9;}
+                #wpcomm .wpdiscuz-subscribe-bar{background:#F9F9F9;}
+
+                #wpcomm select,
+                #wpcomm input[type="text"],
+                #wpcomm input[type="email"],
+                #wpcomm input[type="url"],
+                #wpcomm input[type="date"],
+                #wpcomm input[type="color"]{border:#D9D9D9 1px solid;}
+
+                #wpcomm .wc-comment .wc-comment-right{background:#FEFEFE;}
+
+                #wpcomm .wc-reply .wc-comment-right{background:#F8F8F8;}
+
+                #wpcomm .wc-comment-right .wc-comment-text, 
+                #wpcomm .wc-comment-right .wc-comment-text *{
+                    font-size:14px;
+                }
+                #wpcomm .wc-blog-administrator > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-administrator > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-administrator > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-editor > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-editor > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-editor > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-author > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-author > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-author > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-contributor > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-contributor > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-contributor > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-subscriber > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-subscriber > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-subscriber > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-post_author > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-post_author > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-post_author > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-guest > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-guest > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-guest > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-wpseo_manager > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-wpseo_manager > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-wpseo_manager > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-wpseo_editor > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-wpseo_editor > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-wpseo_editor > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }
+                #wpcomm .wc-comment .wc-comment-left .wc-comment-label{ background: #ffffff;}
+                #wpcomm .wc-load-more-submit{border:1px solid #D9D9D9;}
+                #wpcomm .wc-new-loaded-comment > .wc-comment-right{background:#FFFAD6;}
+                #wpcomm .wpdiscuz-subscribe-bar{color:#777;}
+                #wpcomm .wpdiscuz-front-actions .wpdiscuz-sbs-wrap span{color: #777;}
+                #wpcomm .page-numbers{color:#555;border:#555 1px solid;}
+                #wpcomm span.current{background:#555;}
+                #wpcomm .wpdiscuz-readmore{cursor:pointer;color:#00B38F;} 
+                #wpcomm .wpdiscuz-textarea-wrap{border:#D9D9D9 1px solid;} .wpd-custom-field .wcf-pasiv-star, #wpcomm .wpdiscuz-item .wpdiscuz-rating > label {color: #DDDDDD;}
+                #wpcomm .wpdiscuz-item .wpdiscuz-rating:not(:checked) > label:hover,.wpdiscuz-rating:not(:checked) > label:hover ~ label {   }#wpcomm .wpdiscuz-item .wpdiscuz-rating > input ~ label:hover, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label{color: #FFED85;} 
+                #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpcomm .wpdiscuz-item .wpdiscuz-rating > label:hover ~ input:checked ~ label, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked + label:hover ~ label, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover ~ label, .wpd-custom-field .wcf-activ-star, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label{ color:#FFD700;} 
+                #wpcomm .wc-comment-header{border-bottom: 1px solid #dedede;}
+                #wpcomm .wc-reply .wc-comment-header{border-bottom: 1px solid #DDDDDD;}
+
+                /* Buttons */
+                #wpcomm button, 
+                #wpcomm input[type="button"], 
+                #wpcomm input[type="reset"], 
+                #wpcomm input[type="submit"]{ border: 1px solid #555555; color: #FFFFFF; background-color: #555555; }
+                #wpcomm button:hover, 
+                #wpcomm button:focus,
+                #wpcomm input[type="button"]:hover, 
+                #wpcomm input[type="button"]:focus, 
+                #wpcomm input[type="reset"]:hover, 
+                #wpcomm input[type="reset"]:focus, 
+                #wpcomm input[type="submit"]:hover, 
+                #wpcomm input[type="submit"]:focus{ border: 1px solid #333333; background-color: #333333;  }
+                #wpcomm .wpdiscuz-sort-buttons{color:#777777;}
+                #wpcomm .wpdiscuz-sort-button{color:#777777; cursor:pointer;}
+                #wpcomm .wpdiscuz-sort-button:hover{color:#00B38F!important;cursor:pointer;}
+                #wpcomm .wpdiscuz-sort-button-active{color:#00B38F!important;cursor:default!important;}
+                #wpcomm .wc-cta-button, 
+                #wpcomm .wc-cta-button-x{color:#777777;  border-bottom: 1px solid #dddddd; }
+                #wpcomm .wc-vote-link.wc-up{color:#999999;}
+                #wpcomm .wc-vote-link.wc-down{color:#999999;}
+                #wpcomm .wc-vote-result{color:#999999;}
+                #wpcomm .wpf-cta{color:#999999; }
+                #wpcomm .wpf-cta:hover{background:#00B38F!important; color:#FFFFFF;}
+                #wpcomm .wc-cta-active{background:#00B38F!important; color:#FFFFFF;}
+                #wpcomm .wc-cta-button:hover{background:#00B38F!important; color:#FFFFFF;} 
+                #wpcomm .wc-footer-right .wc-toggle, 
+                #wpcomm .wc-footer-right .wc-toggle a, 
+                #wpcomm .wc-footer-right .wc-toggle i{color:#00B38F;}
+
+                /* STICKY COMMENT HEADER */
+                #wpcomm .wc-sticky-comment.wc-comment .wc-comment-header{background: #f2fcfb; border-bottom:1px dotted #00B38F;}
+                #wpcomm .wc-sticky-comment.wc-comment .wc-comment-header .wpd-sticky{color: #00B38F; border:1px dotted #00B38F;}
+                #wpcomm .wc-closed-comment.wc-comment .wc-comment-header .wpd-closed{color: #555555; border:1px dotted #555555;}
+
+                /* PRIVATE COMMENT HEADER */
+                #wpcomm .wc-private-comment.wc-comment .wc-comment-header{background: #eeeeee; border-bottom:1px solid #999999;}
+                #wpcomm .wc-private-comment.wc-comment .wc-comment-header .wpd-private{color: #000000; border:1px dotted #333333;}
+
+                                .comments-area{width:auto;}
+            </style>
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<link rel="dns-prefetch" href="http://i0.wp.com/">
+<link rel="dns-prefetch" href="http://i1.wp.com/">
+<link rel="dns-prefetch" href="http://i2.wp.com/">
+<style type="text/css">img#wpstats{display:none}</style>
+<style type="text/css" id="nevertheless-color-css">a,a:hover,a:focus{color:#006699}input[type="submit"]:hover,input[type="submit"]:focus,input[type="button"]:hover,input[type="button"]:focus,input[type="reset"]:hover,input[type="reset"]:focus,button:hover,button:focus,.button:hover,.button:focus{ border-color: #006699; background: #006699; }.archive-title:before{color:#006699}.entry-title a:hover,.entry-title a:focus{color:#006699}.more-link{color:#006699}.more-link:hover,.more-link:focus{border-color:#006699}.navigation.pagination a.page-numbers:hover,.navigation.pagination a.page-numbers:focus{border-color:#006699;background:#006699}.widget_recent_entries a:hover,.widget_recent_entries a:focus{color:#006699}.widget_rss li a.rsswidget:hover,.widget_rss li a.rsswidget:focus{color:#006699}#header{ background-color: #f7f7f7; }#site-title a,#site-title a:hover,#site-title a:focus{ color: #006699; }#site-description{ color: #4c4c4c; }#menu-primary .menu-container{ background-color: #637c7f; }#menu-primary-items > li > a{ background-color: #637c7f; }</style>
+<style type="text/css" id="tamatebako-custom-fonts-rules-css">#site-title{font-family:"Alegreya",serif;}#content .entry-title{font-family:"Lato",sans-serif;}.widget-title{font-family:"Vollkorn",serif;}body.wordpress,body#tinymce{font-family:"Open Sans",sans-serif;}</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #dbdbdb; background-image: url("http://www.techiedelight.com/wp-content/uploads/background.png"); background-position: right top; background-size: auto; background-repeat: repeat-x; background-attachment: scroll; }
+</style>
+<link rel="icon" href="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/2016/11/cropped-td.png?fit=32%2C32" sizes="32x32">
+<link rel="icon" href="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/2016/11/cropped-td.png?fit=192%2C192" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/2016/11/cropped-td.png?fit=180%2C180">
+<meta name="msapplication-TileImage" content="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/2016/11/cropped-td.png?fit=270%2C270">
+<style id="tamatebako-custom-css" type="text/css">
+code{color:#000;background-color:#f8f9fa;border:1px solid #eaecf0;border-radius:2px;padding:1px 4px}</style>
+</head>
+<body class="post-template-default single single-post postid-15271 single-format-standard custom-background wordpress ltr parent-theme logged-out singular sidebar-primary-active menu-primary-active menu-social-links-active menu-footer-inactive wp-is-not-mobile theme-genericons-active layout-content-sidebar1 custom-fonts-active tf-font_site_title-alegreya tf-font_post_title-lato tf-font_widget_title-vollkorn tf-font_base-open-sans">
+<div id="container">
+<div class="skip-link">
+<a class="screen-reader-text" href="http://www.techiedelight.com/convert-map-vector-key-value-pairs-cpp/">Skip to content</a>
+</div>
+<div class="header-nav">
+<header role="banner" id="header" style="background-image:url(&#39;&#39;);">
+<div id="branding">
+<p id="site-title" class="site-title"><a rel="home" href="http://www.techiedelight.com/">Techie Delight</a></p>
+<p id="site-description" class="site-description">Coding made easy</p>
+</div>
+<div id="social-links">
+<ul class="social-links"><li id="menu-item-38" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38"><a target="_blank" href="https://www.facebook.com/techiedelight"><span class="screen-reader-text">Facebook</span></a></li>
+<li id="menu-item-37" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37"><a target="_blank" href="https://twitter.com/techie_delight"><span class="screen-reader-text">Twitter</span></a></li>
+<li id="menu-item-39" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39"><a target="_blank" href="https://plus.google.com/+TechieDelight"><span class="screen-reader-text">Google+</span></a></li>
+</ul> </div>
+</header>
+<nav role="navigation" class="menu" id="menu-primary">
+<div class="menu-container menu-dropdown menu-search">
+<div id="menu-toggle-primary" class="menu-toggle">
+<a class="menu-toggle-open" href="http://www.techiedelight.com/convert-map-vector-key-value-pairs-cpp/#menu-primary"><span class="menu-toggle-text screen-reader-text">Primary</span></a>
+<a class="menu-toggle-close" href="http://www.techiedelight.com/convert-map-vector-key-value-pairs-cpp/#menu-toggle-primary"><span class="menu-toggle-text screen-reader-text">Primary</span></a>
+</div>
+<div class="wrap"><ul id="menu-primary-items" class="menu-items"><li id="menu-item-7917" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7917"><a href="http://www.techiedelight.com/list-of-problems/">All Problems</a></li>
+<li id="menu-item-36" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36"><a href="http://www.techiedelight.com/Category/array/">Array</a></li>
+<li id="menu-item-9275" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-9275"><a href="http://www.techiedelight.com/Category/trees/">Tree</a>
+<ul class="sub-menu">
+<li id="menu-item-9022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9022"><a href="http://www.techiedelight.com/Category/trees/binary-tree/">Binary Tree</a></li>
+<li id="menu-item-9021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9021"><a href="http://www.techiedelight.com/Category/trees/bst/">Binary Search Tree (BST)</a></li>
+<li id="menu-item-9282" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-9282"><a href="http://www.techiedelight.com/Tags/trie/">Trie Data Structure</a></li>
+</ul>
+</li>
+<li id="menu-item-35" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35"><a href="http://www.techiedelight.com/Category/linked-list/">Linked List</a></li>
+<li id="menu-item-53" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-53"><a href="http://www.techiedelight.com/Category/dynamic-programming/">DP</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44"><a href="http://www.techiedelight.com/Category/graphs/">Graph</a></li>
+<li id="menu-item-46" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-46"><a href="http://www.techiedelight.com/Category/backtracking/">Backtracking</a></li>
+<li id="menu-item-48" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-48"><a href="http://www.techiedelight.com/Category/matrix/">Matrix</a></li>
+<li id="menu-item-50" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-50"><a href="http://www.techiedelight.com/Category/heap/">Heap</a></li>
+<li id="menu-item-49" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-49"><a href="http://www.techiedelight.com/Category/divide-conquer/">D&amp;C</a></li>
+<li id="menu-item-52" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52"><a href="http://www.techiedelight.com/Category/string/">String</a></li>
+<li id="menu-item-47" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47"><a href="http://www.techiedelight.com/Category/sorting/">Sorting</a></li>
+<li id="menu-item-41" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-41"><a href="http://www.techiedelight.com/Category/stack/">Stack</a></li>
+<li id="menu-item-9279" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9279"><a href="http://www.techiedelight.com/Category/queue/">Queue</a></li>
+<li id="menu-item-9283" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9283"><a href="http://www.techiedelight.com/Category/binary/">Binary</a></li>
+</ul></div>
+<form role="search" method="get" class="search-form" action="http://www.techiedelight.com/">
+<a href="http://www.techiedelight.com/convert-map-vector-key-value-pairs-cpp/#search-menu" class="search-toggle"><span class="screen-reader-text">Expand Search Form</span></a>
+<input id="search-menu" type="search" class="search-field" placeholder="Search…" value="" name="s">
+<button class="search-submit button"><span class="screen-reader-text">Search</span></button>
+</form>
+</div>
+</nav>
+</div>
+<div class="wrap">
+<div id="main">
+<div class="wrap">
+<main id="content" class="content" role="main">
+<div class="wrap">
+<article id="post-15271" class="post-15271 post type-post status-publish format-standard hentry category-cplusplus entry">
+<div class="wrap">
+<header class="entry-header">
+<h1 class="entry-title">Convert a map to vector of key-value pairs in C++</h1>
+</header>
+<div class="entry-content">
+<div style="color: #000000; font-size:14px;"><p></p>
+<p style="font-size:14px">In this post, we will discuss how to convert a map to vector of key-value pairs in C++. In other words, construct a <code>std::vector&lt;std::pair&lt;K,V&gt;&gt;</code> from <code>std::unordered_map&lt;K,V&gt;</code> or <code>std::map&lt;K,V&gt;</code></p>
+<p><span id="more-15271"></span></p>
+<p>&nbsp;</p>
+<h3>1. Vector Constructor</h3>
+<p>The simplest and the most efficient solution would be to get the iterators to the beginning and ending of the given map and pass them to the range constructor of vector class. This will construct a vector of key-value pairs in the same order as present in the map.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b88184fdb739740001011" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b88184fdb739740001011-1">1</div><div class="crayon-num" data-line="crayon-5b88184fdb739740001011-2">2</div><div class="crayon-num" data-line="crayon-5b88184fdb739740001011-3">3</div><div class="crayon-num" data-line="crayon-5b88184fdb739740001011-4">4</div><div class="crayon-num" data-line="crayon-5b88184fdb739740001011-5">5</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b88184fdb739740001011-1"><span class="crayon-t">template</span><span class="crayon-o">&lt;</span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b88184fdb739740001011-2"><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-e">mapToVector</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;map</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b88184fdb739740001011-3"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb739740001011-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-sy">(</span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb739740001011-5"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/1y8Kov" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/1y8Kov" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p>&nbsp;</p>
+<h3>2. Using std::copy</h3>
+<p>If we already have a vector with enough space to hold all entries of the map, the recommended solution is to use the standard algorithm <code>std::copy</code> from <code>&lt;algorithm&gt;</code> header. This requires an input range and the output iterator to the destination vector.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b88184fdb749829719567" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-1">1</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-2">2</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-3">3</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-4">4</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-5">5</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-6">6</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-7">7</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-8">8</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-9">9</div><div class="crayon-num" data-line="crayon-5b88184fdb749829719567-10">10</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b88184fdb749829719567-1"><span class="crayon-t">template</span><span class="crayon-o">&lt;</span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b88184fdb749829719567-2"><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-e">mapToVector</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;map</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b88184fdb749829719567-3"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb749829719567-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb749829719567-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">v</span><span class="crayon-sy">.</span><span class="crayon-e">reserve</span><span class="crayon-sy">(</span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-e">size</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb749829719567-6">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb749829719567-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">copy</span><span class="crayon-sy">(</span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">.</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb749829719567-8">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb749829719567-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb749829719567-10"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/eEE6AC" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/eEE6AC" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p>&nbsp;<br>
+If destination vector is empty or doesn’t have enough space, we can use <code>std::back_inserter</code> to insert the elements into the container. This works as <code>std::back_inserter</code> calls the <code>push_back()</code> function on the destination container.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b88184fdb755384958039" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b88184fdb755384958039-1">1</div><div class="crayon-num" data-line="crayon-5b88184fdb755384958039-2">2</div><div class="crayon-num" data-line="crayon-5b88184fdb755384958039-3">3</div><div class="crayon-num" data-line="crayon-5b88184fdb755384958039-4">4</div><div class="crayon-num" data-line="crayon-5b88184fdb755384958039-5">5</div><div class="crayon-num" data-line="crayon-5b88184fdb755384958039-6">6</div><div class="crayon-num" data-line="crayon-5b88184fdb755384958039-7">7</div><div class="crayon-num" data-line="crayon-5b88184fdb755384958039-8">8</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b88184fdb755384958039-1"><span class="crayon-t">template</span><span class="crayon-o">&lt;</span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b88184fdb755384958039-2"><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-e">mapToVector</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;map</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b88184fdb755384958039-3"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb755384958039-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb755384958039-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">copy</span><span class="crayon-sy">(</span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">back_inserter</span><span class="crayon-sy">(</span><span class="crayon-v">v</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb755384958039-6">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb755384958039-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb755384958039-8"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/Fxo1l8" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/Fxo1l8" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>3. Using std::transform</h3>
+<p>Another alternative is to use <code>std::transform</code> algorithm defined in <code>&lt;algorithm&gt;</code> header. It applies a given operation to each of the elements in the given range and stores the result in another range.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b88184fdb75c421866353" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-1">1</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-2">2</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-3">3</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-4">4</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-5">5</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-6">6</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-7">7</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-8">8</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-9">9</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-10">10</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-11">11</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-12">12</div><div class="crayon-num" data-line="crayon-5b88184fdb75c421866353-13">13</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b88184fdb75c421866353-1"><span class="crayon-t">template</span><span class="crayon-o">&lt;</span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-2"><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-e">mapToVector</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;map</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-3"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-5">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">transform</span><span class="crayon-sy">(</span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">back_inserter</span><span class="crayon-sy">(</span><span class="crayon-v">v</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;p</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">p</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-11">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb75c421866353-13"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/qzHszO" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/qzHszO" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p>&nbsp;</p>
+<h3>4. std::for_each</h3>
+<p>We can also use <code>std::for_each</code> algorithm that applies the given operation to each of the elements in the given range. To convert a map to vector of key-value pairs, the range should be iterators to the beginning and ending of the given map and operation should be <code>push_back()</code> to insert each entry into the vector.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b88184fdb763162087349" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-1">1</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-2">2</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-3">3</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-4">4</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-5">5</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-6">6</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-7">7</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-8">8</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-9">9</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-10">10</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-11">11</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-12">12</div><div class="crayon-num" data-line="crayon-5b88184fdb763162087349-13">13</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b88184fdb763162087349-1"><span class="crayon-t">template</span><span class="crayon-o">&lt;</span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-2"><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-e">mapToVector</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;map</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-3"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-5">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb763162087349-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">for_each</span><span class="crayon-sy">(</span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">[</span><span class="crayon-v">&amp;v</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;entry</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">v</span><span class="crayon-sy">.</span><span class="crayon-e">push_back</span><span class="crayon-sy">(</span><span class="crayon-v">entry</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-11">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb763162087349-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb763162087349-13"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/XJio5J" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/XJio5J" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p>&nbsp;</p>
+<h3>5. Using Loop</h3>
+<p>Finally, we can also iterate the map using a simple for-loop or range-based for loop (C++11) and insert each entry to the vector as shown below:</p>
+<p>&nbsp;</p>
+<h5>5.1. Using Iterators</h5>
+<p>&nbsp;</p>
+<div id="crayon-5b88184fdb76a517054740" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-1">1</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-2">2</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-3">3</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-4">4</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-5">5</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-6">6</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-7">7</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-8">8</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-9">9</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-10">10</div><div class="crayon-num" data-line="crayon-5b88184fdb76a517054740-11">11</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b88184fdb76a517054740-1"><span class="crayon-t">template</span><span class="crayon-o">&lt;</span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-2"><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-e">mapToVector</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;map</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-3"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-5">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">auto </span><span class="crayon-v">it</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-e">cbegin</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">it</span><span class="crayon-h"> </span><span class="crayon-o">!=</span><span class="crayon-h"> </span><span class="crayon-v">map</span><span class="crayon-sy">.</span><span class="crayon-e">cend</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-o">++</span><span class="crayon-v">it</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">v</span><span class="crayon-sy">.</span><span class="crayon-e">push_back</span><span class="crayon-sy">(</span><span class="crayon-o">*</span><span class="crayon-v">it</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-9">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb76a517054740-11"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/a9Gh67" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/a9Gh67" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p>&nbsp;</p>
+<h5>5.2. Range-based for loop</h5>
+<p>&nbsp;</p>
+<div id="crayon-5b88184fdb774906227278" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-1">1</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-2">2</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-3">3</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-4">4</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-5">5</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-6">6</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-7">7</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-8">8</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-9">9</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-10">10</div><div class="crayon-num" data-line="crayon-5b88184fdb774906227278-11">11</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b88184fdb774906227278-1"><span class="crayon-t">template</span><span class="crayon-o">&lt;</span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b88184fdb774906227278-2"><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-e">mapToVector</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">unordered_map</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;map</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b88184fdb774906227278-3"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb774906227278-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">vector</span><span class="crayon-o">&lt;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb774906227278-5">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb774906227278-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">pair</span><span class="crayon-o">&lt;</span><span class="crayon-v">K</span><span class="crayon-sy">,</span><span class="crayon-v">V</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">&amp;i</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">map</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b88184fdb774906227278-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">v</span><span class="crayon-sy">.</span><span class="crayon-e">push_back</span><span class="crayon-sy">(</span><span class="crayon-v">i</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb774906227278-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b88184fdb774906227278-9">&nbsp;</div><div class="crayon-line" id="crayon-5b88184fdb774906227278-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">v</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b88184fdb774906227278-11"><span class="crayon-sy">}</span></div></div></td></tr></tbody></table></div></div></div></div></div></article></div></main></div></div></div></div></body></html>

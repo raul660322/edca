@@ -1,0 +1,208 @@
+Sub ProcesarEPos()
+Dim dz As Double, dzmin As Double
+Dim direc As Integer, difdir As Integer, difmin As Integer, direne As Integer 'Para cálculo de orientación de la energía
+Dim r1 As Double, r2 As Double, pr1 As Double, pr2 As Double, iguales As Double
+Dim jmin As Long
+Dim hay As Boolean
+Dim dx As Single, dy As Single
+If NP > 0 Then
+   iguales = 1
+   For i = 1 To NP
+      dzmin = 999999999
+      difmin = 0 '(>180)
+      hay = False
+      For j = 1 To NComp
+      With EP(i)
+         A = ((Abs(LComp(j).x - .cx) < .Rg + R) And (Abs(LComp(j).y - .cy) < .Rg + R))
+         B = ((Abs(LComp(j).x - .cx) < .Rg) And (Abs(LComp(j).y - .cy) < .Rg))
+         c = ((LComp(j).x <> .cx) Or (LComp(j).y <> .cy))
+         If A And (Not B) And c And (.living = 1) Then
+            hay = True
+            dz = (LComp(j).x - .cx) ^ 2 + (LComp(j).y - .cy) ^ 2
+            If dz < dzmin Then
+               dzmin = dz
+               jmin = j
+            Else
+               If dz = dzmin Then
+                  iguales = iguales + 1
+                  pr1 = 1 / iguales
+                  pr2 = 1 - pr1
+                  'r1 = RNormal(500) * pr1 * reticula(LComp(j).x, LComp(j).y).g
+                  'r2 = RNormal(500) * pr2 * reticula(LComp(jmin).x, LComp(jmin).y).g
+                
+                  dx = (LComp(j).x - .cx)
+                  dy = (LComp(j).y - .cy)
+                  difdir = ATan2(dy, dx) - .d
+                  dif1 = Angle360(difdir)
+                  signo = (difdir < 0)
+                  'signo = False
+                  difdir = Abs(difdir)
+                  difdir = IIf(difdir <= 180, difdir, 360 - difdir)
+                  dx = (LComp(jmin).x - .cx)
+                  dy = (LComp(jmin).y - .cy)
+                  difmin = ATan2(dy, dx) - .d
+                  dif2 = Angle360(difmin)
+                  difmin = Abs(difmin)
+                  difmin = IIf(difmin <= 180, difmin, 360 - difmin)
+                  If (difdir < difmin) Or ((difdir = difmin) And (dif1 < dif2)) Then 'nacen  a favor de la dirección
+                     dzmin = dz
+                     jmin = j
+                    
+                  End If
+                  
+                  'r1 = reticula(LComp(j).x, LComp(j).y).g -esto a incluir luego
+                  'r2 = reticula(LComp(jmin).x, LComp(jmin).y).g -esto a incluir luego
+                  'If r1 > r2 Then 'nacen  a favor de g
+                     'dzmin = dz
+                     'jmin = j
+                  'End If
+               End If
+            End If
+         End If
+      End With
+      Next
+      If hay Then
+         NAux = NAux + 1
+         Laux(NAux).x = LComp(jmin).x
+         Laux(NAux).y = LComp(jmin).y
+         Laux(NAux).living = 1
+         dx = (LComp(jmin).x - EP(i).cx)   'incluye
+         dy = (LComp(jmin).y - EP(i).cy)   'la dirección de la
+         direne = ATan2(dy, dx)            'energia
+         MakeENeg LComp(jmin).x, LComp(jmin).y, direne
+         If jmin < NComp Then
+            LComp(jmin).x = LComp(NComp).x
+            LComp(jmin).y = LComp(NComp).y
+            LComp(jmin).living = LComp(NComp).living
+         End If
+         NComp = NComp - 1
+         EP(i).living = 0
+      End If
+   Next
+End If
+End Sub
+Sub ProcesarENeg()
+Dim dz As Double, dzmin As Double
+Dim direc As Integer, difdir As Integer, difmin As Integer, direne As Integer 'Para cálculo de orientación de la energía
+Dim r1 As Double, r2 As Double, pr1 As Double, pr2 As Double, iguales As Double
+Dim jmin As Long
+Dim hay As Boolean
+If NN > 0 Then
+   For i = 1 To NN
+      dzmin = 999999999
+      difmin = 0 '(>180)
+      hay = False
+      For j = 1 To NComp
+      With EN(i)
+         A = ((Abs(LComp(j).x - .cx) < .Rg + R) And (Abs(LComp(j).y - .cy) < .Rg + R))
+         B = ((Abs(LComp(j).x - .cx) < .Rg) And (Abs(LComp(j).y - .cy) < .Rg))
+         c = ((LComp(j).x <> .cx) Or (LComp(j).y <> .cy))
+         If A And (Not B) And c And (.living = 1) Then
+            hay = True
+            dz = (LComp(j).x - .cx) ^ 2 + (LComp(j).y - .cy) ^ 2
+            If dz < dzmin Then
+               dzmin = dz
+               jmin = j
+            Else
+               If dz = dzmin Then
+                  iguales = iguales + 1
+                  pr1 = 1 / iguales
+                  pr2 = 1 - pr1
+                  'r1 = RNormal(500) * pr1 * reticula(LComp(j).x, LComp(j).y).g
+                  'r2 = RNormal(500) * pr2 * reticula(LComp(jmin).x, LComp(jmin).y).g
+                  
+                  dx = (LComp(j).x - .cx)
+                  dy = (LComp(j).y - .cy)
+                  difdir = ATan2(dy, dx) - .d
+                  dif1 = Angle360(difdir)
+                  signo = (difdir < 0)
+                  'signo = False
+                  difdir = Abs(difdir)
+                  difdir = IIf(difdir <= 180, difdir, 360 - difdir)
+                  dx = (LComp(jmin).x - .cx)
+                  dy = (LComp(jmin).y - .cy)
+                  difmin = ATan2(dy, dx) - .d
+                  dif2 = Angle360(difmin)
+                  difmin = Abs(difmin)
+                  difmin = IIf(difmin <= 180, difmin, 360 - difmin)
+                  If (difdir < difmin) Or ((difdir = difmin) And (dif1 < dif2)) Then 'nacen  a favor de la dirección
+                     dzmin = dz
+                     jmin = j
+                  End If
+                  
+                  
+                  'r1 = reticula(LComp(j).x, LComp(j).y).g
+                  'r2 = reticula(LComp(jmin).x, LComp(jmin).y).g
+                  'If r1 > r2 Then 'mueren a favor de g
+                     'dzmin = dz
+                     'jmin = j
+                  'End If
+                  
+                  
+               End If
+            End If
+         End If
+      End With
+      Next
+      If hay Then
+         NAux = NAux + 1
+         Laux(NAux).x = LComp(jmin).x
+         Laux(NAux).y = LComp(jmin).y
+         Laux(NAux).living = 0
+         dx = (LComp(jmin).x - EN(i).cx)   'incluye
+         dy = (LComp(jmin).y - EN(i).cy)   'la dirección de la
+         direne = ATan2(dy, dx)            'energia
+         MakeEPos LComp(jmin).x, LComp(jmin).y, direne
+         If jmin < NComp Then
+            LComp(jmin).x = LComp(NComp).x
+            LComp(jmin).y = LComp(NComp).y
+            LComp(jmin).living = LComp(NComp).living
+         End If
+         NComp = NComp - 1
+         EN(i).living = 0
+      End If
+   Next
+End If
+For i = 1 To NComp
+   NAux = NAux + 1
+   Laux(NAux).x = LComp(i).x
+   Laux(NAux).y = LComp(i).y
+   Laux(NAux).living = LComp(i).living
+Next
+End Sub
+
+Function ATan2(ByVal opp As Single, ByVal adj As Single) As Integer
+Dim angle As Single
+
+    ' Get the basic angle.
+    If Abs(adj) < 0.0001 Then
+        angle = PI / 2
+    Else
+        angle = Abs(Atn(opp / adj))
+    End If
+
+    ' See if we are in quadrant 2 or 3.
+    If adj < 0 Then
+        ' angle > PI/2 or angle < -PI/2.
+        angle = PI - angle
+    End If
+
+    ' See if we are in quadrant 3 or 4.
+    If opp < 0 Then
+        angle = 2 * PI - angle
+    End If
+
+    ' Return the result.
+    ATan2 = Round(angle * PIGRAD)
+End Function
+Function Angle360(alpha As Integer) As Integer
+   If alpha > 180 Then
+      Angle360 = alpha - 360
+   Else
+      If alpha < -180 Then
+         Angle360 = alpha + 360
+      Else
+         Angle360 = alpha
+      End If
+   End If
+End Function

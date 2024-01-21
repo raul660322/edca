@@ -1,0 +1,11 @@
+Experiment with these programs! Make certain you save the original program lists
+(assuming they work correctly!) and then begin to explore by changing colors,
+vertices, etc. Can you create a more complex object? Try it! There are many
+different parameters for glBegin() other than GL_POINTS, GL_LINES, and
+GL_TRIANGLE_FAN. These include GL_LINE_LOOP, GL_LINE_STRIP,
+GL_TRIANGLES, GL_TRIANGLE_STRIP, GL_QUADS, GL_QUAD_STRIP, and
+GL_POLYGON. Research glBegin and see what you can find out about these
+paramters. You can build amazingly complex shapes and objects using glBegin!
+At this point in your journey you have the skills to create original works and ideas.
+Now is your chance! Write a program using these new concepts with
+pyilliOct.py, pyGermanBell.py, or pyilliTorus.py as models!

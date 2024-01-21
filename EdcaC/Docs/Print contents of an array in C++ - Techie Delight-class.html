@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://www.techiedelight.com/print-contents-array-cpp/ -->
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script async="" src="./Print contents of an array in C++ - Techie Delight-class_files/async-ads.js.descarga"></script><script src="./Print contents of an array in C++ - Techie Delight-class_files/cb=gapi.loaded_1" async=""></script><script src="./Print contents of an array in C++ - Techie Delight-class_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Print contents of an array in C++ - Techie Delight-class_files/platform.js.descarga" gapi_processed="true">{"parsetags": "explicit"}</script><script id="facebook-jssdk" src="./Print contents of an array in C++ - Techie Delight-class_files/sdk.js.descarga"></script><script id="twitter-wjs" src="./Print contents of an array in C++ - Techie Delight-class_files/widgets.js.descarga"></script><script async="" src="./Print contents of an array in C++ - Techie Delight-class_files/analytics.js.descarga"></script><script type="text/javascript" async="" src="./Print contents of an array in C++ - Techie Delight-class_files/f.txt"></script><script type="text/javascript">
+/* <![CDATA[ */
+document.documentElement.className = document.documentElement.className.replace(new RegExp('(^|\\s)no-js(\\s|$)'), '$1js$2');
+/* ]]> */
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Print contents of an array in C++ - Techie Delight</title>
+
+<meta name="description" content="In this post, we will see how to print contents of an array in C++. 1. Simple solution would be to iterate over the elements of an array and print each element. 2. std::copy 3. Range based for loop 4. Iterators for printing arrays. 5. std::for_each..">
+<link rel="canonical" href="http://www.techiedelight.com/print-contents-array-cpp/">
+<link rel="publisher" href="https://plus.google.com/+TechieDelight">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Print contents of an array in C++ - Techie Delight">
+<meta property="og:description" content="In this post, we will see how to print contents of an array in C++. 1. Simple solution would be to iterate over the elements of an array and print each element. 2. std::copy 3. Range based for loop 4. Iterators for printing arrays. 5. std::for_each..">
+<meta property="og:url" content="http://www.techiedelight.com/print-contents-array-cpp/">
+<meta property="og:site_name" content="Techie Delight">
+<meta property="article:publisher" content="https://www.facebook.com/techiedelight/">
+<meta property="article:section" content="C++">
+<meta property="article:published_time" content="2017-01-16T00:41:17+00:00">
+<meta property="article:modified_time" content="2018-01-21T03:05:22+00:00">
+<meta property="og:updated_time" content="2018-01-21T03:05:22+00:00">
+<meta property="og:image" content="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/profile_pic.png?fit=411%2C360">
+<meta property="og:image:secure_url" content="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/profile_pic.png?fit=411%2C360">
+<meta property="og:image:width" content="411">
+<meta property="og:image:height" content="360">
+<meta property="og:image:alt" content="Techie Delight">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="In this post, we will see how to print contents of an array in C++. 1. Simple solution would be to iterate over the elements of an array and print each element. 2. std::copy 3. Range based for loop 4. Iterators for printing arrays. 5. std::for_each..">
+<meta name="twitter:title" content="Print contents of an array in C++ - Techie Delight">
+<meta name="twitter:site" content="@techie_delight">
+<meta name="twitter:image" content="https://www.techiedelight.com/wp-content/uploads/profile_pic.png">
+<meta name="twitter:creator" content="@techie_delight">
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Organization","url":"http:\/\/www.techiedelight.com\/","sameAs":["https:\/\/www.facebook.com\/techiedelight\/","https:\/\/plus.google.com\/+TechieDelight","https:\/\/in.pinterest.com\/techiedelight\/","https:\/\/twitter.com\/techie_delight"],"@id":"http:\/\/www.techiedelight.com\/#organization","name":"Techie Delight","logo":"http:\/\/www.techiedelight.com\/wp-content\/uploads\/Techie-Delight.jpg"}</script>
+
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Techie Delight » Feed" href="http://www.techiedelight.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Techie Delight » Comments Feed" href="http://www.techiedelight.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Techie Delight » Print contents of an array in C++ Comments Feed" href="http://www.techiedelight.com/print-contents-array-cpp/feed/">
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.techiedelight.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Print contents of an array in C++ - Techie Delight-class_files/wp-emoji-release.min.js.descarga" type="text/javascript" defer=""></script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="crayon-css" href="./Print contents of an array in C++ - Techie Delight-class_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-familiar-css" href="./Print contents of an array in C++ - Techie Delight-class_files/familiar.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-consolas-css" href="./Print contents of an array in C++ - Techie Delight-class_files/consolas.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="./Print contents of an array in C++ - Techie Delight-class_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpdiscuz-font-awesome-css" href="./Print contents of an array in C++ - Techie Delight-class_files/fontawesome-all.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpdiscuz-frontend-css-css" href="./Print contents of an array in C++ - Techie Delight-class_files/wpdiscuz.css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./Print contents of an array in C++ - Techie Delight-class_files/genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="nevertheless-style-css" href="./Print contents of an array in C++ - Techie Delight-class_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="tamatebako-custom-fonts-css" href="./Print contents of an array in C++ - Techie Delight-class_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack-widget-social-icons-styles-css" href="./Print contents of an array in C++ - Techie Delight-class_files/social-icons.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="./Print contents of an array in C++ - Techie Delight-class_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./Print contents of an array in C++ - Techie Delight-class_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/jquery.js.descarga"></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/jquery-migrate.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.techiedelight.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/crayon.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/customcookie.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/jquery.autogrowtextarea.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpdiscuzAjaxObj = {"url":"http:\/\/www.techiedelight.com\/wp-admin\/admin-ajax.php","wpdiscuz_options":{"wc_hide_replies_text":"Hide Replies","wc_show_replies_text":"View Replies","wc_msg_required_fields":"Please fill out required fields","wc_invalid_field":"Some of field value is invalid","wc_error_empty_text":"please fill out this field to comment","wc_error_url_text":"url is invalid","wc_error_email_text":"email address is invalid","wc_invalid_captcha":"Invalid Captcha Code","wc_login_to_vote":"You Must Be Logged In To Vote","wc_deny_voting_from_same_ip":"You are not allowed to vote for this comment","wc_self_vote":"You cannot vote for your comment","wc_vote_only_one_time":"You've already voted for this comment","wc_voting_error":"Voting Error","wc_held_for_moderate":"Comment awaiting moderation","wc_comment_edit_not_possible":"Sorry, this comment no longer possible to edit","wc_comment_not_updated":"Sorry, the comment was not updated","wc_comment_not_edited":"You've not made any changes","wc_new_comment_button_text":"new comment","wc_new_comments_button_text":"new comments","wc_new_reply_button_text":"new reply on your comment","wc_new_replies_button_text":"new replies on your comments","wc_msg_input_min_length":"Input is too short","wc_msg_input_max_length":"Input is too long","is_user_logged_in":false,"commentListLoadType":"0","commentListUpdateType":"0","commentListUpdateTimer":"600","liveUpdateGuests":"1","wc_comment_bg_color":"#FEFEFE","wc_reply_bg_color":"#F8F8F8","wordpress_comment_order":"asc","commentsVoteOrder":true,"wordpressThreadCommentsDepth":"5","wordpressIsPaginate":"","commentTextMaxLength":null,"storeCommenterData":100000,"isCaptchaInSession":true,"isGoodbyeCaptchaActive":false,"facebookAppID":"1017779075032614","cookiehash":"db4bce7ab83ffff6c0ae219d40e0920e","isLoadOnlyParentComments":0,"ahk":"","version":"5.0.7","wc_post_id":14781,"loadLastCommentId":0,"lastVisitKey":"wpdiscuz_last_visit","lastVisitExpires":1538257770,"lastVisitCookie":{"1":{"14781":1535665770}},"wc_captcha_show_for_guest":"0","wc_captcha_show_for_members":"0","is_email_field_required":1}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/wpdiscuz.js.descarga" defer="" onload=""></script>
+<link rel="https://api.w.org/" href="http://www.techiedelight.com/wp-json/">
+<meta name="generator" content="WordPress 4.9.8">
+<link rel="shortlink" href="https://wp.me/p88NM0-3Qp">
+<link rel="alternate" type="application/json+oembed" href="http://www.techiedelight.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.techiedelight.com%2Fprint-contents-array-cpp%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.techiedelight.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.techiedelight.com%2Fprint-contents-array-cpp%2F&amp;format=xml">
+<style type="text/css">
+
+
+                #wpcomm .wc_new_comment{background:#00B38F;}
+                #wpcomm .wc_new_reply{background:#00B38F;}
+                #wpcomm .wc-form-wrapper{ background:none; } /* ->formBGColor */
+                #wpcomm .wpdiscuz-front-actions{background:#F9F9F9;}
+                #wpcomm .wpdiscuz-subscribe-bar{background:#F9F9F9;}
+
+                #wpcomm select,
+                #wpcomm input[type="text"],
+                #wpcomm input[type="email"],
+                #wpcomm input[type="url"],
+                #wpcomm input[type="date"],
+                #wpcomm input[type="color"]{border:#D9D9D9 1px solid;}
+
+                #wpcomm .wc-comment .wc-comment-right{background:#FEFEFE;}
+
+                #wpcomm .wc-reply .wc-comment-right{background:#F8F8F8;}
+
+                #wpcomm .wc-comment-right .wc-comment-text, 
+                #wpcomm .wc-comment-right .wc-comment-text *{
+                    font-size:14px;
+                }
+                #wpcomm .wc-blog-administrator > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-administrator > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-administrator > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-editor > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-editor > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-editor > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-author > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-author > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-author > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-contributor > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-contributor > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-contributor > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-subscriber > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-subscriber > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-subscriber > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-post_author > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-post_author > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-post_author > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-guest > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-guest > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-guest > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-wpseo_manager > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-wpseo_manager > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-wpseo_manager > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }#wpcomm .wc-blog-wpseo_editor > .wc-comment-right .wc-comment-author, #wpcomm .wc-blog-wpseo_editor > .wc-comment-right .wc-comment-author a{color:#00B38F;}#wpcomm .wc-blog-wpseo_editor > .wc-comment-left .wc-comment-label{color:#00B38F; border:none; border-bottom: 1px solid #dddddd; }
+                #wpcomm .wc-comment .wc-comment-left .wc-comment-label{ background: #ffffff;}
+                #wpcomm .wc-load-more-submit{border:1px solid #D9D9D9;}
+                #wpcomm .wc-new-loaded-comment > .wc-comment-right{background:#FFFAD6;}
+                #wpcomm .wpdiscuz-subscribe-bar{color:#777;}
+                #wpcomm .wpdiscuz-front-actions .wpdiscuz-sbs-wrap span{color: #777;}
+                #wpcomm .page-numbers{color:#555;border:#555 1px solid;}
+                #wpcomm span.current{background:#555;}
+                #wpcomm .wpdiscuz-readmore{cursor:pointer;color:#00B38F;} 
+                #wpcomm .wpdiscuz-textarea-wrap{border:#D9D9D9 1px solid;} .wpd-custom-field .wcf-pasiv-star, #wpcomm .wpdiscuz-item .wpdiscuz-rating > label {color: #DDDDDD;}
+                #wpcomm .wpdiscuz-item .wpdiscuz-rating:not(:checked) > label:hover,.wpdiscuz-rating:not(:checked) > label:hover ~ label {   }#wpcomm .wpdiscuz-item .wpdiscuz-rating > input ~ label:hover, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label{color: #FFED85;} 
+                #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpcomm .wpdiscuz-item .wpdiscuz-rating > label:hover ~ input:checked ~ label, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked + label:hover ~ label, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover ~ label, .wpd-custom-field .wcf-activ-star, #wpcomm .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label{ color:#FFD700;} 
+                #wpcomm .wc-comment-header{border-bottom: 1px solid #dedede;}
+                #wpcomm .wc-reply .wc-comment-header{border-bottom: 1px solid #DDDDDD;}
+
+                /* Buttons */
+                #wpcomm button, 
+                #wpcomm input[type="button"], 
+                #wpcomm input[type="reset"], 
+                #wpcomm input[type="submit"]{ border: 1px solid #555555; color: #FFFFFF; background-color: #555555; }
+                #wpcomm button:hover, 
+                #wpcomm button:focus,
+                #wpcomm input[type="button"]:hover, 
+                #wpcomm input[type="button"]:focus, 
+                #wpcomm input[type="reset"]:hover, 
+                #wpcomm input[type="reset"]:focus, 
+                #wpcomm input[type="submit"]:hover, 
+                #wpcomm input[type="submit"]:focus{ border: 1px solid #333333; background-color: #333333;  }
+                #wpcomm .wpdiscuz-sort-buttons{color:#777777;}
+                #wpcomm .wpdiscuz-sort-button{color:#777777; cursor:pointer;}
+                #wpcomm .wpdiscuz-sort-button:hover{color:#00B38F!important;cursor:pointer;}
+                #wpcomm .wpdiscuz-sort-button-active{color:#00B38F!important;cursor:default!important;}
+                #wpcomm .wc-cta-button, 
+                #wpcomm .wc-cta-button-x{color:#777777;  border-bottom: 1px solid #dddddd; }
+                #wpcomm .wc-vote-link.wc-up{color:#999999;}
+                #wpcomm .wc-vote-link.wc-down{color:#999999;}
+                #wpcomm .wc-vote-result{color:#999999;}
+                #wpcomm .wpf-cta{color:#999999; }
+                #wpcomm .wpf-cta:hover{background:#00B38F!important; color:#FFFFFF;}
+                #wpcomm .wc-cta-active{background:#00B38F!important; color:#FFFFFF;}
+                #wpcomm .wc-cta-button:hover{background:#00B38F!important; color:#FFFFFF;} 
+                #wpcomm .wc-footer-right .wc-toggle, 
+                #wpcomm .wc-footer-right .wc-toggle a, 
+                #wpcomm .wc-footer-right .wc-toggle i{color:#00B38F;}
+
+                /* STICKY COMMENT HEADER */
+                #wpcomm .wc-sticky-comment.wc-comment .wc-comment-header{background: #f2fcfb; border-bottom:1px dotted #00B38F;}
+                #wpcomm .wc-sticky-comment.wc-comment .wc-comment-header .wpd-sticky{color: #00B38F; border:1px dotted #00B38F;}
+                #wpcomm .wc-closed-comment.wc-comment .wc-comment-header .wpd-closed{color: #555555; border:1px dotted #555555;}
+
+                /* PRIVATE COMMENT HEADER */
+                #wpcomm .wc-private-comment.wc-comment .wc-comment-header{background: #eeeeee; border-bottom:1px solid #999999;}
+                #wpcomm .wc-private-comment.wc-comment .wc-comment-header .wpd-private{color: #000000; border:1px dotted #333333;}
+
+                                .comments-area{width:auto;}
+            </style>
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<link rel="dns-prefetch" href="http://i0.wp.com/">
+<link rel="dns-prefetch" href="http://i1.wp.com/">
+<link rel="dns-prefetch" href="http://i2.wp.com/">
+<style type="text/css">img#wpstats{display:none}</style>
+<style type="text/css" id="nevertheless-color-css">a,a:hover,a:focus{color:#006699}input[type="submit"]:hover,input[type="submit"]:focus,input[type="button"]:hover,input[type="button"]:focus,input[type="reset"]:hover,input[type="reset"]:focus,button:hover,button:focus,.button:hover,.button:focus{ border-color: #006699; background: #006699; }.archive-title:before{color:#006699}.entry-title a:hover,.entry-title a:focus{color:#006699}.more-link{color:#006699}.more-link:hover,.more-link:focus{border-color:#006699}.navigation.pagination a.page-numbers:hover,.navigation.pagination a.page-numbers:focus{border-color:#006699;background:#006699}.widget_recent_entries a:hover,.widget_recent_entries a:focus{color:#006699}.widget_rss li a.rsswidget:hover,.widget_rss li a.rsswidget:focus{color:#006699}#header{ background-color: #f7f7f7; }#site-title a,#site-title a:hover,#site-title a:focus{ color: #006699; }#site-description{ color: #4c4c4c; }#menu-primary .menu-container{ background-color: #637c7f; }#menu-primary-items > li > a{ background-color: #637c7f; }</style>
+<style type="text/css" id="tamatebako-custom-fonts-rules-css">#site-title{font-family:"Alegreya",serif;}#content .entry-title{font-family:"Lato",sans-serif;}.widget-title{font-family:"Vollkorn",serif;}body.wordpress,body#tinymce{font-family:"Open Sans",sans-serif;}</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #dbdbdb; background-image: url("http://www.techiedelight.com/wp-content/uploads/background.png"); background-position: right top; background-size: auto; background-repeat: repeat-x; background-attachment: scroll; }
+</style>
+<link rel="icon" href="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/2016/11/cropped-td.png?fit=32%2C32" sizes="32x32">
+<link rel="icon" href="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/2016/11/cropped-td.png?fit=192%2C192" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/2016/11/cropped-td.png?fit=180%2C180">
+<meta name="msapplication-TileImage" content="https://i1.wp.com/www.techiedelight.com/wp-content/uploads/2016/11/cropped-td.png?fit=270%2C270">
+<style id="tamatebako-custom-css" type="text/css">
+code{color:#000;background-color:#f8f9fa;border:1px solid #eaecf0;border-radius:2px;padding:1px 4px}</style>
+<script src="./Print contents of an array in C++ - Techie Delight-class_files/jsapi" type="text/javascript"></script><link type="text/css" href="./Print contents of an array in C++ - Techie Delight-class_files/default+en.css" rel="stylesheet"><link type="text/css" href="./Print contents of an array in C++ - Techie Delight-class_files/minimalist.css" rel="stylesheet"><script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/default+en.I.js.descarga"></script><style type="text/css">.gsc-control-cse{font-family:Arial, sans-serif;border-color:#FFFFFF;background-color:#FFFFFF}.gsc-control-cse .gsc-table-result{font-family:Arial, sans-serif}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#BBBBBB}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive{border-color:#777777;background-color:#777777}.gsc-tabHeader.gsc-tabhActive{border-color:#333333;border-bottom-color:#333333;background-color:#333333}.gsc-tabsArea{border-color:#333333}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover,.gsc-imageResult:hover{border-color:#000000;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1A0DAB}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#609}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#609}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#777777}.gsc-cursor-page{color:#1A0DAB}a.gsc-trailing-more-results:link{color:#1A0DAB}.gs-webResult .gs-snippet,.gs-imageResult .gs-snippet,.gs-fileFormatType{color:#545454}.gs-webResult div.gs-visibleUrl,.gs-imageResult div.gs-visibleUrl{color:#006621}.gs-webResult div.gs-visibleUrl-short{color:#006621}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#777777;background-color:#FFFFFF;color:#1A0DAB}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#333333;background-color:#333333;color:#609}.gsc-webResult.gsc-result.gsc-promotion{border-color:#CCCCCC;background-color:#E6E6E6}.gsc-completion-title{color:#1A0DAB}.gsc-completion-snippet{color:#545454}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#0000CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#0000CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#444444}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#00CC00}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#00CC00}</style><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><script type="text/javascript" charset="utf-8" async="" src="./Print contents of an array in C++ - Techie Delight-class_files/button.460b6e50c797f0f03177332228ca7d20.js.descarga"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f5f6f7;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:-webkit-sticky;top:0}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100%;overflow:hidden;position:fixed;visibility:hidden;width:100%}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_v2_mobile_chat_started{0%{opacity:0;top:20px}100%{opacity:1;top:0}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_v2_mobile_chat_started{0%{opacity:1;top:0}100%{opacity:0;top:20px}}@keyframes fb_customer_chat_bubble_bounce_in_animation{0%{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70%{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100%{transform:scale(1, 1)}}</style><script src="./Print contents of an array in C++ - Techie Delight-class_files/secureAnonymousFramework"></script><style type="text/css">* html #li_ui_li_gen_1535650023663_0 a#li_ui_li_gen_1535650023663_0-link{height:1% !important;}#li_ui_li_gen_1535650023663_0{position:relative !important;overflow:visible !important;display:block !important;}#li_ui_li_gen_1535650023663_0 span{-webkit-box-sizing:content-box !important;-moz-box-sizing:content-box !important;box-sizing:content-box !important;}#li_ui_li_gen_1535650023663_0 a#li_ui_li_gen_1535650023663_0-link{border:0 !important;height:20px !important;text-decoration:none !important;padding:0 !important;margin:0 !important;display:inline-block !important;}#li_ui_li_gen_1535650023663_0 a#li_ui_li_gen_1535650023663_0-link:link, #li_ui_li_gen_1535650023663_0 a#li_ui_li_gen_1535650023663_0-link:visited, #li_ui_li_gen_1535650023663_0 a#li_ui_li_gen_1535650023663_0-link:hover, #li_ui_li_gen_1535650023663_0 a#li_ui_li_gen_1535650023663_0-link:active{border:0 !important;text-decoration:none !important;}#li_ui_li_gen_1535650023663_0 a#li_ui_li_gen_1535650023663_0-link:after{content:"." !important;display:block !important;clear:both !important;visibility:hidden !important;line-height:0 !important;height:0 !important;}#li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-logo{background-image:url(https://static.licdn.com/scds/common/u/images/apps/connect/sprites/sprite_connect_v14.png) !important;background-position:0px -593px !important;background-repeat:no-repeat !important;background-color:#0077b5 !important;background-size:initial !important;cursor:pointer !important;border:0 !important;border-right:1px solid #066094 !important;text-indent:-9999em !important;overflow:hidden !important;padding:0 !important;margin:0 !important;position:absolute !important;left:0px !important;top:0px !important;display:block !important;width:20px !important;height:20px !important;float:right !important;border-radius:2px !important;-webkit-border-radius:2px !important;border-top-right-radius:2px !important;border-bottom-right-radius:2px !important;-webkit-border-top-right-radius:2px !important;-webkit-border-bottom-right-radius:2px !important;}#li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title{color:#fff !important;cursor:pointer !important;display:block !important;white-space:nowrap !important;float:left !important;margin-left:1px !important;vertical-align:top !important;overflow:hidden !important;text-align:center !important;height:18px !important;padding:0 4px 0 23px !important;border:1px solid #000 !important;border-top-color:#0077b5 !important;border-right-color:#0077b5 !important;border-bottom-color:#0077b5 !important;border-left-color:#0077b5 !important;text-shadow:0 -1px #005887 !important;line-height:20px !important;border-radius:2px !important;-webkit-border-radius:2px !important;border-top-right-radius:2px !important;border-bottom-right-radius:2px !important;-webkit-border-top-right-radius:2px !important;-webkit-border-bottom-right-radius:2px !important;background-color:#0077b5 !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#0077b5), color-stop(100%,#0077b5)) !important; background-image: -webkit-linear-gradient(top, #0077b5 0%, #0077b5 100%) !important;}#li_ui_li_gen_1535650023663_0.hovered #li_ui_li_gen_1535650023663_0-title{border:1px solid #000 !important;border-top-color:#0369a0 !important;border-right-color:#0369a0 !important;border-bottom-color:#0369a0 !important;border-left-color:#0369a0 !important;background-color:#0369a0 !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#0369a0), color-stop(100%,#0369a0)) !important; background-image: -webkit-linear-gradient(top, #0369a0 0%, #0369a0 100%) !important;}#li_ui_li_gen_1535650023663_0.clicked #li_ui_li_gen_1535650023663_0-title, #li_ui_li_gen_1535650023663_0.down #li_ui_li_gen_1535650023663_0-title{color:#fff !important;border:1px solid #000 !important;border-top-color:#066094 !important;border-right-color:#066094 !important;border-bottom-color:#066094 !important;border-left-color:#066094 !important;background-color:#066094 !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#066094), color-stop(100%,#066094)) !important; background-image: -webkit-linear-gradient(top, #066094 0%, #066094 100%) !important;}.IN-shadowed #li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title{}.IN-shadowed #li_ui_li_gen_1535650023663_0.hovered #li_ui_li_gen_1535650023663_0-title{}.IN-shadowed #li_ui_li_gen_1535650023663_0.clicked #li_ui_li_gen_1535650023663_0-title, .IN-shadowed #li_ui_li_gen_1535650023663_0.down #li_ui_li_gen_1535650023663_0-title{}#li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title-text, #li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title-text *{color:#fff !important;font-size:11px !important;font-family:Arial, sans-serif !important;font-weight:bold !important;font-style:normal !important;-webkit-font-smoothing:antialiased !important;display:inline-block !important;background:transparent none !important;vertical-align:top !important;height:18px !important;line-height:20px !important;float:none !important;}#li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title-text strong{font-weight:bold !important;}#li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title-text em{font-style:italic !important;}#li_ui_li_gen_1535650023663_0.hovered #li_ui_li_gen_1535650023663_0-title-text, #li_ui_li_gen_1535650023663_0.hovered #li_ui_li_gen_1535650023663_0-title-text *{color:#fff !important;}#li_ui_li_gen_1535650023663_0.clicked #li_ui_li_gen_1535650023663_0-title-text, #li_ui_li_gen_1535650023663_0.down #li_ui_li_gen_1535650023663_0-title-text, #li_ui_li_gen_1535650023663_0.clicked #li_ui_li_gen_1535650023663_0-title-text *, #li_ui_li_gen_1535650023663_0.down #li_ui_li_gen_1535650023663_0-title-text *{color:#fff !important;}#li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title #li_ui_li_gen_1535650023663_0-mark{display:inline-block !important;width:0px !important;overflow:hidden !important;}.success #li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title{color:#fff !important;border-top-color:#0077b5 !important;border-right-color:#0077b5 !important;border-bottom-color:#0077b5 !important;border-left-color:#0077b5 !important;background-color:#0077b5 !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#0077b5), color-stop(100%,#0077b5)) !important; background-image: -webkit-linear-gradient(top, #0077b5 0%, #0077b5 100%) !important;}.success #li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title-text, .success #li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title-text *{color:#fff !important;}.IN-shadowed .success #li_ui_li_gen_1535650023663_0 #li_ui_li_gen_1535650023663_0-title{}.success #li_ui_li_gen_1535650023663_0.hovered #li_ui_li_gen_1535650023663_0-title{color:#fff !important;border-top-color:#0369a0 !important;border-right-color:#0369a0 !important;border-bottom-color:#0369a0 !important;border-left-color:#0369a0 !important;background-color:#0369a0 !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#0369a0), color-stop(100%,#0369a0)) !important; background-image: -webkit-linear-gradient(top, #0369a0 0%, #0369a0 100%) !important;}.success #li_ui_li_gen_1535650023663_0.hovered #li_ui_li_gen_1535650023663_0-title-text, .success #li_ui_li_gen_1535650023663_0.hovered #li_ui_li_gen_1535650023663_0-title-text *{color:#fff !important;}.success #li_ui_li_gen_1535650023663_0.clicked #li_ui_li_gen_1535650023663_0-title, .success #li_ui_li_gen_1535650023663_0.down #li_ui_li_gen_1535650023663_0-title{color:#fff !important;border-top-color:#066094 !important;border-right-color:#066094 !important;border-bottom-color:#066094 !important;border-left-color:#066094 !important;background-color:#066094 !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#066094), color-stop(100%,#066094)) !important; background-image: -webkit-linear-gradient(top, #066094 0%, #066094 100%) !important;}.success #li_ui_li_gen_1535650023663_0.clicked #li_ui_li_gen_1535650023663_0-title-text, .success #li_ui_li_gen_1535650023663_0.down #li_ui_li_gen_1535650023663_0-title-text, .success #li_ui_li_gen_1535650023663_0.clicked #li_ui_li_gen_1535650023663_0-title-text *, .success #li_ui_li_gen_1535650023663_0.down #li_ui_li_gen_1535650023663_0-title-text *{color:#fff !important;}.IN-shadowed .success #li_ui_li_gen_1535650023663_0.clicked #li_ui_li_gen_1535650023663_0-title, .IN-shadowed .success #li_ui_li_gen_1535650023663_0.down #li_ui_li_gen_1535650023663_0-title{}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gsq_a{padding:0}.gscsep_a{display:none}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 9px}.gsib_a{padding-right:8px;padding-left:8px}.gsst_a{padding-top:5.5px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+<body class="post-template-default single single-post postid-14781 single-format-standard custom-background wordpress ltr parent-theme logged-out singular sidebar-primary-active menu-primary-active menu-social-links-active menu-footer-inactive wp-is-not-mobile theme-genericons-active layout-content-sidebar1 custom-fonts-active tf-font_site_title-alegreya tf-font_post_title-lato tf-font_widget_title-vollkorn tf-font_base-open-sans wpdiscuz_5.0.7">
+<div id="container">
+<div class="skip-link">
+<a class="screen-reader-text" href="http://www.techiedelight.com/print-contents-array-cpp/">Skip to content</a> 
+</div>
+<div class="header-nav">
+<header role="banner" id="header" style="background-image:url(&#39;&#39;);">
+<div id="branding">
+<p id="site-title" class="site-title"><a rel="home" href="http://www.techiedelight.com/">Techie Delight</a></p>
+<p id="site-description" class="site-description">Coding made easy</p>
+</div>
+<div id="social-links">
+<ul class="social-links"><li id="menu-item-38" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38"><a target="_blank" href="https://www.facebook.com/techiedelight"><span class="screen-reader-text">Facebook</span></a></li>
+<li id="menu-item-37" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37"><a target="_blank" href="https://twitter.com/techie_delight"><span class="screen-reader-text">Twitter</span></a></li>
+<li id="menu-item-39" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39"><a target="_blank" href="https://plus.google.com/+TechieDelight"><span class="screen-reader-text">Google+</span></a></li>
+</ul> </div>
+</header>
+<nav role="navigation" class="menu" id="menu-primary">
+<div class="menu-container menu-dropdown menu-search">
+<div id="menu-toggle-primary" class="menu-toggle">
+<a class="menu-toggle-open" href="http://www.techiedelight.com/print-contents-array-cpp/#menu-primary"><span class="menu-toggle-text screen-reader-text">Primary</span></a>
+<a class="menu-toggle-close" href="http://www.techiedelight.com/print-contents-array-cpp/#menu-toggle-primary"><span class="menu-toggle-text screen-reader-text">Primary</span></a>
+</div>
+<div class="wrap"><ul id="menu-primary-items" class="menu-items"><li id="menu-item-7917" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7917"><a href="http://www.techiedelight.com/list-of-problems/">All Problems</a></li>
+<li id="menu-item-36" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36"><a href="http://www.techiedelight.com/Category/array/">Array</a></li>
+<li id="menu-item-9275" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-9275"><a href="http://www.techiedelight.com/Category/trees/">Tree</a>
+<ul class="sub-menu">
+<li id="menu-item-9022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9022"><a href="http://www.techiedelight.com/Category/trees/binary-tree/">Binary Tree</a></li>
+<li id="menu-item-9021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9021"><a href="http://www.techiedelight.com/Category/trees/bst/">Binary Search Tree (BST)</a></li>
+<li id="menu-item-9282" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-9282"><a href="http://www.techiedelight.com/Tags/trie/">Trie Data Structure</a></li>
+</ul>
+</li>
+<li id="menu-item-35" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35"><a href="http://www.techiedelight.com/Category/linked-list/">Linked List</a></li>
+<li id="menu-item-53" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-53"><a href="http://www.techiedelight.com/Category/dynamic-programming/">DP</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44"><a href="http://www.techiedelight.com/Category/graphs/">Graph</a></li>
+<li id="menu-item-46" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-46"><a href="http://www.techiedelight.com/Category/backtracking/">Backtracking</a></li>
+<li id="menu-item-48" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-48"><a href="http://www.techiedelight.com/Category/matrix/">Matrix</a></li>
+<li id="menu-item-50" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-50"><a href="http://www.techiedelight.com/Category/heap/">Heap</a></li>
+<li id="menu-item-49" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-49"><a href="http://www.techiedelight.com/Category/divide-conquer/">D&amp;C</a></li>
+<li id="menu-item-52" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52"><a href="http://www.techiedelight.com/Category/string/">String</a></li>
+<li id="menu-item-47" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47"><a href="http://www.techiedelight.com/Category/sorting/">Sorting</a></li>
+<li id="menu-item-41" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-41"><a href="http://www.techiedelight.com/Category/stack/">Stack</a></li>
+<li id="menu-item-9279" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9279"><a href="http://www.techiedelight.com/Category/queue/">Queue</a></li>
+<li id="menu-item-9283" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9283"><a href="http://www.techiedelight.com/Category/binary/">Binary</a></li>
+</ul></div>
+<form role="search" method="get" class="search-form" action="http://www.techiedelight.com/">
+<a href="http://www.techiedelight.com/print-contents-array-cpp/#search-menu" class="search-toggle"><span class="screen-reader-text">Expand Search Form</span></a>
+<input id="search-menu" type="search" class="search-field" placeholder="Search…" value="" name="s">
+<button class="search-submit button"><span class="screen-reader-text">Search</span></button>
+</form>
+</div>
+</nav>
+</div>
+<div class="wrap">
+<div id="main">
+<div class="wrap">
+<main id="content" class="content" role="main">
+<div class="wrap">
+<article id="post-14781" class="post-14781 post type-post status-publish format-standard hentry category-cplusplus entry">
+<div class="wrap">
+<header class="entry-header">
+<h1 class="entry-title">Print contents of an array in C++</h1>
+</header>
+<div class="entry-content">
+<div style="color: #000000; font-size:14px;"><p></p>
+<p style="color: #008200;font-size:16px">In this post, we will see how to print contents of an array in C++.</p>
+<p><span id="more-14781"></span></p>
+<p>&nbsp;</p>
+<h3>1. Using Array Indices</h3>
+<p>Simple solution would be to iterate over the elements of an array and print each element.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b8819127228a379635937" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b8819127228a379635937-1">1</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-2">2</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-3">3</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-4">4</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-5">5</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-6">6</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-7">7</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-8">8</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-9">9</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-10">10</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-11">11</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-12">12</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-13">13</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-14">14</div><div class="crayon-num" data-line="crayon-5b8819127228a379635937-15">15</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b8819127228a379635937-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-2">&nbsp;</div><div class="crayon-line" id="crayon-5b8819127228a379635937-3"><span class="crayon-c">// Print contents of an array in C++ using array indices</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-4"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-5"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">size</span><span class="crayon-sy">_</span>t<span class="crayon-h"> </span><span class="crayon-v">n</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">sizeof</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-o">/</span><span class="crayon-r">sizeof</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-8">&nbsp;</div><div class="crayon-line" id="crayon-5b8819127228a379635937-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">// loop through the elements of the array</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">size</span><span class="crayon-sy">_</span>t<span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">&lt;</span><span class="crayon-h"> </span><span class="crayon-v">n</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-o">++</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-v">i</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">' '</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-13">&nbsp;</div><div class="crayon-line" id="crayon-5b8819127228a379635937-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b8819127228a379635937-15"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/vdOAWr" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/vdOAWr" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p><span style="color: #0000ff;"><strong><tt>Output: </tt></strong></span><br>
+<font face="consolas" size="3"><br>
+1 2 3 4 5<br>
+</font></p>
+<p>&nbsp;<br>
+Above code uses <tt>sizeof</tt> operator for determining the array size. We can also create a template which deduces the size of the array from its declared type.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b8819127229a490830179" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b8819127229a490830179-1">1</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-2">2</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-3">3</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-4">4</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-5">5</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-6">6</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-7">7</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-8">8</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-9">9</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-10">10</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-11">11</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-12">12</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-13">13</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-14">14</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-15">15</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-16">16</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-17">17</div><div class="crayon-num" data-line="crayon-5b8819127229a490830179-18">18</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b8819127229a490830179-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-2">&nbsp;</div><div class="crayon-line" id="crayon-5b8819127229a490830179-3"><span class="crayon-t">template</span><span class="crayon-o">&lt;</span><span class="crayon-r">typename</span><span class="crayon-h"> </span><span class="crayon-v">T</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">size</span><span class="crayon-sy">_</span>t<span class="crayon-h"> </span><span class="crayon-v">n</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-4"><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">print_array</span><span class="crayon-sy">(</span><span class="crayon-i">T</span><span class="crayon-h"> </span><span class="crayon-m">const</span><span class="crayon-sy">(</span><span class="crayon-o">&amp;</span><span class="crayon-h"> </span><span class="crayon-v">arr</span><span class="crayon-sy">)</span><span class="crayon-sy">[</span><span class="crayon-v">n</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-5"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">size</span><span class="crayon-sy">_</span>t<span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">&lt;</span><span class="crayon-h"> </span><span class="crayon-v">n</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-o">++</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">arr</span><span class="crayon-sy">[</span><span class="crayon-v">i</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">' '</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-8"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-9">&nbsp;</div><div class="crayon-line" id="crayon-5b8819127229a490830179-10"><span class="crayon-c">// Print contents of an array in C++ using templates</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-11"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-12"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-14">&nbsp;</div><div class="crayon-line" id="crayon-5b8819127229a490830179-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">print_array</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-16">&nbsp;</div><div class="crayon-line" id="crayon-5b8819127229a490830179-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b8819127229a490830179-18"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/LYNBAv" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/LYNBAv" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p><span style="color: #0000ff;"><strong><tt>Output: </tt></strong></span><br>
+<font face="consolas" size="3"><br>
+1 2 3 4 5<br>
+</font></p>
+<p>&nbsp;</p>
+<h3>2. std::copy with std::ostream_iterator</h3>
+<p>We can use Ostream iterators to write to an output stream. The idea is to use output iterator <code>std::ostream_iterator</code> to print array contents to <code>std::cout</code> with the help of <code>std::copy</code> which takes input iterator to the starting and ending positions of the array and the output iterator.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b881912722a2955300264" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b881912722a2955300264-1">1</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-2">2</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-3">3</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-4">4</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-5">5</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-6">6</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-7">7</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-8">8</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-9">9</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-10">10</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-11">11</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-12">12</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-13">13</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-14">14</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-15">15</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-16">16</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-17">17</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-18">18</div><div class="crayon-num" data-line="crayon-5b881912722a2955300264-19">19</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b881912722a2955300264-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-2"><span class="crayon-p">#include &lt;algorithm&gt;</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-3"><span class="crayon-p">#include &lt;iterator&gt;</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-4">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722a2955300264-5"><span class="crayon-c">// Print contents of an array in C++ using std::ostream_iterator</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-6"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-7"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">n</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">sizeof</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-o">/</span><span class="crayon-r">sizeof</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-10">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722a2955300264-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">copy</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-h"> </span><span class="crayon-o">+</span><span class="crayon-h"> </span><span class="crayon-v">n</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">ostream_iterator</span><span class="crayon-o">&lt;</span><span class="crayon-t">int</span><span class="crayon-o">&gt;</span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">" "</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-13">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722a2955300264-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">// or use std::begin and std::end in C++11</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">// std::copy(std::begin(input), std::end(input),</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::ostream_iterator&lt;int&gt;(std::cout, " "));</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-18"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722a2955300264-19"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/oTvQCP" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/oTvQCP" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p><span style="color: #0000ff;"><strong><tt>Output: </tt></strong></span><br>
+<font face="consolas" size="3"><br>
+1 2 3 4 5<br>
+</font></p>
+<p>&nbsp;<br>
+With C++17, we can use <code>std::copy</code> with <tt><a href="http://en.cppreference.com/w/cpp/experimental/ostream_joiner" rel="nofollow" target="_blank">std::experimental::ostream_joiner</a></tt> which is defined in header <tt>&lt;experimental/iterator&gt;</tt>. It is a single-pass output iterator which can write successive array elements into the <code>std::cout</code>, using <code>&lt;&lt; </code>operator, separated by a delimiter between every two elements.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b881912722aa228217696" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b881912722aa228217696-1">1</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-2">2</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-3">3</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-4">4</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-5">5</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-6">6</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-7">7</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-8">8</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-9">9</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-10">10</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-11">11</div><div class="crayon-num" data-line="crayon-5b881912722aa228217696-12">12</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b881912722aa228217696-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b881912722aa228217696-2"><span class="crayon-p">#include &lt;experimental/iterator&gt;</span></div><div class="crayon-line" id="crayon-5b881912722aa228217696-3">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722aa228217696-4"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b881912722aa228217696-5"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722aa228217696-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722aa228217696-7">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722aa228217696-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">copy</span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b881912722aa228217696-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-v">experimental</span><span class="crayon-o">::</span><span class="crayon-e">make_ostream_joiner</span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">" "</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722aa228217696-10">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722aa228217696-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722aa228217696-12"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 80%;"><span style="color: #ff0000;"><a style="color: #ff0000;" href="http://coliru.stacked-crooked.com/a/4538569d980f1e2b" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p><span style="color: #0000ff;"><strong><tt>Output: </tt></strong></span><br>
+<font face="consolas" size="3"><br>
+1 2 3 4 5<br>
+</font></p>
+<p>&nbsp;</p>
+<h3>3. C++11 - Range based for loop</h3>
+<p>Starting C++11, the recommended approach is to use range based for loop as shown below:</p>
+<p>&nbsp;</p>
+<div id="crayon-5b881912722b1477771806" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b881912722b1477771806-1">1</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-2">2</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-3">3</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-4">4</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-5">5</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-6">6</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-7">7</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-8">8</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-9">9</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-10">10</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-11">11</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-12">12</div><div class="crayon-num" data-line="crayon-5b881912722b1477771806-13">13</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b881912722b1477771806-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-2">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722b1477771806-3"><span class="crayon-c">// Print contents of an array in C++ using range based for loop</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-4"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-5"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-7">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722b1477771806-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">auto</span><span class="crayon-o">&amp;</span><span class="crayon-h"> </span><span class="crayon-t">value</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-t">value</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">' '</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-11">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722b1477771806-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722b1477771806-13"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/n8Hi55" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/n8Hi55" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p><span style="color: #0000ff;"><strong><tt>Output: </tt></strong></span><br>
+<font face="consolas" size="3"><br>
+1 2 3 4 5<br>
+</font></p>
+<p>&nbsp;</p>
+<h3>4. C++11 - Iterators</h3>
+<p>We can even use iterators for printing array contents even though array itself is not a STL container. The idea is to use <code>std::begin</code> and <code>std::end</code> introduced in C++11. <code>std::start</code> returns an iterator to the beginning and <code>std::end</code> returns an iterator to one past the end of the given array. Since we're not modifying anything, we should use <code>std::cbegin</code> and <code>std::cend</code> which returns constant iterators.</p>
+<p>&nbsp;</p>
+<div id="crayon-5b881912722b8298113530" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b881912722b8298113530-1">1</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-2">2</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-3">3</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-4">4</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-5">5</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-6">6</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-7">7</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-8">8</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-9">9</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-10">10</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-11">11</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-12">12</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-13">13</div><div class="crayon-num" data-line="crayon-5b881912722b8298113530-14">14</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b881912722b8298113530-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-2">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722b8298113530-3"><span class="crayon-c">// Print contents of an array in C++ using iterators</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-4"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-5"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-7">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722b8298113530-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">for</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-e">auto </span><span class="crayon-v">it</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">cbegin</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">it</span><span class="crayon-h"> </span><span class="crayon-o">!=</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">cend</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">it</span><span class="crayon-o">++</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-v">it</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">' '</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-12">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722b8298113530-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722b8298113530-14"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/VvJe6b" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/VvJe6b" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p><span style="color: #0000ff;"><strong><tt>Output: </tt></strong></span><br>
+<font face="consolas" size="3"><br>
+1 2 3 4 5<br>
+</font></p>
+<p>&nbsp;</p>
+<h3>5. std::for_each</h3>
+<p>Another good alternative is to use <tt>std::for_each</tt> algorithm which applies the specified function on every element within the specified range defined by two iterators. The function can also be an object of a class overloading the ()operator or a lambda expression.</p>
+<p></p><div class="responsive-tabs-wrapper"><div class="responsive-tabs responsive-tabs--enabled"><ul class="responsive-tabs__list" role="tablist"><li class="responsive-tabs__list__item" id="tablist1-tab1" aria-controls="tablist1-panel1" role="tab" tabindex="0">Function</li><li class="responsive-tabs__list__item responsive-tabs__list__item--active" id="tablist1-tab2" aria-controls="tablist1-panel2" role="tab" tabindex="0">Class</li><li class="responsive-tabs__list__item" id="tablist1-tab3" aria-controls="tablist1-panel3" role="tab" tabindex="0">Lambda</li></ul>
+<h2 class="tabtitle responsive-tabs__heading" tabindex="0">Function</h2>
+<div class="tabcontent responsive-tabs__panel" aria-hidden="true" role="tabpanel" aria-labelledby="tablist1-tab1" id="tablist1-panel1" style="display: none;">
+<p></p>
+<div id="crayon-5b881912722bf896294311" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b881912722bf896294311-1">1</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-2">2</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-3">3</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-4">4</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-5">5</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-6">6</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-7">7</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-8">8</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-9">9</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-10">10</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-11">11</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-12">12</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-13">13</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-14">14</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-15">15</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-16">16</div><div class="crayon-num" data-line="crayon-5b881912722bf896294311-17">17</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b881912722bf896294311-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-2"><span class="crayon-p">#include &lt;vector&gt;</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-3"><span class="crayon-p">#include &lt;algorithm&gt;</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-4">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722bf896294311-5"><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">print</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">&amp;i</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">' '</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-7"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-8">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722bf896294311-9"><span class="crayon-c">// Print contents of an array in C++ using std::for_each</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-10"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-11"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-13">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722bf896294311-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">for_each</span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">print</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-15">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722bf896294311-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722bf896294311-17"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/oTurXw" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/oTurXw" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p>
+</p></div><h2 class="tabtitle responsive-tabs__heading responsive-tabs__heading--active" tabindex="0">Class</h2>
+<div class="tabcontent responsive-tabs__panel responsive-tabs__panel--active" aria-hidden="false" role="tabpanel" aria-labelledby="tablist1-tab2" id="tablist1-panel2" style="display: block;">
+<p></p>
+<div id="crayon-5b881912722c6650610551" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b881912722c6650610551-1">1</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-2">2</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-3">3</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-4">4</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-5">5</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-6">6</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-7">7</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-8">8</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-9">9</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-10">10</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-11">11</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-12">12</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-13">13</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-14">14</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-15">15</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-16">16</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-17">17</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-18">18</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-19">19</div><div class="crayon-num" data-line="crayon-5b881912722c6650610551-20">20</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b881912722c6650610551-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-2"><span class="crayon-p">#include &lt;vector&gt;</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-3"><span class="crayon-p">#include &lt;algorithm&gt;</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-4">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722c6650610551-5"><span class="crayon-t">struct</span><span class="crayon-h"> </span><span class="crayon-e">myclass</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-6"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-t">operator</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">' '</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-10"><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-v">ob</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-11">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722c6650610551-12"><span class="crayon-c">// Print contents of an array in C++ using std::for_each</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-13"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-14"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-16">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722c6650610551-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">for_each</span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">ob</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-18">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722c6650610551-19"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722c6650610551-20"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/36da86" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/36da86" target="_blank" rel="nofollow">Run Code</a></span></p>
+<p>
+</p></div><h2 class="tabtitle responsive-tabs__heading" tabindex="0">Lambda</h2>
+<div class="tabcontent responsive-tabs__panel" aria-hidden="true" role="tabpanel" aria-labelledby="tablist1-tab3" id="tablist1-panel3" style="display: none;">
+<p></p>
+<div id="crayon-5b881912722cc419189217" class="crayon-syntax crayon-theme-familiar crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px !important; line-height: 17px !important; height: auto;">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+<table class="crayon-table" style="">
+<tbody><tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 17px !important;"><div class="crayon-num" data-line="crayon-5b881912722cc419189217-1">1</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-2">2</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-3">3</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-4">4</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-5">5</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-6">6</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-7">7</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-8">8</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-9">9</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-10">10</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-11">11</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-12">12</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-13">13</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-14">14</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-15">15</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-16">16</div><div class="crayon-num" data-line="crayon-5b881912722cc419189217-17">17</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 17px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b881912722cc419189217-1"><span class="crayon-p">#include &lt;iostream&gt;</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-2"><span class="crayon-p">#include &lt;vector&gt;</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-3"><span class="crayon-p">#include &lt;algorithm&gt;</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-4">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722cc419189217-5"><span class="crayon-c">// Print contents of an array in C++ using std::for_each</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-6"><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-7"><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-9">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722cc419189217-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">for_each</span><span class="crayon-sy">(</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-e">begin</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-st">end</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-sy">(</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">&amp;e</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">std</span><span class="crayon-o">::</span><span class="crayon-r">cout</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-v">e</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-s">" "</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-15">&nbsp;</div><div class="crayon-line" id="crayon-5b881912722cc419189217-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5b881912722cc419189217-17"><span class="crayon-sy">}</span></div></div></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<p></p>
+<p style="text-align: justify; padding-left: 70%;"><span style="color: #ff0000;"><a style="color: #006400;" href="http://ideone.com/plain/ADak1u" target="_blank" rel="nofollow">Download</a> &nbsp; <a style="color: #ff0000;" href="http://ideone.com/fork/ADak1u" target="_blank" rel="nofollow">Run Code</a></span></p>
+</div></div></div>
+<p><span style="color: #0000ff;"><strong><tt>Output: </tt></strong></span><br>
+<font face="consolas" size="3"><br>
+1 2 3 4 5<br>
+</font></p>
+<p>&nbsp;<br>
+<strong>Thanks for reading.</strong></p>
+<p>Please use <a href="http://ideone.com/" target="_blank" rel="noopener nofollow">ideone</a>&nbsp;or&nbsp;<a href="http://cpp.sh/" target="_blank" rel="nofollow">C++ Shell</a>&nbsp;or any other online compiler link to post code in comments.<br>
+Like us? Please spread the word and help us grow. Happy coding <img draggable="false" class="emoji" alt="🙂" src="./Print contents of an array in C++ - Techie Delight-class_files/1f642.svg"><br>
+&nbsp;</p>
+<hr>
+
+</div>
+
+<div style="float: none; margin:0px;">
+<br>
+<br>
+<div class="aicp">
+<script async="" src="./Print contents of an array in C++ - Techie Delight-class_files/f(1).txt"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8369054522516884" data-ad-slot="1802054651"></ins>
+<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+</div>
+<br><br>
+</div>
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0; padding: 0; clear: both;"></div><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-official sd-sharing"><h3 class="sd-title">Sharing is caring:</h3><div class="sd-content"><ul><li class="share-twitter"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="./Print contents of an array in C++ - Techie Delight-class_files/tweet_button.caf215585d416c5a9715098967b792e1.en.html" data-url="http://www.techiedelight.com/print-contents-array-cpp/"></iframe></li><li class="share-facebook"><div class="fb-share-button fb_iframe_widget" data-href="http://www.techiedelight.com/print-contents-array-cpp/" data-layout="button_count" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=249643311490&amp;container_width=0&amp;href=http%3A%2F%2Fwww.techiedelight.com%2Fprint-contents-array-cpp%2F&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey"><span style="vertical-align: bottom; width: 69px; height: 20px;"><iframe name="f277928c3e4549" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:share_button Facebook Social Plugin" src="./Print contents of an array in C++ - Techie Delight-class_files/share_button.html" style="border: none; visibility: visible; width: 69px; height: 20px;" class=""></iframe></span></div></li><li class="share-linkedin"><div class="linkedin_button"><span class="IN-widget" style="line-height: 1; vertical-align: baseline; display: inline-block; text-align: center;"><span style="padding: 0px !important; margin: 0px !important; text-indent: 0px !important; display: inline-block !important; vertical-align: baseline !important; font-size: 1px !important;"><span id="li_ui_li_gen_1535650023663_0"><a id="li_ui_li_gen_1535650023663_0-link" href="javascript:void(0);"><span id="li_ui_li_gen_1535650023663_0-logo">in</span><span id="li_ui_li_gen_1535650023663_0-title"><span id="li_ui_li_gen_1535650023663_0-mark"></span><span id="li_ui_li_gen_1535650023663_0-title-text">Share</span></span></a></span></span></span><script type="in/share+init" data-url="http://www.techiedelight.com/print-contents-array-cpp/" data-counter="right"></script></div></li><li class="share-pocket"><div class="pocket_button"><div class="pocket-btn"><iframe width="135" height="22" id="pocket-button-0" frameborder="0" allowtransparency="true" scrolling="NO" src="./Print contents of an array in C++ - Techie Delight-class_files/button.html"></iframe></div></div></li><li class="share-google-plus-1"><div class="googleplus1_button"><div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://www.techiedelight.com/print-contents-array-cpp/" id="___plusone_0"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" width="100%" id="I0_1535649972618" name="I0_1535649972618" src="./Print contents of an array in C++ - Techie Delight-class_files/fastbutton.html"></iframe></div></div></li><li class="share-end"></li></ul></div></div></div> </div>
+<footer class="entry-footer">
+<div class="entry-taxonomies">
+<span class="entry-taxonomy category">
+<span class="entry-taxonomy-text">Categories</span>
+<a href="http://www.techiedelight.com/Category/cplusplus/" rel="tag">C++</a> </span>
+</div>
+</footer>
+</div>
+</article>
+<nav class="post-navigation">
+<div class="nav-prev"><span class="screen-reader-text">Previous:</span> <a href="http://www.techiedelight.com/print-vector-reverse-order-cpp/" rel="prev">Print a vector in reverse order in C++</a></div> <div class="nav-next"><span class="screen-reader-text">Next:</span> <a href="http://www.techiedelight.com/print-contents-array-reverse-order-cpp/" rel="next">Print contents of an array in reverse order in C++</a></div></nav>
+<div class="wpdiscuz_top_clearing"></div>
+<div id="comments" class="comments-area">
+<div id="respond" style="width: 0;height: 0;clear: both;margin: 0;padding: 0;"></div>
+<h3 id="wc-comment-header">Leave a Reply</h3>
+<div id="wpcomm" class="wpdiscuz_unauth wpd-default">
+<div class="wc_social_plugin_wrapper">
+</div>
+<div class="wc-form-wrapper wc-main-form-wrapper" id="wc-main-form-wrapper-0_0">
+<div class="wpdiscuz-comment-message" style="display: block;"></div>
+<form class="wc_comm_form wc_main_comm_form" method="post" enctype="multipart/form-data">
+<div class="wc-field-comment">
+<div class="wc-field-avatararea">
+<img alt="avatar" src="./Print contents of an array in C++ - Techie Delight-class_files/saved_resource" srcset="http://1.gravatar.com/avatar/?s=128&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-64 photo avatar-default" height="64" width="64"> </div>
+<div class="wpdiscuz-item wc-field-textarea">
+<div class="wpdiscuz-textarea-wrap wpdiscuz-quicktags-enabled">
+<div id="qt_wc-textarea-0_0_toolbar" class="quicktags-toolbar"><input type="button" id="qt_wc-textarea-0_0_strong" class="ed_button button button-small" aria-label="Bold" value="b"><input type="button" id="qt_wc-textarea-0_0_em" class="ed_button button button-small" aria-label="Italic" value="i"><input type="button" id="qt_wc-textarea-0_0_link" class="ed_button button button-small" aria-label="Insert link" value="link"><input type="button" id="qt_wc-textarea-0_0_wpdiscuz_blockquot" class="ed_button button button-small" title="Blockquote" value="b-quote"><input type="button" id="qt_wc-textarea-0_0_wpdiscuz_underline" class="ed_button button button-small" title="Underline" value="U"><input type="button" id="qt_wc-textarea-0_0_ul" class="ed_button button button-small" aria-label="Bulleted list" value="ul"><input type="button" id="qt_wc-textarea-0_0_ol" class="ed_button button button-small" aria-label="Numbered list" value="ol"><input type="button" id="qt_wc-textarea-0_0_li" class="ed_button button button-small" aria-label="List item" value="li"><input type="button" id="qt_wc-textarea-0_0_wpdiscuz_code" class="ed_button button button-small" title="Code" value="code"><input type="button" id="qt_wc-textarea-0_0_wpdiscuz_spoiler" class="ed_button button button-small" title="Spoiler" value="spoiler"></div><textarea id="wc-textarea-0_0" placeholder="Start the discussion (Set your avatar at https://gravatar.com/)" required="" name="wc_comment" class="wc_comment wpd-field"></textarea>
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+ <div class="wc-form-footer" style="display: none;">
+<div class="wpd-form-row">
+<div class="wpd-form-col-left">
+<div class="wpdiscuz-item wpd-has-icon">
+<div class="wpd-field-icon"><i class="fas fa-user"></i></div>
+<input value="" required="required" class="wc_name wpd-field" type="text" name="wc_name" placeholder="Name" maxlength="25" pattern=".{2,25}" title="">
+</div>
+<div class="wpdiscuz-item wpd-has-icon">
+<div class="wpd-field-icon"><i class="fas fa-at"></i></div>
+<input value="" required="required" class="wc_email wpd-field" type="email" name="wc_email" placeholder="Email">
+</div>
+</div>
+<div class="wpd-form-col-right">
+<div class="wc-field-submit">
+<label class="wpd_label">
+<input id="wc_notification_new_comment-0_0" class="wc_notification_new_comment-0_0 wpd_label__checkbox" value="comment" type="checkbox" name="wpdiscuz_notification_type" checked="checked">
+<span class="wpd_label__text">
+<span class="wpd_label__check">
+<div class="wpd-field-desc"><i class="fas fa-bell wpdicon wpdicon-on"></i><span>Notify of new replies to this comment - (on)</span></div>
+<div class="wpd-field-desc"><i class="fas fa-bell-slash wpdicon wpdicon-off"></i><span>Notify of new replies to this comment - (off)</span></div>
+</span>
+</span>
+</label>
+<input class="wc_comm_submit wc_not_clicked button alt" type="submit" name="submit" value="Post Comment">
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="clearfix"></div>
+<input type="hidden" class="wpdiscuz_unique_id" value="0_0" name="wpdiscuz_unique_id">
+</form>
+</div>
+<div id="wpdiscuz_hidden_secondary_form" style="display: none;">
+<div class="wc-form-wrapper wc-secondary-form-wrapper" id="wc-secondary-form-wrapper-wpdiscuzuniqueid" style="display: none;">
+<div class="wpdiscuz-comment-message" style="display: block;"></div>
+<div class="wc-secondary-forms-social-content"></div>
+<form class="wc_comm_form wc-secondary-form-wrapper" method="post" enctype="multipart/form-data">
+<div class="wc-field-comment">
+<div class="wc-field-avatararea">
+<img alt="avatar" src="./Print contents of an array in C++ - Techie Delight-class_files/saved_resource(1)" srcset="http://2.gravatar.com/avatar/?s=96&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-48 photo avatar-default" height="48" width="48"> </div>
+<div class="wpdiscuz-item wc-field-textarea">
+<div class="wpdiscuz-textarea-wrap wpdiscuz-quicktags-enabled">
+<textarea id="wc-textarea-wpdiscuzuniqueid" placeholder="Join the discussion (Set your avatar at https://gravatar.com/)" required="" name="wc_comment" class="wc_comment wpd-field"></textarea>
+</div>
+</div>
+ <div class="clearfix"></div>
+</div>
+<div class="wc-form-footer" style="display: none;">
+<div class="wpd-form-row">
+<div class="wpd-form-col-left">
+<div class="wpdiscuz-item wpd-has-icon">
+<div class="wpd-field-icon"><i class="fas fa-user"></i></div>
+<input value="" required="required" class="wc_name wpd-field" type="text" name="wc_name" placeholder="Name" maxlength="25" pattern=".{2,25}" title="">
+</div>
+<div class="wpdiscuz-item wpd-has-icon">
+<div class="wpd-field-icon"><i class="fas fa-at"></i></div>
+<input value="" required="required" class="wc_email wpd-field" type="email" name="wc_email" placeholder="Email">
+</div>
+</div>
+<div class="wpd-form-col-right">
+<div class="wc-field-submit">
+<label class="wpd_label">
+<input id="wc_notification_new_comment-wpdiscuzuniqueid" class="wc_notification_new_comment-wpdiscuzuniqueid wpd_label__checkbox" value="comment" type="checkbox" name="wpdiscuz_notification_type" checked="checked">
+<span class="wpd_label__text">
+<span class="wpd_label__check">
+<div class="wpd-field-desc"><i class="fas fa-bell wpdicon wpdicon-on"></i><span>Notify of new replies to this comment - (on)</span></div>
+<div class="wpd-field-desc"><i class="fas fa-bell-slash wpdicon wpdicon-off"></i><span>Notify of new replies to this comment - (off)</span></div>
+</span>
+</span>
+</label>
+<input class="wc_comm_submit wc_not_clicked button alt" type="submit" name="submit" value="Post Comment">
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="clearfix"></div>
+<input type="hidden" class="wpdiscuz_unique_id" value="wpdiscuzuniqueid" name="wpdiscuz_unique_id">
+</form>
+</div>
+</div>
+<div class="wpdiscuz-front-actions">
+<div class="wpdiscuz-sbs-wrap">
+<span><i class="far fa-envelope" aria-hidden="true"></i>&nbsp; Subscribe &nbsp;<i class="fas fa-caret-down" aria-hidden="true"></i></span>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="wpdiscuz-subscribe-bar wpdiscuz-hidden">
+<form action="http://www.techiedelight.com/wp-admin/admin-ajax.php?action=addSubscription" method="post" id="wpdiscuz-subscribe-form">
+<div class="wpdiscuz-subscribe-form-intro">Notify of </div>
+<div class="wpdiscuz-subscribe-form-option" style="width:40%;">
+<select class="wpdiscuz_select" name="wpdiscuzSubscriptionType">
+<option value="post">new follow-up comments</option>
+<option value="all_comment">new replies to my comments</option>
+ </select>
+</div>
+<div class="wpdiscuz-item wpdiscuz-subscribe-form-email">
+<input class="email" type="email" name="wpdiscuzSubscriptionEmail" required="required" value="" placeholder="Email">
+</div>
+<div class="wpdiscuz-subscribe-form-button">
+<input id="wpdiscuz_subscription_button" type="submit" value="›" name="wpdiscuz_subscription_button">
+</div>
+<input type="hidden" id="wpdiscuz_subscribe_form_nonce" name="wpdiscuz_subscribe_form_nonce" value="85b375dea8"><input type="hidden" name="_wp_http_referer" value="/print-contents-array-cpp/"> <input type="hidden" value="14781" name="wpdiscuzSubscriptionPostId">
+</form>
+<div class="wpdiscuz_clear"></div>
+</div>
+<div id="wcThreadWrapper" class="wc-thread-wrapper">
+<div class="wpdiscuz-comment-pagination">
+</div>
+</div>
+<div class="wpdiscuz_clear"></div>
+</div>
+</div>
+<div id="wpdiscuz-loading-bar" class="wpdiscuz-loading-bar wpdiscuz-loading-bar-unauth"></div>
+</div>
+</main>
+<div id="sidebar-primary">
+<aside class="sidebar">
+<section id="text-7" class="widget widget_text"> <div class="textwidget"><script>
+  (function() {
+    var cx = '002657654577601496105:j-0oatr-bee';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<div>
+<div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 " style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id1" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="en" dir="ltr" spellcheck="false" placeholder="Custom Search" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none; background: url(&quot;http://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;"><span class="gscb_a" id="gs_cb50">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-tabsAreaInvisible"><div class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div><div class="gsc-tabsAreaInvisible"></div><div class="gsc-above-wrapper-area-invisible"><table cellspacing="0" cellpadding="0" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><table cellspacing="0" cellpadding="0" class="gsc-resultsHeader"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">Web</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="show one result">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="show more results">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="show all results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+</div>
+<br>
+<div class="aicp">
+<script async="" src="./Print contents of an array in C++ - Techie Delight-class_files/f(1).txt"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8369054522516884" data-ad-slot="7369837458"></ins>
+<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+</div></div>
+</section><section id="tag_cloud-3" class="widget widget_tag_cloud"><h3 class="widget-title">Browse</h3><div class="tagcloud"><a href="http://www.techiedelight.com/Tags/adobe/" class="tag-cloud-link tag-link-18 tag-link-position-1" style="font-size: 15.931034482759pt;" aria-label="Adobe (27 items)">Adobe</a>
+<a href="http://www.techiedelight.com/Tags/algorithm/" class="tag-cloud-link tag-link-19 tag-link-position-2" style="font-size: 17.793103448276pt;" aria-label="Algorithm (51 items)">Algorithm</a>
+<a href="http://www.techiedelight.com/Tags/amazon/" class="tag-cloud-link tag-link-20 tag-link-position-3" style="font-size: 20.275862068966pt;" aria-label="Amazon (120 items)">Amazon</a>
+<a href="http://www.techiedelight.com/Tags/bfs/" class="tag-cloud-link tag-link-21 tag-link-position-4" style="font-size: 14.068965517241pt;" aria-label="BFS (14 items)">BFS</a>
+<a href="http://www.techiedelight.com/Tags/binary-search/" class="tag-cloud-link tag-link-79 tag-link-position-5" style="font-size: 14.206896551724pt;" aria-label="Binary Search (15 items)">Binary Search</a>
+<a href="http://www.techiedelight.com/Tags/bit-hacks/" class="tag-cloud-link tag-link-23 tag-link-position-6" style="font-size: 16.344827586207pt;" aria-label="Bit Hacks (31 items)">Bit Hacks</a>
+<a href="http://www.techiedelight.com/Tags/bst/" class="tag-cloud-link tag-link-94 tag-link-position-7" style="font-size: 8pt;" aria-label="BST (1 item)">BST</a>
+<a href="http://www.techiedelight.com/Tags/collections/" class="tag-cloud-link tag-link-83 tag-link-position-8" style="font-size: 22pt;" aria-label="Collections (212 items)">Collections</a>
+<a href="http://www.techiedelight.com/Tags/dfs/" class="tag-cloud-link tag-link-29 tag-link-position-9" style="font-size: 15.310344827586pt;" aria-label="DFS (22 items)">DFS</a>
+<a href="http://www.techiedelight.com/Tags/fifo/" class="tag-cloud-link tag-link-31 tag-link-position-10" style="font-size: 16.48275862069pt;" aria-label="FIFO (33 items)">FIFO</a>
+<a href="http://www.techiedelight.com/Tags/generics/" class="tag-cloud-link tag-link-92 tag-link-position-11" style="font-size: 17.793103448276pt;" aria-label="Generics (51 items)">Generics</a>
+<a href="http://www.techiedelight.com/Tags/google/" class="tag-cloud-link tag-link-34 tag-link-position-12" style="font-size: 12.48275862069pt;" aria-label="Google (8 items)">Google</a>
+<a href="http://www.techiedelight.com/Tags/greedy/" class="tag-cloud-link tag-link-35 tag-link-position-13" style="font-size: 12.48275862069pt;" aria-label="Greedy (8 items)">Greedy</a>
+<a href="http://www.techiedelight.com/Tags/guava/" class="tag-cloud-link tag-link-90 tag-link-position-14" style="font-size: 19.034482758621pt;" aria-label="Guava (79 items)">Guava</a>
+<a href="http://www.techiedelight.com/Tags/hashing/" class="tag-cloud-link tag-link-36 tag-link-position-15" style="font-size: 18.965517241379pt;" aria-label="Hashing (76 items)">Hashing</a>
+<a href="http://www.techiedelight.com/Tags/intro/" class="tag-cloud-link tag-link-40 tag-link-position-16" style="font-size: 17.034482758621pt;" aria-label="Intro (40 items)">Intro</a>
+<a href="http://www.techiedelight.com/Tags/java8/" class="tag-cloud-link tag-link-86 tag-link-position-17" style="font-size: 21.172413793103pt;" aria-label="Java 8 (162 items)">Java 8</a>
+<a href="http://www.techiedelight.com/Tags/java9/" class="tag-cloud-link tag-link-91 tag-link-position-18" style="font-size: 13.379310344828pt;" aria-label="Java 9 (11 items)">Java 9</a>
+<a href="http://www.techiedelight.com/Tags/json/" class="tag-cloud-link tag-link-87 tag-link-position-19" style="font-size: 11.310344827586pt;" aria-label="JSON (5 items)">JSON</a>
+<a href="http://www.techiedelight.com/Tags/lambda/" class="tag-cloud-link tag-link-88 tag-link-position-20" style="font-size: 18.48275862069pt;" aria-label="Lambda (65 items)">Lambda</a>
+<a href="http://www.techiedelight.com/Tags/lcs/" class="tag-cloud-link tag-link-41 tag-link-position-21" style="font-size: 12.827586206897pt;" aria-label="LCS (9 items)">LCS</a>
+<a href="http://www.techiedelight.com/Tags/lifo/" class="tag-cloud-link tag-link-42 tag-link-position-22" style="font-size: 16.551724137931pt;" aria-label="LIFO (34 items)">LIFO</a>
+<a href="http://www.techiedelight.com/Tags/maze/" class="tag-cloud-link tag-link-43 tag-link-position-23" style="font-size: 12.48275862069pt;" aria-label="Maze (8 items)">Maze</a>
+<a href="http://www.techiedelight.com/Tags/memoization/" class="tag-cloud-link tag-link-44 tag-link-position-24" style="font-size: 16.206896551724pt;" aria-label="Memoized (30 items)">Memoized</a>
+<a href="http://www.techiedelight.com/Tags/microsoft/" class="tag-cloud-link tag-link-45 tag-link-position-25" style="font-size: 17.51724137931pt;" aria-label="Microsoft (47 items)">Microsoft</a>
+<a href="http://www.techiedelight.com/Tags/mit/" class="tag-cloud-link tag-link-46 tag-link-position-26" style="font-size: 9.2413793103448pt;" aria-label="MIT (2 items)">MIT</a>
+<a href="http://www.techiedelight.com/Tags/must-know/" class="tag-cloud-link tag-link-47 tag-link-position-27" style="font-size: 17.103448275862pt;" aria-label="Must Know (41 items)">Must Know</a>
+<a href="http://www.techiedelight.com/Tags/naive/" class="tag-cloud-link tag-link-48 tag-link-position-28" style="font-size: 17.793103448276pt;" aria-label="Naive (51 items)">Naive</a>
+<a href="http://www.techiedelight.com/Tags/priority-queue/" class="tag-cloud-link tag-link-66 tag-link-position-29" style="font-size: 14.206896551724pt;" aria-label="Priority Queue (15 items)">Priority Queue</a>
+<a href="http://www.techiedelight.com/Tags/probability/" class="tag-cloud-link tag-link-97 tag-link-position-30" style="font-size: 12.827586206897pt;" aria-label="Probability (9 items)">Probability</a>
+<a href="http://www.techiedelight.com/Tags/recursion/" class="tag-cloud-link tag-link-51 tag-link-position-31" style="font-size: 21.931034482759pt;" aria-label="Recursive (208 items)">Recursive</a>
+<a href="http://www.techiedelight.com/Tags/searching/" class="tag-cloud-link tag-link-72 tag-link-position-32" style="font-size: 16.827586206897pt;" aria-label="Searching (37 items)">Searching</a>
+<a href="http://www.techiedelight.com/Tags/sliding-window/" class="tag-cloud-link tag-link-52 tag-link-position-33" style="font-size: 13.379310344828pt;" aria-label="Sliding Window (11 items)">Sliding Window</a>
+<a href="http://www.techiedelight.com/Tags/stl/" class="tag-cloud-link tag-link-54 tag-link-position-34" style="font-size: 21.241379310345pt;" aria-label="STL (165 items)">STL</a>
+<a href="http://www.techiedelight.com/Tags/streams/" class="tag-cloud-link tag-link-85 tag-link-position-35" style="font-size: 20.827586206897pt;" aria-label="Streams (143 items)">Streams</a>
+<a href="http://www.techiedelight.com/Tags/tabulation/" class="tag-cloud-link tag-link-55 tag-link-position-36" style="font-size: 17.379310344828pt;" aria-label="Tabulation (45 items)">Tabulation</a>
+<a href="http://www.techiedelight.com/Tags/tricky/" class="tag-cloud-link tag-link-74 tag-link-position-37" style="font-size: 16.758620689655pt;" aria-label="Tricky (36 items)">Tricky</a>
+<a href="http://www.techiedelight.com/Tags/trie/" class="tag-cloud-link tag-link-57 tag-link-position-38" style="font-size: 13.103448275862pt;" aria-label="Trie (10 items)">Trie</a></div>
+</section><section id="text-28" class="widget widget_text"> <div class="textwidget"><div class="aicp">
+<script async="" src="./Print contents of an array in C++ - Techie Delight-class_files/f(1).txt"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8369054522516884" data-ad-slot="5893104250"></ins>
+<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+</div></div>
+</section><section id="blog_subscription-3" class="widget jetpack_subscription_widget"><h3 class="widget-title">Subscribe to new posts</h3>
+<form action="http://www.techiedelight.com/print-contents-array-cpp/#" method="post" accept-charset="utf-8" id="subscribe-blog-blog_subscription-3">
+<div id="subscribe-text"><p>Subscribe to receive notifications of new posts by email.</p>
+</div> <p id="subscribe-email">
+<label id="jetpack-subscribe-label" for="subscribe-field-blog_subscription-3" style="clip: rect(1px, 1px, 1px, 1px); position: absolute; height: 1px; width: 1px; overflow: hidden;">
+Email Address </label>
+<input type="email" name="email" required="required" class="required" value="" id="subscribe-field-blog_subscription-3" placeholder="Email Address">
+</p>
+<p id="subscribe-submit">
+<input type="hidden" name="action" value="subscribe">
+<input type="hidden" name="source" value="http://www.techiedelight.com/print-contents-array-cpp/">
+<input type="hidden" name="sub-type" value="widget">
+<input type="hidden" name="redirect_fragment" value="blog_subscription-3">
+<input type="submit" value="Subscribe" name="jetpack_subscriptions_widget">
+</p>
+</form>
+<script>
+			/*
+			Custom functionality for safari and IE
+			 */
+			(function( d ) {
+				// In case the placeholder functionality is available we remove labels
+				if ( ( 'placeholder' in d.createElement( 'input' ) ) ) {
+					var label = d.querySelector( 'label[for=subscribe-field-blog_subscription-3]' );
+						label.style.clip 	 = 'rect(1px, 1px, 1px, 1px)';
+						label.style.position = 'absolute';
+						label.style.height   = '1px';
+						label.style.width    = '1px';
+						label.style.overflow = 'hidden';
+				}
+
+				// Make sure the email value is filled in before allowing submit
+				var form = d.getElementById('subscribe-blog-blog_subscription-3'),
+					input = d.getElementById('subscribe-field-blog_subscription-3'),
+					handler = function( event ) {
+						if ( '' === input.value ) {
+							input.focus();
+
+							if ( event.preventDefault ){
+								event.preventDefault();
+							}
+
+							return false;
+						}
+					};
+
+				if ( window.addEventListener ) {
+					form.addEventListener( 'submit', handler, false );
+				} else {
+					form.attachEvent( 'onsubmit', handler );
+				}
+			})( document );
+			</script>
+</section><section id="text-36" class="widget widget_text"> <div class="textwidget"><div class="aicp">
+<script async="" src="./Print contents of an array in C++ - Techie Delight-class_files/f(1).txt"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-8369054522516884" data-ad-slot="5084022257"></ins>
+<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+</div></div>
+</section><section id="text-34" class="widget widget_text"> <div class="textwidget"><div class="aicp">
+<script async="" src="./Print contents of an array in C++ - Techie Delight-class_files/f(1).txt"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8369054522516884" data-ad-slot="8846570657"></ins>
+<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+</div></div>
+</section><section id="text-55" class="widget widget_text"> <div class="textwidget"><div class="aicp">
+<script async="" src="./Print contents of an array in C++ - Techie Delight-class_files/f(1).txt"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-8369054522516884" data-ad-slot="6371855059"></ins>
+<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+</div></div>
+</section>
+</aside>
+</div>
+</div>
+</div>
+</div>
+<footer id="footer">
+<hr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.techiedelight.com/">Techie Delight</a> © 2018&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.techiedelight.com/privacy-policy/">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.techiedelight.com/contact/">Contact us</a><br><br>
+</footer>
+<style>
+body{
+-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none 
+}
+</style>
+<script>
+ // Disable Right Click
+ // document.oncontextmenu = new Function("return false;");
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-88359968-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</div>
+<a rel="nofollow" style="display:none;" href="http://www.techiedelight.com/?blackhole=6df54f69da" title="Blackhole for Bad Bots">Do NOT follow this link or you will be banned from the site!</a>
+<div style="display:none">
+</div>
+<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"http:\/\/www.techiedelight.com\/print-contents-array-cpp\/":14781};
+	</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Print contents of an array in C++ - Techie Delight-class_files/0P3pVtbsZok.html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=249643311490&version=v2.3'; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+<script>
+			jQuery( document.body ).on( 'post-load', function() {
+				if ( 'undefined' !== typeof FB ) {
+					FB.XFBML.parse();
+				}
+			} );
+			</script>
+<script type="text/javascript">
+			jQuery( document ).ready( function() {
+				jQuery.getScript( 'https://platform.linkedin.com/in.js?async=true', function success() {
+					IN.init();
+				});
+			});
+			jQuery( document.body ).on( 'post-load', function() {
+				if ( typeof IN != 'undefined' )
+					IN.parse();
+			});
+			</script> <script>
+		// Don't use Pocket's default JS as it we need to force init new Pocket share buttons loaded via JS.
+		function jetpack_sharing_pocket_init() {
+			jQuery.getScript( 'https://widgets.getpocket.com/v1/j/btn.js?v=1' );
+		}
+		jQuery( document ).ready( jetpack_sharing_pocket_init );
+		jQuery( document.body ).on( 'post-load', jetpack_sharing_pocket_init );
+		</script>
+<script>
+			function renderGooglePlus1() {
+				if ( 'undefined' === typeof gapi ) {
+					return;
+				}
+
+				jQuery( '.g-plus' ).each(function() {
+					var $button = jQuery( this );
+
+					if ( ! $button.data( 'gplus-rendered' ) ) {
+						gapi.plusone.render( this, {
+							href: $button.attr( 'data-href' ),
+							size: $button.attr( 'data-size' ),
+							annotation: $button.attr( 'data-annotation' )
+						});
+
+						$button.data( 'gplus-rendered', true );
+					}
+				});
+			}
+
+			(function() {
+				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				po.src = 'https://apis.google.com/js/platform.js';
+				po.innerHTML = '{"parsetags": "explicit"}';
+				po.onload = renderGooglePlus1;
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			})();
+
+			jQuery( document.body ).on( 'post-load', renderGooglePlus1 );
+			</script>
+<link rel="stylesheet" id="tabby-css" href="./Print contents of an array in C++ - Techie Delight-class_files/tabby.css" type="text/css" media="all">
+<link rel="stylesheet" id="tabby-print-css" href="./Print contents of an array in C++ - Techie Delight-class_files/tabby-print.css" type="text/css" media="all">
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/comment-reply.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/photon.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"http:\/\/www.techiedelight.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/scripts.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/devicepx-jetpack.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/jquery.form.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var quicktagsL10n = {"closeAllOpenTags":"Close all open tags","closeTags":"close tags","enterURL":"Enter the URL","enterImageURL":"Enter the URL of the image","enterImageDescription":"Enter a description of the image","textdirection":"text direction","toggleTextdirection":"Toggle Editor Text Direction","dfw":"Distraction-free writing mode","strong":"Bold","strongClose":"Close bold tag","em":"Italic","emClose":"Close italic tag","link":"Insert link","blockquote":"Blockquote","blockquoteClose":"Close blockquote tag","del":"Deleted text (strikethrough)","delClose":"Close deleted text tag","ins":"Inserted text","insClose":"Close inserted text tag","image":"Insert image","ul":"Bulleted list","ulClose":"Close bulleted list tag","ol":"Numbered list","olClose":"Close numbered list tag","li":"List item","liClose":"Close list item tag","code":"Code","codeClose":"Close code tag","more":"Insert Read More tag"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/quicktags.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/wpdiscuz-quictags.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/wpdiscuz-fb.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/js.cookie.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/jquery.iframetracker.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var AICP = {"ajaxurl":"http:\/\/www.techiedelight.com\/wp-admin\/admin-ajax.php","nonce":"cccd70dcda","ip":"200.55.184.10","clickLimit":"1","clickCounterCookieExp":"48","banDuration":"7","countryBlockCheck":"No","banCountryList":"RU"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/aicp.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/jquery.fitvids.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/jquery.theme.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/eu-cookie-law.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/wp-embed.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/tabby.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/sharing.min.js.descarga" defer="" onload=""></script>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+</script>
+<script>jQuery(document).ready(function($) { RESPONSIVEUI.responsiveTabs(); })</script>
+<script type="text/javascript" src="./Print contents of an array in C++ - Techie Delight-class_files/e-201835.js.descarga" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:6.0',blog:'120308644',post:'14781',tz:'5.5',srv:'www.techiedelight.com'} ]);
+	_stq.push([ 'clickTrackerInit', '120308644', '14781' ]);
+</script>
+
+<section id="eu_cookie_law_widget-3" class="widget widget_eu_cookie_law_widget" style="display: block;"><div class="hide-on-button" data-hide-timeout="30" id="eu-cookie-law">
+<form method="post">
+<input type="submit" value="Close and accept" class="accept">
+</form>
+This website uses cookies to improve your experience. By using this site you agree to the use of cookies, our policies, copyright terms and other conditions.
+<a href="http://www.techiedelight.com/privacy-policy/">
+Read our Privacy Policy	</a>
+</div>
+</section><div style="position:fixed; top:0; left:0; overflow:hidden;"><input style="position:absolute; left:-300px;" type="text" value="" id="focus_retriever" readonly="true"></div><iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Print contents of an array in C++ - Techie Delight-class_files/widget_iframe.caf215585d416c5a9715098967b792e1.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Print contents of an array in C++ - Techie Delight-class_files/saved_resource.html"></iframe><table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 197px; display: none; top: 239px; left: 888px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table><div id="download_plus_animation"></div></body></html>
