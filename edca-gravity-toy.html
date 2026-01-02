@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>EDCA Allocation Density Gravity — Toy Demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 16px; }
+    .row { display: flex; gap: 20px; align-items: flex-start; }
+    .panel { min-width: 280px; }
+    canvas { border: 1px solid #ccc; border-radius: 10px; }
+    label { display: block; margin: 10px 0 4px; font-size: 14px; }
+    input[type="range"] { width: 260px; }
+    .small { font-size: 12px; color: #555; line-height: 1.35; }
+    button { margin-right: 8px; padding: 6px 10px; border-radius: 8px; border: 1px solid #ccc; cursor: pointer; }
+    .stats { margin-top: 10px; font-size: 13px; color: #333; }
+    code { background: #f6f6f6; padding: 2px 5px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+<h2>EDCA Allocation Density → Emergent “Gravity” (Toy Demo)</h2>
+<p class="small">
+This toy illustrates the EDCA feedback loop:
+<b>energy spot collapses preferentially where allocation density is high</b> → that region becomes even more allocated → future collapses are biased there.
+We visualize allocation density <code>ρ</code> and potential <code>Φ = −γ ln ρ</code>.
+</p>
+
+<div class="row">
+  <div>
+    <canvas id="c" width="520" height="520"></canvas>
+  </div>
+
+  <div class="panel">
+    <button id="start">Start</button>
+    <button id="step">Step</button>
+    <button id="reset">Reset</button>
+
+    <label>γ (allocation preference exponent): <span id="gammaVal"></span></label>
+    <input id="gamma" type="range" min="0" max="6" step="0.1" value="2.0" />
+
+    <label>λ (distance bias): <span id="lambdaVal"></span></label>
+    <input id="lambda" type="range" min="0" max="2" step="0.05" value="0.4" />
+
+    <label>Δρ per collapse (allocation increment): <span id="drhoVal"></span></label>
+    <input id="drho" type="range" min="0.0" max="0.2" step="0.01" value="0.05" />
+
+    <label>Visualization mode</label>
+    <select id="mode">
+      <option value="rho">Show allocation density ρ</option>
+      <option value="phi">Show potential Φ = −γ ln ρ</option>
+      <option value="both">Show ρ with Φ contour overlay</option>
+    </select>
+
+    <div class="stats" id="stats"></div>
+
+    <p class="small">
+      <b>How to read:</b><br/>
+      • Bright regions in <code>ρ</code> become “preferred” collapse zones (site readiness preference).<br/>
+      • The spot tends to “fall” into those regions over time — an emergent gravity-like attraction.<br/>
+      • Increasing <code>γ</code> makes the attraction stronger.<br/>
+      • Increasing <code>λ</code> makes the spot prefer nearer points more strongly (more local behavior).
+    </p>
+  </div>
+</div>
+
+<script>
+(() => {
+  // --- Grid settings
+  const N = 80;                     // grid size
+  const rho0 = 0.25;                // baseline allocation density
+  let rho = new Float32Array(N*N);  // allocation density field
+
+  // Spot state
+  let spotX = Math.floor(N/2);
+  let spotY = Math.floor(N/2);
+
+  // UI references
+  const canvas = document.getElementById("c");
+  const ctx = canvas.getContext("2d");
+  const gammaEl = document.getElementById("gamma");
+  const lambdaEl = document.getElementById("lambda");
+  const drhoEl = document.getElementById("drho");
+  const gammaVal = document.getElementById("gammaVal");
+  const lambdaVal = document.getElementById("lambdaVal");
+  const drhoVal = document.getElementById("drhoVal");
+  const modeEl = document.getElementById("mode");
+  const statsEl = document.getElementById("stats");
+
+  // Control
+  let running = false;
+  let steps = 0;
+  let interval = null;
+
+  function idx(x,y) { return y*N + x; }
+
+  function reset() {
+    rho.fill(rho0);
+    // seed a small "hot region" so the effect is visible quickly:
+    // This is like an initial region where more allocation already exists.
+    for (let y = 34; y < 46; y++) {
+      for (let x = 34; x < 46; x++) {
+        rho[idx(x,y)] = 0.9;
+      }
+    }
+    spotX = Math.floor(N/2);
+    spotY = Math.floor(N/2);
+    steps = 0;
+    draw();
+    updateStats();
+  }
+
+  // Compute probability proportional to rho^gamma * exp(-lambda * distance)
+  // and sample one collapse target.
+  function chooseCollapseSite(gamma, lambda) {
+    // Candidate set: for this toy, we let every cell be a "candidate"
+    // but you can restrict it (e.g. only where readiness holds).
+    // This is only to show bias dynamics.
+    let weights = new Float64Array(N*N);
+    let sum = 0;
+
+    for (let y = 0; y < N; y++) {
+      for (let x = 0; x < N; x++) {
+        const r = rho[idx(x,y)];
+        const dx = x - spotX;
+        const dy = y - spotY;
+        const d = Math.sqrt(dx*dx + dy*dy);
+
+        // weight = rho^gamma * exp(-lambda d)
+        const w = Math.pow(Math.max(r, 1e-6), gamma) * Math.exp(-lambda * d);
+        weights[idx(x,y)] = w;
+        sum += w;
+      }
+    }
+
+    // sample
+    let u = Math.random() * sum;
+    for (let i = 0; i < weights.length; i++) {
+      u -= weights[i];
+      if (u <= 0) {
+        const x = i % N;
+        const y = Math.floor(i / N);
+        return { x, y };
+      }
+    }
+    return { x: spotX, y: spotY };
+  }
+
+  function stepOnce() {
+    const gamma = parseFloat(gammaEl.value);
+    const lambda = parseFloat(lambdaEl.value);
+    const drho = parseFloat(drhoEl.value);
+
+    // Collapse selection (EDCA-inspired bias)
+    const target = chooseCollapseSite(gamma, lambda);
+
+    // Spot "collapses" onto target and (in EDCA) may trigger transition.
+    // Here we only model allocation reinforcement:
+    const i = idx(target.x, target.y);
+    rho[i] = Math.min(1.0, rho[i] + drho);
+
+    // Move the spot center to that collapse point (new expansion origin)
+    spotX = target.x;
+    spotY = target.y;
+
+    steps++;
+    draw();
+    updateStats();
+  }
+
+  function draw() {
+    const mode = modeEl.value;
+    const gamma = parseFloat(gammaEl.value);
+    const cellSize = canvas.width / N;
+
+    // Compute min/max for scaling
+    let minR = 1e9, maxR = -1e9;
+    for (let i = 0; i < rho.length; i++) {
+      minR = Math.min(minR, rho[i]);
+      maxR = Math.max(maxR, rho[i]);
+    }
+
+    // Draw main field
+    for (let y = 0; y < N; y++) {
+      for (let x = 0; x < N; x++) {
+        const r = rho[idx(x,y)];
+
+        let v = 0;
+        if (mode === "rho" || mode === "both") {
+          // scale rho
+          v = (r - minR) / (maxR - minR + 1e-9);
+        } else {
+          // potential phi = -gamma ln rho (scaled)
+          const phi = -gamma * Math.log(Math.max(r, 1e-6));
+          // normalize phi for display
+          // phi tends to be larger where rho is smaller.
+          // We'll compute a simple capped scaling:
+          v = Math.min(1, phi / 8);
+        }
+
+        // grayscale
+        const g = Math.floor(255 * v);
+        ctx.fillStyle = `rgb(${g},${g},${g})`;
+        ctx.fillRect(x*cellSize, y*cellSize, cellSize, cellSize);
+      }
+    }
+
+    // Optional: draw simple phi contours if mode = both
+    if (mode === "both") {
+      ctx.globalAlpha = 0.22;
+      ctx.strokeStyle = "#ff0000";
+      for (let k = 1; k <= 6; k++) {
+        const level = k / 7;
+        // draw crude contours by highlighting cells near a chosen rho band
+        for (let y = 0; y < N; y++) {
+          for (let x = 0; x < N; x++) {
+            const r = rho[idx(x,y)];
+            const v = (r - minR) / (maxR - minR + 1e-9);
+            if (Math.abs(v - level) < 0.02) {
+              ctx.strokeRect(x*cellSize, y*cellSize, cellSize, cellSize);
+            }
+          }
+        }
+      }
+      ctx.globalAlpha = 1.0;
+    }
+
+    // Draw spot
+    ctx.fillStyle = "#00aaff";
+    ctx.beginPath();
+    ctx.arc((spotX+0.5)*cellSize, (spotY+0.5)*cellSize, Math.max(3, cellSize*0.6), 0, Math.PI*2);
+    ctx.fill();
+
+    // Draw border
+    ctx.strokeStyle = "#333";
+    ctx.strokeRect(0,0,canvas.width,canvas.height);
+  }
+
+  function updateStats() {
+    const gamma = parseFloat(gammaEl.value);
+    const lambda = parseFloat(lambdaEl.value);
+    const drho = parseFloat(drhoEl.value);
+
+    // Report local values
+    const localRho = rho[idx(spotX, spotY)];
+    const phi = -gamma * Math.log(Math.max(localRho, 1e-6));
+
+    statsEl.innerHTML = `
+      <b>Steps:</b> ${steps}<br/>
+      <b>Spot position:</b> (${spotX}, ${spotY})<br/>
+      <b>Local ρ:</b> ${localRho.toFixed(3)}<br/>
+      <b>Local Φ = −γ ln ρ:</b> ${phi.toFixed(3)}<br/>
+      <b>γ:</b> ${gamma.toFixed(2)} &nbsp; <b>λ:</b> ${lambda.toFixed(2)} &nbsp; <b>Δρ:</b> ${drho.toFixed(2)}
+    `;
+  }
+
+  function setUIValues() {
+    gammaVal.textContent = gammaEl.value;
+    lambdaVal.textContent = lambdaEl.value;
+    drhoVal.textContent = drhoEl.value;
+  }
+
+  // --- UI events
+  document.getElementById("start").addEventListener("click", () => {
+    running = !running;
+    document.getElementById("start").textContent = running ? "Pause" : "Start";
+    if (running) {
+      interval = setInterval(stepOnce, 60);
+    } else {
+      clearInterval(interval);
+    }
+  });
+
+  document.getElementById("step").addEventListener("click", stepOnce);
+  document.getElementById("reset").addEventListener("click", () => {
+    running = false;
+    document.getElementById("start").textContent = "Start";
+    clearInterval(interval);
+    reset();
+  });
+
+  [gammaEl, lambdaEl, drhoEl, modeEl].forEach(el => {
+    el.addEventListener("input", () => {
+      setUIValues();
+      draw();
+      updateStats();
+    });
+  });
+
+  // Initialize
+  setUIValues();
+  reset();
+})();
+</script>
+
+</body>
+</html>
