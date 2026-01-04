@@ -1,0 +1,168 @@
+<div style="max-width:820px;margin:0 auto;padding:14px;border:1px solid #e5e7eb;border-radius:14px;">
+  <h3 style="margin-top:0;">Interactive EDCA Pair Toy (Approach B)</h3>
+  <p style="margin:0 0 12px 0;">
+    Choose measurement settings <b>a</b> and <b>b</b>. Press <b>Run Trial</b> to emit a correlated spot pair.
+    You can also <b>force A</b> (teaching-only) to see how B becomes conditionally correlated.
+  </p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div style="padding:10px;border:1px solid #e5e7eb;border-radius:12px;">
+      <b>Station A</b><br/>
+      Setting a:
+      <select id="aSel">
+        <option value="0">a0 (0°)</option>
+        <option value="90">a1 (90°)</option>
+      </select><br/><br/>
+      Force A outcome (optional):
+      <select id="forceA">
+        <option value="">(none)</option>
+        <option value="+1">+1</option>
+        <option value="-1">-1</option>
+      </select><br/><br/>
+      Outcome A: <span id="outA" style="font-weight:700;">—</span>
+    </div>
+
+    <div style="padding:10px;border:1px solid #e5e7eb;border-radius:12px;">
+      <b>Station B</b><br/>
+      Setting b:
+      <select id="bSel">
+        <option value="45">b0 (45°)</option>
+        <option value="-45">b1 (-45°)</option>
+      </select><br/><br/>
+      Outcome B: <span id="outB" style="font-weight:700;">—</span><br/><br/>
+      Conditional expectation ⟨B | A⟩: <span id="cond" style="font-weight:700;">—</span>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+    <button id="runBtn" style="padding:10px 14px;border-radius:12px;border:1px solid #111827;background:#111827;color:#fff;font-weight:700;">
+      Run Trial
+    </button>
+    <button id="resetBtn" style="padding:10px 14px;border-radius:12px;border:1px solid #111827;background:#fff;color:#111827;font-weight:700;">
+      Reset Stats
+    </button>
+  </div>
+
+  <div style="margin-top:14px;padding:10px;border-radius:12px;background:#f9fafb;border:1px solid #e5e7eb;">
+    <div><b>CHSH Stats (running)</b></div>
+    <div style="font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;font-size:14px;">
+      Trials: <span id="nT">0</span><br/>
+      E(a0,b0): <span id="E00">—</span><br/>
+      E(a0,b1): <span id="E01">—</span><br/>
+      E(a1,b0): <span id="E10">—</span><br/>
+      E(a1,b1): <span id="E11">—</span><br/>
+      <b>S =</b> <span id="Sval">—</span>
+    </div>
+  </div>
+
+  <p style="margin-top:10px;font-size:14px;color:#374151;">
+    Model: hidden spin angle s ~ Uniform[0,360). Pair has sA = s, sB = s+180°.
+    Outcome is sign(cos(s - setting)). This yields a smooth correlation curve. For teaching, forcing A shows conditional correlation.
+  </p>
+</div>
+
+<script>
+(function(){
+  // settings map to degrees
+  const aSel = document.getElementById("aSel");
+  const bSel = document.getElementById("bSel");
+  const forceA = document.getElementById("forceA");
+  const outA = document.getElementById("outA");
+  const outB = document.getElementById("outB");
+  const cond = document.getElementById("cond");
+
+  const nT = document.getElementById("nT");
+  const E00 = document.getElementById("E00");
+  const E01 = document.getElementById("E01");
+  const E10 = document.getElementById("E10");
+  const E11 = document.getElementById("E11");
+  const Sval = document.getElementById("Sval");
+
+  // stats table for (ai,bj): sumAB, count
+  const stats = {
+    "0,45": {sum:0, n:0},
+    "0,-45": {sum:0, n:0},
+    "90,45": {sum:0, n:0},
+    "90,-45": {sum:0, n:0}
+  };
+
+  function sign(x){ return x >= 0 ? +1 : -1; }
+  function deg2rad(d){ return d*Math.PI/180; }
+
+  // outcome rule (toy):
+  // A = sign(cos(s - a)), B = sign(cos((s+180) - b))
+  // This produces anti-correlation when a=b.
+  function outcomeA(s,a){ return sign(Math.cos(deg2rad(s-a))); }
+  function outcomeB(s,b){ return sign(Math.cos(deg2rad((s+180)-b))); }
+
+  function updateStats(){
+    const keys = Object.keys(stats);
+    let totalN = 0;
+    keys.forEach(k => totalN += stats[k].n);
+    nT.textContent = totalN;
+
+    function E(a,b){
+      const k = `${a},${b}`;
+      if(stats[k].n === 0) return null;
+      return stats[k].sum / stats[k].n;
+    }
+    const e00 = E(0,45), e01 = E(0,-45), e10 = E(90,45), e11 = E(90,-45);
+    E00.textContent = e00===null ? "—" : e00.toFixed(3);
+    E01.textContent = e01===null ? "—" : e01.toFixed(3);
+    E10.textContent = e10===null ? "—" : e10.toFixed(3);
+    E11.textContent = e11===null ? "—" : e11.toFixed(3);
+
+    if(e00!==null && e01!==null && e10!==null && e11!==null){
+      const S = e00 + e01 + e10 - e11;
+      Sval.textContent = S.toFixed(3);
+    } else {
+      Sval.textContent = "—";
+    }
+  }
+
+  function runTrial(){
+    const a = parseFloat(aSel.value);
+    const b = parseFloat(bSel.value);
+    const s = Math.random()*360;
+
+    let A = outcomeA(s,a);
+    if(forceA.value){
+      A = parseInt(forceA.value,10);
+    }
+    const B = outcomeB(s,b);
+
+    outA.textContent = (A>0?"+1":"-1");
+    outB.textContent = (B>0?"+1":"-1");
+
+    // conditional expectation of B given forced A is computed by running a tiny Monte Carlo
+    // (teaching-only; not part of EDCA itself)
+    let sum = 0, N = 2000;
+    for(let i=0;i<N;i++){
+      const ss = Math.random()*360;
+      let AA = outcomeA(ss,a);
+      if(forceA.value){
+        AA = parseInt(forceA.value,10);
+      }
+      const BB = outcomeB(ss,b);
+      if(AA === A) sum += BB;
+    }
+    cond.textContent = (sum/N).toFixed(3);
+
+    const key = `${a},${b}`;
+    stats[key].sum += (A*B);
+    stats[key].n += 1;
+    updateStats();
+  }
+
+  document.getElementById("runBtn").addEventListener("click", runTrial);
+  document.getElementById("resetBtn").addEventListener("click", ()=>{
+    Object.keys(stats).forEach(k => { stats[k].sum = 0; stats[k].n = 0; });
+    outA.textContent = "—";
+    outB.textContent = "—";
+    cond.textContent = "—";
+    updateStats();
+  });
+
+  updateStats();
+})();
+</script>
